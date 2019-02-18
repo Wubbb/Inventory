@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
 // Route::resource('items', 'ItemsController');
 Route::resource('items','ItemsController');
 
-Route::get('/',"RedirectController@index")->name("RedirectIndex");
+//Route::get('/',"RedirectController@index")->name("RedirectIndex");
 
 Route::get('/redirectme', function() {
 	return redirect('/items')->with('status','ulol!');

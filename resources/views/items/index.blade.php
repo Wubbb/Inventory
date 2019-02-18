@@ -50,14 +50,12 @@
                                                          <td>{{$item->title}}</td>
                                                          <td>{{$item->desc}}</td>
                                                          <td>{{$item->from}}</td>
-                                                         <td><a href="items/{{$item->id}}">View</a> | <a href="items/{{$item->id}}/edit">Edit</a> 
-
-
-                                                         <form action="items/{{$item->id}}" method="POST">
+                                                         <td><button type="button" class="btn btn-primary btn-sm">View</button>
+                                                         <button type="button" class="btn btn-success btn-sm">Edit</button>
                                                             @csrf
                                                             @method("DELETE")
-                                                            <input type="submit" name="submit" value="Delete">
-                                                         </form>  
+                                                            <button type="button" class="btn btn-danger btn-sm" name="submit" value="Delete">Delete</button>
+                                                            <!-- <input type="submit" name="submit" value="Delete"> -->
                                                          </td>
                                                          <!-- <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default" data-target="{{$item->id}}">View </button></td> -->
                                                          </tr>
