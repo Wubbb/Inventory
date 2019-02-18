@@ -22,6 +22,11 @@ class ItemsController extends Controller
         return view('items.addform');
     }
 
+    public function destroy($id) {
+        $item = Item::find($id);
+        $item->delete();
+        return redirect('/items')->with('status','Successfully Deleted Item '. $item->title). '!';
+    }
     public function show($id) { 
         $item = Item::find($id);
         return view('items.show')->with('item',$item); 
@@ -41,11 +46,7 @@ class ItemsController extends Controller
         return redirect('/items')->with('status','Successfully updated!');
     }
 
-    public function destroy($id) {
-        $item = Item::find($id);
-        $item->delete();
-        return redirect('/items')->with('status','Successfully Deleted Item '. $item->title). '!';
-    }
+    
 
     //
  }
