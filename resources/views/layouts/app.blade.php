@@ -47,6 +47,21 @@
         
         <!-- Argon JS -->
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+        <script>
+        $('#modal-default').on('show.bs.modal', function (event){
+            var button = $(event.relatedTarget)
+            var id = button.data('myid')
+            var title = button.data('mytitle')
+            var desc = button.data('mydesc')
+            var from = button.data('myfrom')
+            var modal =$(this)
+
+            modal.find('.modal-body #id').text(id);
+            modal.find('.modal-body #title').html(title);
+            modal.find('.modal-body #desc').html(desc);
+            modal.find('.modal-body #from').html(from);
+        })
+        </script>
 
     </body>
 </html>

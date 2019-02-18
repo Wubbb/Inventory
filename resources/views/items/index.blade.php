@@ -46,11 +46,12 @@
                                             <tbody>
                                                 @foreach ($items as $item)
                                                     <tr>
-                                                         <td>{{$item->id }}</td>
+                                                         <td>{{$item->id}}</td>
                                                          <td>{{$item->title}}</td>
                                                          <td>{{$item->desc}}</td>
                                                          <td>{{$item->from}}</td>
-                                                         <td><a href="items/{{$item->id}}">View</a> | <a href="items/{{$item->id}}/edit">Edit</a> 
+                                                         <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default" data-myid="{{$item->id}}" data-mytitle="{{$item->title}}" data-mydesc="{{$item->desc}}" data-myfrom="{{$item->from}}">View </button>
+                                                         <!-- <td><a href="items/{{$item->id}}">View</a> | <a href="items/{{$item->id}}/edit">Edit</a>  -->
 
 
                                                          <form action="items/{{$item->id}}" method="POST">
@@ -59,7 +60,7 @@
                                                             <input type="submit" name="submit" value="Delete">
                                                          </form>  
                                                          </td>
-                                                         <!-- <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default" data-target="{{$item->id}}">View </button></td> -->
+                                                         <!--  -->
                                                          </tr>
                                                 @endforeach
                                             </tbody>
@@ -77,18 +78,30 @@
                       <div class="modal-content">
                           
                           <div class="modal-header">
-                              <h1 class="modal-title" id="modal-title-default">{{$item->title}}</h1>
+                              <!-- <h1 class="modal-title" id="modal-title-default">{//{$item->title}}</h1> -->
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">×</span>
                               </button>
                           </div>
                         
                         <div class="modal-body" id="example">
-                                <td>{{ $item->id }}</td>
-                                <td>{{$item->title}}</td>
-                                <td>{{$item->desc}}</td>
-                                <td>{{$item->from}}</td>
-                          </div>
+                        <table class="table align-items-center table-flush">
+                        <thead>
+                        <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>From</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                                <td><div id="id"></div></td>
+                                <td><div id="title"></div></td>
+                                <td><div id="desc"></div></td>
+                                <td><div id="from"></div></td>
+                        </tr>
+                        </table>
+                        </div>
         
                           <div class="modal-footer">
                               <button type="button" class="btn btn-primary">Save changes</button>
