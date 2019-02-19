@@ -17,7 +17,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/reports', 'HomeController@craig')->name('reports');
+//Route::get('/reports', 'HomeController@craig')->name('reports');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
@@ -34,3 +34,5 @@ Route::resource('items','ItemsController');
 Route::get('/redirectme', function() {
 	return redirect('/items')->with('status','ulol!');
 });
+
+Route::get('/reports','ReportsController@index')->name('reports');

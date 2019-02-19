@@ -55,7 +55,7 @@
                                                          <!-- <td><a href="items/{{$item->id}}">View</a> | <a href="items/{{$item->id}}/edit">Edit</a>  -->
 
 
-                                                         <form action="items/{{$item->id}}" method="POST">
+                                                         <!-- <form action="items/{{$item->id}}" method="POST">
                                                          <td><button type="button" class="btn btn-primary btn-sm">View</button>
                                                          <button type="button" class="btn btn-success btn-sm">Edit</button>
 
@@ -63,7 +63,7 @@
                                                             @method("DELETE")
                                                             <button type="button" class="btn btn-danger btn-sm" name="submit" value="Delete">Delete</button>
                                                             <!-- <input type="submit" name="submit" value="Delete"> -->
-                                                         </td>
+                                                         </td> 
                                                          <!--  -->
                                                          </tr>
                                                 @endforeach

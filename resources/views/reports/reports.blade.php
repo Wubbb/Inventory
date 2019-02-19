@@ -33,13 +33,24 @@
                                     <table class="table align-items-center table-flush" id="dataTable">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th scope="col">{{__('Action')}}</th>
+                                                    <!-- <th scope="col">{{__('Action')}}</th> -->
                                                     <th scope="col">{{ __('WAHProperty#') }}</th>
                                                     <th scope="col">{{ __('Type') }}</th>
                                                     <th scope="col">{{ __('Assigned to / Returned By') }}</th>
                                                     <th scope="col">{{ __('Date Procured') }}</th>
                                                 </tr>
                                             </thead>
+                                            <tbody>
+                                            @forelse ($reports as $report)
+                                            <tr>
+                                                         <td>{{$report->property}}</td>
+                                                         <td>{{$report->type}}</td>
+                                                         <td>{{$report->details}}</td>
+                                                         <td>{{$report->assignedTo}}</td>
+                                            </tr>
+                                            @empty <tr><td>No records found</td></tr>
+                                            @endforelse
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
