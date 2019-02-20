@@ -16,7 +16,7 @@ class ReportsTableSeeder extends Seeder
         for ($i=0;$i<100;$i++) {
             Report::create(
                 [
-                    "property" => $faker->state,
+                    "property" => $faker->phoneNumber,
                     "type" => $faker->word,
                     "details" => $faker->word,
                     "assignedTo" => $faker->name
