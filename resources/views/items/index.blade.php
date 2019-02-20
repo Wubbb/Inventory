@@ -33,8 +33,8 @@
                     <div class="card mb-3">
                             <div class="card-body">
                               <div class="table-responsive">
-                                    <table class="table align-items-center table-flush" id="dataTable">
-                                            <thead class="thead-light">
+                                    <table class="table align-items-center table-flush table-dark" id="dataTable">
+                                            <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">{{__('Id')}}</th>
                                                     <th scope="col">{{ __('Title') }}</th>
@@ -52,18 +52,12 @@
                                                          <td>{{$item->from}}</td>
 
                                                          <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default" data-myid="{{$item->id}}" data-mytitle="{{$item->title}}" data-mydesc="{{$item->desc}}" data-myfrom="{{$item->from}}">View </button>
-                                                         <!-- <td><a href="items/{{$item->id}}">View</a> | <a href="items/{{$item->id}}/edit">Edit</a>  -->
-
-
-                                                         <!-- <form action="items/{{$item->id}}" method="POST">
-                                                         <td><button type="button" class="btn btn-primary btn-sm">View</button>
                                                          <button type="button" class="btn btn-success btn-sm">Edit</button>
-
                                                             @csrf
                                                             @method("DELETE")
                                                             <button type="button" class="btn btn-danger btn-sm" name="submit" value="Delete">Delete</button>
                                                             <!-- <input type="submit" name="submit" value="Delete"> -->
-                                                         </td> 
+                                                         </td>
                                                          <!--  -->
                                                          </tr>
                                                 @endforeach
@@ -78,11 +72,11 @@
         <div class="row">
                 <div class="col-md-4">
                     <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-                  <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                  <div class="modal-dialog modal- modal-dialog-centered modal-lg modal-dark" role="document">
                       <div class="modal-content">
                           
                           <div class="modal-header">
-                              <!-- <h1 class="modal-title" id="modal-title-default">{//{$item->title}}</h1> -->
+                          <div id="title"><h1 class="modal-title" id="modal-title-default"></h1></div>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">×</span>
                               </button>
