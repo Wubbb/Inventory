@@ -10,10 +10,10 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Users') }}</h3>
+                                <h3 class="mb-0">{{ __('Employee ') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add user') }}</a>
+                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add Employee') }}</a>
                             </div>
                         </div>
                     </div>
@@ -33,9 +33,10 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">{{ __('Name') }}</th>
-                                    <th scope="col">{{ __('Email') }}</th>
+                                    <th scope="col">{{ __('Full Name') }}</th>
+                                    <th scope="col">{{ __('Designation') }}</th>
                                     <th scope="col">{{ __('Creation Date') }}</th>
+                                    <th scope="col">{{__('Action') }}</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
