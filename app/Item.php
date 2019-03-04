@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
 
-    protected $fillable = ["assign-to","date-procured"];
+    protected $fillable = ["assignTo","dateProc"];
+    public $timestamps = false;
     //
 }

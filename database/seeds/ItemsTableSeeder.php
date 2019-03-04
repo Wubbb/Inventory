@@ -22,7 +22,7 @@ class ItemsTableSeeder extends Seeder
                 "method"=> $faker->word,
                 "from"=> $faker->state,
                 "cost"=> $faker->numberBetween($min = 1000, $max = 9000),
-                "assignTo"=> $faker-> name,
+                "assignTo"=> $faker-> randomDigit ,
                 "depre"=> $faker->numberBetween($min = 100, $max = 900)
 
             ]
