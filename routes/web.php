@@ -38,3 +38,5 @@ Route::get('/redirectme', function() {
 Route::get('/reports','ReportsController@index')->name('reports');
 
 Route::get('/lostReports','LostReportsController@index')->name('lostReports');
+
+Route::get('/techbag','TechbagsController@index')->name('techbag');
