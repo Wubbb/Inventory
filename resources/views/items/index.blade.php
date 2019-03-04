@@ -36,20 +36,30 @@
                                     <table class="table align-items-center table-flush table-dark" id="dataTable">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">{{__('Id')}}</th>
-                                                    <th scope="col">{{ __('Title') }}</th>
-                                                    <th scope="col">{{ __('Description') }}</th>
+                                                    <th scope="col">{{__('Wah Property #')}}</th>
+                                                    <th scope="col">{{ __('Type') }}</th>
+                                                    <th scope="col">{{ __('Details') }}</th>
+                                                    <th scope="col">{{ __('Date Procured') }}</th>
+                                                    <th scope="col">{{ __('Method') }}</th>
                                                     <th scope="col">{{ __('From') }}</th>
-                                                    <th scope="col">{{ __('Action') }}</th>
+                                                    <th scope="col">{{ __('Cost') }}</th>
+                                                    <th scope="col">{{ __('Depreciation Value') }}</th>
+                                                    <th scope="col">{{ __('Assigned To') }}</th>
+                                                    <th scope="col">{{__('Action')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($items as $item)
                                                     <tr>
-                                                         <td>{{$item->id}}</td>
-                                                         <td>{{$item->title}}</td>
-                                                         <td>{{$item->desc}}</td>
+                                                         <td>{{$item->wahProp}}</td>
+                                                         <td>{{$item->type}}</td>
+                                                         <td>{{$item->details}}</td>
+                                                         <td>{{$item->dateProc}}</td>
+                                                         <td>{{$item->method}}</td>
                                                          <td>{{$item->from}}</td>
+                                                         <td>{{$item->cost}}</td>
+                                                         <td>{{$item->depre}}</td>
+                                                         <td>{{$item->assignTo}}</td>
 
                                                          <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default" data-myid="{{$item->id}}" data-mytitle="{{$item->title}}" data-mydesc="{{$item->desc}}" data-myfrom="{{$item->from}}">View </button>
                                                          <button type="button" class="btn btn-success btn-sm">Edit</button>

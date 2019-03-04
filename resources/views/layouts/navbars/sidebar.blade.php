@@ -104,8 +104,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-key-25 text-info"></i> {{ __('Login') }}
+                    <a class="nav-link" href="{{route('techbag')}}">
+                        <i class="ni ni-key-25 text-info"></i> {{ __('Tech Bag') }}
                     </a>
                 </li>
                 <li class="nav-item">
