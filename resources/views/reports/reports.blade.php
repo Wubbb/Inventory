@@ -1,7 +1,26 @@
 @extends('layouts.app', ['title' => __('Reports')])
 
 @section('content')
+    
     @include('layouts.headers.cards')
+
+    <div class="row align-items-center">
+        <div class="col-8">
+        <div class="nav-wrapper">
+    <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-bell-55 mr-2"></i>Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>Messages</a>
+        </li>
+    </ul>
+</div>
+        </div>
+    </div>
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -14,7 +33,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="nav-wrapper">
                     <div class="col-12">
                         @if (session('status'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
