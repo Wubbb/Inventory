@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use DB;
 class ItemsController extends Controller
+
 {
     public function index() {
         $items = Item::all();
@@ -43,6 +45,13 @@ class ItemsController extends Controller
         $item->save();
 
         return redirect('/items')->with('status','Successfully updated!');
+    }
+
+    public function craig() {
+        return DB::table('items')
+        ->join('employee', 'employee.id', '=','items.assignTo')
+        ->select('items.*','employee.name')
+        ->get();
     }
 
 

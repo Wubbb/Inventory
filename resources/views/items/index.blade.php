@@ -45,7 +45,7 @@
                                                     <th scope="col">{{ __('Cost') }}</th>
                                                     <th scope="col">{{ __('Depreciation Value') }}</th>
                                                     <th scope="col">{{ __('Assigned To') }}</th>-->
-                                                    <th scope="col">{{__('Action')}}</th> 
+                                                    <th scope="col">{{__('Action')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

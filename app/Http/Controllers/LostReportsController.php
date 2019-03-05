@@ -19,7 +19,7 @@ class LostReportsController extends Controller
         //
        return DB::table('lost_reports')
        ->join('reports', 'reports.id', '=','lost_reports.reports_id')
-       ->select('lost_reports.*','reports.*')
+       ->select('lost_reports.last_used_by','reports.*')
        ->get();
     }
 

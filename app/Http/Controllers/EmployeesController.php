@@ -10,7 +10,10 @@ class EmployeesController extends Controller
 {
     public function index() {
         // return view('employees');
-         DB::table("employee")->get();
+        return DB::table('employee')
+        ->join('employee', 'employee.id', '=','items.assignTo')
+        ->select('items.*','employee.*')
+        ->get();
     }
     //
 }
