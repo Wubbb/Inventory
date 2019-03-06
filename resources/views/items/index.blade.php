@@ -61,7 +61,10 @@
                                                          <td>{{$item->depre}}</td>
                                                          <td>{{$item->assignTo}}</td> -->
 
-                                                         <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default" data-myid="{{$item->id}}" data-mytitle="{{$item->title}}" data-mydesc="{{$item->desc}}" data-myfrom="{{$item->from}}">View </button>
+                                                         <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default"
+                                                         data-mywah="{{$item->wahProp}}" data-mytype="{{$item->type}}" data-mydetail="{{$item->details}}"
+                                                         data-mydate="{{$item->dateProc}}" data-mymethod="{{$item->method}}" data-myfrom="{{$item->from}}"
+                                                         data-mycost="{{$item->cost}}" data-myDP="{{$item->depre}}" data-myassignto="{{$item->name}}">View </button>
                                                          <button type="button" class="btn btn-success btn-sm">Edit</button>
                                                             @csrf
                                                             @method("DELETE")
@@ -96,17 +99,27 @@
                         <table class="table align-items-center table-flush">
                         <thead>
                         <tr>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>From</th>
+                            <th scope="col">{{__('Wah Property #')}}</th>
+                            <th scope="col">{{ __('Type') }}</th>
+                            <th scope="col">{{ __('Details') }}</th>
+                            <th scope="col">{{ __('Date Procured') }}</th>
+                            <th scope="col">{{ __('Method') }}</th>
+                            <th scope="col">{{ __('From') }}</th>
+                            <th scope="col">{{ __('Cost') }}</th>
+                            <th scope="col">{{ __('Depreciation Value') }}</th>
+                            <th scope="col">{{ __('Assigned To') }}</th>
                         </tr>
                         </thead>
                         <tr>
-                                <td><div id="id"></div></td>
-                                <td><div id="title"></div></td>
-                                <td><div id="desc"></div></td>
+                                <td><div id="wah"></div></td>
+                                <td><div id="type"></div></td>
+                                <td><div id="detail"></div></td>
+                                <td><div id="dateProc"></div></td>
+                                <td><div id="method"></div></td>
                                 <td><div id="from"></div></td>
+                                <td><div id="cost"></div></td>
+                                <td><div id="DV"></div></td>
+                                <td><div id="assignto"></div></td>
                         </tr>
                         </table>
                         </div>

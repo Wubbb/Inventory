@@ -9,7 +9,10 @@ class ItemsController extends Controller
 
 {
     public function index() {
-        $items = Item::all();
+        $items = DB::table('items')
+        ->leftjoin('employee', 'employee.id', '=','items.assignTo')
+        ->select('items.*','employee.name')
+        ->get();
         return view('items.index')->with('items', $items);
     }
 

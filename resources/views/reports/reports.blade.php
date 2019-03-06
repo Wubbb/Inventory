@@ -55,6 +55,7 @@
                                                     <!-- <th scope="col">{{__('Action')}}</th> -->
                                                     <th scope="col">{{ __('WAHProperty#') }}</th>
                                                     <th scope="col">{{ __('Type') }}</th>
+                                                    <th scope="col">{{ __('Details') }}</th>
                                                     <th scope="col">{{ __('Assigned to / Returned By') }}</th>
                                                     <th scope="col">{{ __('Date Procured') }}</th>
                                                 </tr>
@@ -62,10 +63,11 @@
                                             <tbody>
                                             @forelse ($reports as $report)
                                             <tr>
-                                                         <td>{{$report->property}}</td>
+                                                         <td>{{$report->wahProp}}</td>
                                                          <td>{{$report->type}}</td>
                                                          <td>{{$report->details}}</td>
-                                                         <td>{{$report->assignedTo}}</td>
+                                                         <td>{{$report->name}}</td>
+                                                         <td>{{$report->dateProc}}</td>
                                             </tr>
                                             @empty <tr><td>No records found</td></tr>
                                             @endforelse
