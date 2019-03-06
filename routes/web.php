@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Route::resource('items', 'ItemsController');
 Route::resource('items','ItemsController');
-Route::get('/craig', 'ItemsController@craig')->name('craig');
+Route::get('/employee', 'EmployeesController@index')->name('employee');
 
 //Route::get('/',"RedirectController@index")->name("RedirectIndex");
 

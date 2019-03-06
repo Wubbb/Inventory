@@ -47,12 +47,7 @@ class ItemsController extends Controller
         return redirect('/items')->with('status','Successfully updated!');
     }
 
-    public function craig() {
-        return DB::table('items')
-        ->join('employee', 'employee.id', '=','items.assignTo')
-        ->select('items.*','employee.name')
-        ->get();
-    }
+    
 
 
 
