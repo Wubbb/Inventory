@@ -50,16 +50,26 @@
         <script>
         $('#modal-default').on('show.bs.modal', function (event){
             var button = $(event.relatedTarget)
-            var id = button.data('myid')
-            var title = button.data('mytitle')
-            var desc = button.data('mydesc')
+            var wah = button.data('mywah')
+            var type = button.data('mytype')
+            var detail = button.data('mydetail')
+            var dateProc = button.data('mydate')
+            var method = button.data('mymethod')
             var from = button.data('myfrom')
+            var cost = button.data('mycost')
+            var DP = button.data('myDP')
+            var assignto = button.data('myassignto')
             var modal =$(this)
 
-            modal.find('.modal-body #id').text(id);
-            modal.find('.modal-body #title').html(title);
-            modal.find('.modal-body #desc').html(desc);
-            modal.find('.modal-body #from').html(from);
+            modal.find('.modal-body #wah').text(wah);
+            modal.find('.modal-body #type').text(type);
+            modal.find('.modal-body #detail').text(detail);
+            modal.find('.modal-body #dateProc').text(dateProc);
+            modal.find('.modal-body #method').text(method);
+            modal.find('.modal-body #from').text(from);
+            modal.find('.modal-body #cost').text(cost);
+            modal.find('.modal-body #DP').text(DP);
+            modal.find('.modal-body #assignto').text(assignto);
         })
         </script>
 
