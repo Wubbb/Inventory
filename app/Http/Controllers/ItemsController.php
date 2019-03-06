@@ -17,13 +17,13 @@ class ItemsController extends Controller
     }
 
     public function store(Request $request) {
-        Item::create(["title" => $request->title,"desc"=>$request->desc,"from" => $request->from]);
+        Item::create(["wahProp" => $request->wahProp,"type"=>$request->type,"detail" => $request->detail]);
         
         return redirect('/items')->with('status','Successfully Added!!');
     }
 
     public function create() {
-        return view('items.addform');
+        return view('items.index');
     }
 
     public function destroy($id) {

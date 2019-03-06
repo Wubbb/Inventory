@@ -13,7 +13,8 @@
                                 <h3 class="mb-0">{{ __('Items') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('items.create') }}" class="btn btn-sm btn-primary">{{ __('Add Item') }}</a>
+                                <a href="{{ route('items.index') }}" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-addItem">{{ __('Add Item') }}</a>
+                                <a class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-addItem">{{ __('Add Item') }}</a>
                             </div>
                         </div>
                     </div>
@@ -82,6 +83,8 @@
                 </div>
             </div>
         </div>
+
+        <!--view modal item details-->
         <div class="row">
                 <div class="col-md-4">
                     <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
@@ -111,7 +114,7 @@
                         </tr>
                         </thead>
                         <tr>
-                                <td><div id="wah"></div></td>
+                                <td><div id="wahProp"></div></td>
                                 <td><div id="type"></div></td>
                                 <td><div id="detail"></div></td>
                                 <td><div id="dateProc"></div></td>
@@ -132,7 +135,72 @@
                       </div>
                   </div>
               </div>
-                </div>        
+                </div>     
+                <!--end modal item details-->
+
+                <!--add item modal-->
+                <div class="row">
+  <div class="col-md-4">
+      <div class="modal fade" id="modal-addItem" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title-default">Add Item here:</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                        <form method="post" action="{{ route('items.store') }}" autocomplete="off">
+                            @csrf
+                            
+                            <div class="pl-lg-4">
+                                <div class="form-group{{ $errors->has('wahProp') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="wahProp">{{ __('Wah Property #') }}</label>
+                                    <input type="text" name="wahProp" id="wahProp" class="form-control form-control-alternative{{ $errors->has('wahProp') ? ' is-invalid' : '' }}" placeholder="{{ __('Wah Property #') }}" value="{{ old('wahProp') }}" required autofocus>
+
+                                    @if ($errors->has('wahProp'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('wahProp') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group{{ $errors->has('type') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="type">{{ __('Type') }}</label>
+                                    <input type="text" name="type" id="type" class="form-control form-control-alternative{{ $errors->has('type') ? ' is-invalid' : '' }}" placeholder="{{ __('Type') }}" value="{{ old('type') }}" required>
+
+                                    @if ($errors->has('type'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('type') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                
+                                <div class="form-group{{ $errors->has('detail') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="detail">{{ __('Details') }}</label>
+                                        <input type="text" name="detail" id="detail" class="form-control form-control-alternative{{ $errors->has('detail') ? ' is-invalid' : '' }}" placeholder="{{ __('Details') }}" value="{{ old('detail') }}" required>
+    
+                                        @if ($errors->has('detail'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('detail') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+            <button type="submit" class="btn btn-success mt-4">{{ __('Add Item') }}</button>
+                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+            </div>
+                        </form>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+  <!--end add item modal-->   
         @include('layouts.footers.auth')
     </div>
     <script>
