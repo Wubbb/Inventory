@@ -9,10 +9,17 @@ use DB;
 class EmployeesController extends Controller
 {
     public function index() {
-        // return view('employees');
-        return DB::table('employee')
+         return view('employee.index');
+        // return DB::table('employee')
+        // ->join('employee', 'employee.id', '=','items.assignTo')
+        // ->select('items.*','employee.*')
+        // ->get();
+    }
+
+    public function craig() {
+        return DB::table('items')
         ->join('employee', 'employee.id', '=','items.assignTo')
-        ->select('items.*','employee.*')
+        ->select('items.*','employee.name')
         ->get();
     }
     //
