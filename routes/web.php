@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Route::resource('items', 'ItemsController');
 Route::resource('items','ItemsController');
-Route::get('/employee', 'EmployeesController@index')->name('employee');
+Route::resource('employee', 'EmployeesController');
 
 //Route::get('/',"RedirectController@index")->name("RedirectIndex");
 
@@ -42,4 +42,3 @@ Route::get('/lostReports','LostReportsController@index')->name('lostReports');
 
 Route::get('/techbag','TechbagsController@index')->name('techbag');
 
-Route::get('/employee','EmployeesController@index')->name('employee');

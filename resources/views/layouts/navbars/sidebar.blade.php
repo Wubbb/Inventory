@@ -94,7 +94,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('employee') }}">
+                    <a class="nav-link" href="{{ route('employee.index') }}">
                         <i class="ni ni-bullet-list-67 text-info"></i> {{ __('Employee') }}
                     </a>
                 </li>
