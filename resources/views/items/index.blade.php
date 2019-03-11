@@ -137,9 +137,8 @@
               </div>
                 </div>     
                 <!--end modal item details-->
-
-                <!--add item modal-->
-                <div class="row">
+<!--add item modal-->
+<div class="row">
   <div class="col-md-4">
       <div class="modal fade" id="modal-addItem" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
     <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
@@ -200,7 +199,8 @@
         </div>
     </div>
 </div>
-  <!--end add item modal-->   
+  <!--end add item modal-->  
+                 
         @include('layouts.footers.auth')
     </div>
     <script>
