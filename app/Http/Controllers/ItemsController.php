@@ -17,7 +17,16 @@ class ItemsController extends Controller
     }
 
     public function store(Request $request) {
-        Item::create(["wahProp" => $request->wahProp,"type"=>$request->type,"detail" => $request->detail]);
+        Item::create(["wahProp" => $request->wahProp,
+        "type"=>$request->type,
+        "details" => $request->details,
+        "dateProc" => $request->dateProc,
+        "method" => $request->method,
+        "from" => $request->from,
+        "cost" => $request->cost,
+        "assignTo" => $request->assignTo,
+        "depre" => $request->depre        
+        ]);
         
         return redirect('/items')->with('status','Successfully Added!!');
     }

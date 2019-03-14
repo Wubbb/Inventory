@@ -23,7 +23,7 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
-    public function craig() {
-        return view('reports.reports');
-    }
+    // public function craig() {
+    //     return view('reports.reports');
+    // }
 }

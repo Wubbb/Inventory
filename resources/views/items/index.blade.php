@@ -177,17 +177,87 @@
                                     @endif
                                 </div>
                                 
-                                <div class="form-group{{ $errors->has('detail') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="detail">{{ __('Details') }}</label>
-                                        <input type="text" name="detail" id="detail" class="form-control form-control-alternative{{ $errors->has('detail') ? ' is-invalid' : '' }}" placeholder="{{ __('Details') }}" value="{{ old('detail') }}" required>
+                                <div class="form-group{{ $errors->has('details') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="details">{{ __('Details') }}</label>
+                                        <input type="text" name="details" id="details" class="form-control form-control-alternative{{ $errors->has('details') ? ' is-invalid' : '' }}" placeholder="{{ __('Details') }}" value="{{ old('details') }}" required>
     
-                                        @if ($errors->has('detail'))
+                                        @if ($errors->has('details'))
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('detail') }}</strong>
+                                                <strong>{{ $errors->first('details') }}</strong>
                                             </span>
                                         @endif
                                     </div>
+
                             </div>
+
+                            <div class="pl-lg-4">
+                                <div class="form-group{{ $errors->has('dateProc') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="dateProc">{{ __('Date Procured ') }}</label>
+                                    <input type="text" name="dateProc" id="dateProc" class="form-control form-control-alternative{{ $errors->has('dateProc') ? ' is-invalid' : '' }}" placeholder="{{ __('Date Procured') }}" value="{{ old('dateProc') }}" required autofocus>
+
+                                    @if ($errors->has('dateProc'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('dateProc') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                            <div class="form-group{{ $errors->has('method') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="method">{{ __('Method') }}</label>
+                                        <input type="text" name="method" id="method" class="form-control form-control-alternative{{ $errors->has('method') ? ' is-invalid' : '' }}" placeholder="{{ __('Method') }}" value="{{ old('method') }}" required>
+    
+                                        @if ($errors->has('method'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('method') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
+                            <div class="form-group{{ $errors->has('from') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="method">{{ __('From') }}</label>
+                                        <input type="text" name="from" id="from" class="form-control form-control-alternative{{ $errors->has('from') ? ' is-invalid' : '' }}" placeholder="{{ __('From') }}" value="{{ old('from') }}" required>
+    
+                                        @if ($errors->has('method'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('from') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div> 
+
+                            <div class="form-group{{ $errors->has('cost') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="cost">{{ __('Cost') }}</label>
+                                        <input type="text" name="cost" id="cost" class="form-control form-control-alternative{{ $errors->has('cost') ? ' is-invalid' : '' }}" placeholder="{{ __('Cost') }}" value="{{ old('cost') }}" required>
+    
+                                        @if ($errors->has('cost'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('cost') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>   
+                            <div class="form-group{{ $errors->has('assignTo') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="assignTo">{{ __('Assign To') }}</label>
+                                        <input type="text" name="assignTo" id="assignTo" class="form-control form-control-alternative{{ $errors->has('assignTo') ? ' is-invalid' : '' }}" placeholder="{{ __('Assign To') }}" value="{{ old('assignTo') }}" required>
+    
+                                        @if ($errors->has('assignTo'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('assignTo') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>   
+
+
+                            <div class="form-group{{ $errors->has('depre') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label" for="assignTo">{{ __('Depreciation') }}</label>
+                                        <input type="text" name="depre" id="depre" class="form-control form-control-alternative{{ $errors->has('depre') ? ' is-invalid' : '' }}" placeholder="{{ __('Depreciation') }}" value="{{ old('depre') }}" required>
+    
+                                        @if ($errors->has('depre'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('depre') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>  
+                                                                            
+                                        
                             <div class="modal-footer">
             <button type="submit" class="btn btn-success mt-4">{{ __('Add Item') }}</button>
                 <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
