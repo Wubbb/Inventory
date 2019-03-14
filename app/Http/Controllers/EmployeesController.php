@@ -22,15 +22,29 @@ class EmployeesController extends Controller
     }
 
     public function show($id) { 
-        $item = Item::find($id);
-        return view('employee.show')->with('item',$item); 
+       $employee = Employee::find($id);
+        return view('employee.show')->with('employee',$employee); 
     }
 
-    public function craig() {
-        return DB::table('items')
-        ->join('employee', 'employee.id', '=','items.assignTo')
-        ->select('items.*','employee.name')
-        ->get();
+    public function store(Request $request) {
+        Employee::create(["name" => $request->name,"assignment"=>$request->assignment]);
+        
+        return redirect('/employee')->with('status','Successfully Added!!');
+    }
+ 
+    public function update(Request $request,$id) {
+        $employee = Employee::find($id);
+        $employee->title = $request->title;
+        $employee->desc = $request->desc;
+        $employee->save();
+
+        return redirect('/employee')->with('status','Successfully updated!');
+    }
+
+
+
+    public function edit() {
+        return DB::table('employee')->get();
     }
     //
 }
