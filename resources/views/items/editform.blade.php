@@ -7,12 +7,12 @@
     <title>Edit</title>
 </head>
 <body>
-    <form action="/items/{{$item->id}}" method="POST">
+    <form action="/items/{{$items->id}}" method="POST">
     @csrf
     @method('PUT')
-    <input type="text" name="title" value="{{$item->title}}"><br>
-    <textarea name="desc" id="desc" cols="30" rows="5">{{$item->desc}}</textarea><br>
-    <input type="text" name="from" value="{{$item->from}}"><br>
+    <input type="text" name="title" value="{{$items->wahProp}}"><br>
+    <textarea name="desc" id="desc" cols="30" rows="5">{{$items->type}}</textarea><br>
+    <input type="text" name="from" value="{{$items->details}}"><br>
     <input type="submit" name="submit" value="Submit">
     </form>
     

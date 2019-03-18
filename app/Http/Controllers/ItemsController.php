@@ -48,13 +48,13 @@ class ItemsController extends Controller
 
     public function edit($id){
         $item = Item::find($id);
-        return view('items.editform')->with('item',$item);
+     
     }
     public function update(Request $request,$id) {
         $item = Item::find($id);
-        $item->title = $request->title;
-        $item->desc = $request->desc;
-        $item->from = $request->from;
+        $item->wahProp = $request->wahProp;
+        $item->type = $request->type;
+        
         $item->save();
 
         return redirect('/items')->with('status','Successfully updated!');
