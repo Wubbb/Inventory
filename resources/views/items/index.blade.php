@@ -179,6 +179,9 @@
                                 
                                 <div class="form-group{{ $errors->has('details') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="details">{{ __('Details') }}</label>
+                                       
+                                         
+                                                                  
                                         <input type="text" name="details" id="details" class="form-control form-control-alternative{{ $errors->has('details') ? ' is-invalid' : '' }}" placeholder="{{ __('Details') }}" value="{{ old('details') }}" required>
     
                                         @if ($errors->has('details'))
@@ -186,6 +189,8 @@
                                                 <strong>{{ $errors->first('details') }}</strong>
                                             </span>
                                         @endif
+
+                                        
                                     </div>
 
                             </div>
@@ -236,8 +241,14 @@
                                     </div>   
                             <div class="form-group{{ $errors->has('assignTo') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="assignTo">{{ __('Assign To') }}</label>
-                                        <input type="text" name="assignTo" id="assignTo" class="form-control form-control-alternative{{ $errors->has('assignTo') ? ' is-invalid' : '' }}" placeholder="{{ __('Assign To') }}" value="{{ old('assignTo') }}" required>
-    
+                                        <!-- <input type="text" name="assignTo" id="assignTo" class="form-control form-control-alternative{{ $errors->has('assignTo') ? ' is-invalid' : '' }}" placeholder="{{ __('Assign To') }}" value="{{ old('assignTo') }}" required>
+     -->
+                                        <select name="assignTo">
+                                        <option value="0" id="assignTo">None</option>
+                                        @foreach ($employee as $employees)  
+                                        <option value="{{$employees->id}}" id="assignTo">{{$employees->name}}</option>
+                                        @endforeach
+                                         </select>   
                                         @if ($errors->has('assignTo'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('assignTo') }}</strong>
