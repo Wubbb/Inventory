@@ -13,7 +13,8 @@ class ItemsController extends Controller
         ->leftjoin('employee', 'employee.id', '=','items.assignTo')
         ->select('items.*','employee.name')
         ->get();
-        return view('items.index')->with('items', $items);
+        $employee = DB::table('employee')->get();
+        return view('items.index')->with(['items' => $items, 'employee' => $employee]);
     }
 
     public function store(Request $request) {
