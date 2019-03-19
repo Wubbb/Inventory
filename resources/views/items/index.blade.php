@@ -66,7 +66,7 @@
                                                          data-mywah="{{$item->wahProp}}" data-mytype="{{$item->type}}" data-mydetail="{{$item->details}}"
                                                          data-mydate="{{$item->dateProc}}" data-mymethod="{{$item->method}}" data-myfrom="{{$item->from}}"
                                                          data-mycost="{{$item->cost}}" data-myDP="{{$item->depre}}" data-myassignto="{{$item->name}}">View </button>
-                                                         <button type="button" class="btn btn-success btn-sm">Edit</button>
+                                                         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button>
                                                             @csrf
                                                             @method("DELETE")
                                                             <button type="button" class="btn btn-danger btn-sm" name="submit" value="Delete">Delete</button>
@@ -137,6 +137,45 @@
               </div>
                 </div>     
                 <!--end modal item details-->
+
+
+ <!-- edit item modal -->
+ @foreach ($items as $item)   
+     <div class="modal fade" id="editModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" align="center"><b>Edit Item</b></h4>
+                  </div>
+                  <div class="modal-body">
+                    <form role="form" action="/items/{{$item->id}}" method="post">
+                    @csrf
+                    @METHOD('PUT')
+                    <div class="box-body">
+                        <div class="form-group">
+                          <label for="wahProp">Wah Property #</label> 
+                          <input type="text" class="form-control" name="wahProp" placeholder="Wah Property #" value="{{$item->wahProp}}">
+                        </div>
+                        <div class="form-group">
+                          <label for="type">Type</label> 
+                          <input type="text" class="form-control" name="type" placeholder="Type" value="{{$item->type}}">
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div> 
+    @endforeach
+    <!-- edit item modal end -->
+
+
+    
 <!--add item modal-->
 <div class="row">
   <div class="col-md-4">
