@@ -61,14 +61,14 @@
             var assignto = button.data('myassignto')
             var modal =$(this)
 
-            modal.find('.modal-body #wah').text(wah);
+            modal.find('.modal-body #wahProp').text(wah);
             modal.find('.modal-body #type').text(type);
             modal.find('.modal-body #detail').text(detail);
             modal.find('.modal-body #dateProc').text(dateProc);
             modal.find('.modal-body #method').text(method);
             modal.find('.modal-body #from').text(from);
             modal.find('.modal-body #cost').text(cost);
-            modal.find('.modal-body #DP').text(DP);
+            modal.find('.modal-body #DV').text(DP);
             modal.find('.modal-body #assignto').text(assignto);
         })
         </script>
