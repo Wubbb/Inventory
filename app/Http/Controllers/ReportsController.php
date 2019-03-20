@@ -11,18 +11,19 @@ class ReportsController extends Controller
     public function index() {
 
 
-       echo  $items = Item::find(1);
+    //    echo  $items = Item::find(1);
 
         // foreach($items as $item) {
         //     echo 
         // }
-        // return $reports = DB::table("items")
-        //  //->join('items','items.id','=','employee.assignTo)
-        // ->get();
+        $reports = DB::table("items")
+        ->join('employee', 'employee.id', '=','items.assignTo')
+        ->select('items.*','employee.name')
+        ->get();
         // // $reports = Report::all();
         // //$reports = array();
 
-        //return view('reports.reports')->with("reports",$reports);
+        return view('reports.reports')->with("reports",$reports);
     }
     //
 }

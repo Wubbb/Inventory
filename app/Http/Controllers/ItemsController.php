@@ -46,15 +46,22 @@ class ItemsController extends Controller
         return view('items.show')->with('item',$item); 
     }
 
-    public function edit($id){
-        $item = Item::find($id);
+    public function edit(Request $request){
+        $item = Item::find($request->id);
      
     }
-    public function update(Request $request,$id) {
-        $item = Item::find($id);
+    public function update(Request $request) {
+        $item = Item::find($request->id);
         $item->wahProp = $request->wahProp;
         $item->type = $request->type;
-        
+        $item->details = $request->details;
+        $item->dateProc = $request->dateProc;
+        $item->method = $request->method;
+        $item->from = $request->from;
+        $item->cost = $request->cost;
+        $item->assignTo = $request->assignTo;
+        $item->depre = $request->depre;
+
         $item->save();
 
         return redirect('/items')->with('status','Successfully updated!');
