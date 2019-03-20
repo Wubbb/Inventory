@@ -57,7 +57,7 @@
             var method = button.data('mymethod')
             var from = button.data('myfrom')
             var cost = button.data('mycost')
-            var DP = button.data('myDP')
+            var depre = button.data('mydepre')
             var assignto = button.data('myassignto')
             var modal =$(this)
 
@@ -68,9 +68,37 @@
             modal.find('.modal-body #method').text(method);
             modal.find('.modal-body #from').text(from);
             modal.find('.modal-body #cost').text(cost);
-            modal.find('.modal-body #DV').text(DP);
+            modal.find('.modal-body #DV').text(depre);
             modal.find('.modal-body #assignto').text(assignto);
-        })
+        });
+        
+        $('#editModal').on('show.bs.modal', function (event){
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            var wah = button.data('mywah')
+            var type = button.data('mytype')
+            var detail = button.data('mydetail')
+            var dateProc = button.data('mydate')
+            var method = button.data('mymethod')
+            var from = button.data('myfrom')
+            var cost = button.data('mycost')
+            var depre = button.data('mydepre')
+            var assignto = button.data('myassignto')
+            var employ = button.data('myemploy')
+            var modal=$(this)
+
+            $('input[name=id]').val(id);
+            $('input[name=wahProp]').val(wah);
+            $('input[name=type]').val(type);
+            $('input[name=details]').val(detail);
+            $('input[name=dateProc]').val(dateProc);
+            $('input[name=method]').val(method);
+            $('input[name=from]').val(from);
+            $('input[name=cost]').val(cost);
+            $('input[name=depre]').val(depre);
+            modal.find('.modal-body #assignTo1').text(employ);
+            modal.find('.modal-body #assignTo1').val(assignto);
+        });
         </script>
 
     </body>

@@ -65,8 +65,11 @@
                                                          <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default"
                                                          data-mywah="{{$item->wahProp}}" data-mytype="{{$item->type}}" data-mydetail="{{$item->details}}"
                                                          data-mydate="{{$item->dateProc}}" data-mymethod="{{$item->method}}" data-myfrom="{{$item->from}}"
-                                                         data-mycost="{{$item->cost}}" data-myDP="{{$item->depre}}" data-myassignto="{{$item->name}}">View </button>
-                                                         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal">Edit</button>
+                                                         data-mycost="{{$item->cost}}" data-mydepre="{{$item->depre}}" data-myassignto="{{$item->name}}">View </button>
+                                                         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal"
+                                                         data-id="{{$item->id}}" data-mywah="{{$item->wahProp}}" data-mytype="{{$item->type}}" data-mydetail="{{$item->details}}"
+                                                         data-mydate="{{$item->dateProc}}" data-mymethod="{{$item->method}}" data-myfrom="{{$item->from}}" data-myemploy="{{$item->name}}"
+                                                         data-mycost="{{$item->cost}}" data-mydepre="{{$item->depre}}" data-myassignto="{{$item->assignTo}}">Edit</button>
                                                             @csrf
                                                             @method("DELETE")
                                                             <button type="button" class="btn btn-danger btn-sm" name="submit" value="Delete">Delete</button>
@@ -139,8 +142,7 @@
                 <!--end modal item details-->
 
 
- <!-- edit item modal -->
- @foreach ($items as $item)   
+ <!-- edit item modal -->   
      <div class="modal fade" id="editModal">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -150,17 +152,54 @@
                     <h4 class="modal-title" align="center"><b>Edit Item</b></h4>
                   </div>
                   <div class="modal-body">
-                    <form role="form" action="/items/{{$item->id}}" method="post">
+                    <form role="form" action="{{route('items.update','test')}}" method="post">
+                    {{method_field('patch')}}
                     @csrf
-                    @METHOD('PUT')
                     <div class="box-body">
                         <div class="form-group">
+                        <input type="text" class="form-control" name="id" placeholder="id" value="" hidden>
                           <label for="wahProp">Wah Property #</label> 
-                          <input type="text" class="form-control" name="wahProp" placeholder="Wah Property #" value="{{$item->wahProp}}">
+                          <input type="text" class="form-control" name="wahProp" placeholder="Wah Property #" value="">
                         </div>
                         <div class="form-group">
                           <label for="type">Type</label> 
-                          <input type="text" class="form-control" name="type" placeholder="Type" value="{{$item->type}}">
+                          <input type="text" class="form-control" name="type" placeholder="Type" value="">
+                        </div>
+                        <div class="form-group">
+                        <label for="wahProp">Details</label> 
+                          <input type="text" class="form-control" name="details" placeholder="Details" value="">
+                          </div>
+                          <div class="form-group">
+                        <label for="wahProp">Date Procured</label> 
+                          <input type="text" class="form-control" name="dateProc" placeholder="Date Procured" value="">
+                          </div>
+                          <div class="form-group">
+                        <label for="wahProp">Method</label> 
+                          <input type="text" class="form-control" name="method" placeholder="Method" value="">
+                          </div>
+                          <div class="form-group">
+                        <label for="wahProp">From</label> 
+                          <input type="text" class="form-control" name="from" placeholder="From" value="">
+                          </div>
+                          <div class="form-group">
+                        <label for="wahProp">Cost</label> 
+                          <input type="text" class="form-control" name="cost" placeholder="Cost" value="">
+                          </div>
+                          <div class="form-group">
+                        <label for="wahProp">Depreciation Value</label> 
+                          <input type="text" class="form-control" name="depre" placeholder="Depreciation Value" value="">
+                          </div>
+                          <div class="form-group">
+                        <label for="wahProp">Assign To</label> 
+                          <!-- <input type="text" class="form-control" name="assignto" placeholder="Assign To" value=""> -->
+                          <select name="assignTo">
+                                        <option value="" id="assignTo1" selected disabled hidden></option>
+                                        <option value="0" id="assignTo">None</option>
+                                        @foreach ($employee as $employees)  
+                                        <option value="{{$employees->id}}" id="assignTo">{{$employees->name}}</option>
+                                        @endforeach
+                          </select>                            
+                          </div>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -171,7 +210,8 @@
                 </div>
               </div>
             </div> 
-    @endforeach
+           </div> 
+
     <!-- edit item modal end -->
 
 

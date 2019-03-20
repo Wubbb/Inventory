@@ -56,8 +56,8 @@
                                                     <th scope="col">{{ __('WAHProperty#') }}</th>
                                                     <th scope="col">{{ __('Type') }}</th>
                                                     <th scope="col">{{ __('Details') }}</th>
-                                                    <th scope="col">{{ __('Assigned to / Returned By') }}</th>
-                                                    <th scope="col">{{ __('Date Procured') }}</th>
+                                                    <th scope="col">{{ __('Assigned to:') }}</th>
+                                                    <!-- <th scope="col">{{ __('Date Procured') }}</th> -->
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -67,7 +67,7 @@
                                                          <td>{{$report->type}}</td>
                                                          <td>{{$report->details}}</td>
                                                          <td>{{$report->name}}</td>
-                                                         <td>{{$report->dateProc}}</td>
+                                                         <!-- <td>{{$report->dateProc}}</td> -->
                                             </tr>
                                             @empty <tr><td>No records found</td></tr>
                                             @endforelse
