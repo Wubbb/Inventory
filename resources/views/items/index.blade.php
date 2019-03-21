@@ -14,7 +14,6 @@
                             </div>
                             <div class="col-4 text-right">
                                 <a href="{{ route('items.index') }}" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-addItem">{{ __('Add Item') }}</a>
-                                <a class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-addItem">{{ __('Add Item') }}</a>
                             </div>
                         </div>
                     </div>
@@ -109,11 +108,6 @@
                             <th scope="col">{{ __('Type') }}</th>
                             <th scope="col">{{ __('Details') }}</th>
                             <th scope="col">{{ __('Date Procured') }}</th>
-                            <th scope="col">{{ __('Method') }}</th>
-                            <th scope="col">{{ __('From') }}</th>
-                            <th scope="col">{{ __('Cost') }}</th>
-                            <th scope="col">{{ __('Depreciation Value') }}</th>
-                            <th scope="col">{{ __('Assigned To') }}</th>
                         </tr>
                         </thead>
                         <tr>
@@ -121,10 +115,27 @@
                                 <td><div id="type"></div></td>
                                 <td><div id="detail"></div></td>
                                 <td><div id="dateProc"></div></td>
+                        </tr>
+                        <thead>
+                        <tr>
+                            <th scope="col">{{ __('Method') }}</th>
+                            <th scope="col">{{ __('From') }}</th>
+                            <th scope="col">{{ __('Cost') }}</th>
+                            <th scope="col">{{ __('Depreciation Value') }}</th>
+                        </tr>
+                        </thead>
+                        <tr>
                                 <td><div id="method"></div></td>
                                 <td><div id="from"></div></td>
                                 <td><div id="cost"></div></td>
                                 <td><div id="DV"></div></td>
+                        </tr>
+                        <thead>
+                        <tr>
+                            <th scope="col">{{ __('Assigned To') }}</th>
+                        </tr>
+                        </thead>
+                        <tr>
                                 <td><div id="assignto"></div></td>
                         </tr>
                         </table>
@@ -190,16 +201,13 @@
                           <input type="text" class="form-control" name="depre" placeholder="Depreciation Value" value="">
                           </div>
                           <div class="form-group">
-                        <label for="wahProp">Assign To</label> 
-                          <!-- <input type="text" class="form-control" name="assignto" placeholder="Assign To" value=""> -->
-                          <select name="assignTo">
-                                        <option value="" id="assignTo1" selected disabled hidden></option>
-                                        <option value="0" id="assignTo">None</option>
+                        <label for="wahProp">Assign To</label>  
+                                <select class="form-control" name="assignTo">
+                                    <option value="0" id="assignTo">Select Employee</option>
                                         @foreach ($employee as $employees)  
                                         <option value="{{$employees->id}}" id="assignTo">{{$employees->name}}</option>
                                         @endforeach
-                          </select>                            
-                          </div>
+                                </select>                     
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -317,11 +325,28 @@
                                                 <strong>{{ $errors->first('cost') }}</strong>
                                             </span>
                                         @endif
-                                    </div>   
+                                    </div>  
+
                             <div class="form-group{{ $errors->has('assignTo') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="assignTo">{{ __('Assign To') }}</label>
+                                <select class="form-control" name="assignTo">
+                                    <option value="0" id="assignTo">Select Employee</option>
+                                        @foreach ($employee as $employees)  
+                                        <option value="{{$employees->id}}" id="assignTo">{{$employees->name}}</option>
+                                        @endforeach
+                                         </select>   
+                                        @if ($errors->has('assignTo'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('assignTo') }}</strong>
+                                            </span>
+                                        @endif
+                                </select>
+                            </div>
+
+                            <!--<div class="form-group{{ $errors->has('assignTo') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="assignTo">{{ __('Assign To') }}</label>
-                                        <!-- <input type="text" name="assignTo" id="assignTo" class="form-control form-control-alternative{{ $errors->has('assignTo') ? ' is-invalid' : '' }}" placeholder="{{ __('Assign To') }}" value="{{ old('assignTo') }}" required>
-     -->
+                                         <input type="text" name="assignTo" id="assignTo" class="form-control form-control-alternative{{ $errors->has('assignTo') ? ' is-invalid' : '' }}" placeholder="{{ __('Assign To') }}" value="{{ old('assignTo') }}" required>
+     
                                         <select name="assignTo">
                                         <option value="0" id="assignTo">None</option>
                                         @foreach ($employee as $employees)  
@@ -333,7 +358,7 @@
                                                 <strong>{{ $errors->first('assignTo') }}</strong>
                                             </span>
                                         @endif
-                                    </div>   
+                                    </div>  --> 
 
 
                             <div class="form-group{{ $errors->has('depre') ? ' has-danger' : '' }}">
