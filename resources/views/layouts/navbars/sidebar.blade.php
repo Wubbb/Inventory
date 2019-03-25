@@ -105,7 +105,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('items.index')}}">
-                        <i class="ni ni-pin-3 text-orange"></i> {{ __('Items') }}
+                        <i class="ni ni-pin-3 text-orange"></i> {{ __('Equipment') }}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -115,7 +115,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}
+                        <i class="ni ni-circle-08 text-pink"></i> {{ __('Rural Health Unit') }}
                     </a>
                 </li>
             </ul>

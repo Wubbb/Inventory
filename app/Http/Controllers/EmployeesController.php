@@ -41,8 +41,6 @@ class EmployeesController extends Controller
         return redirect('/employee')->with('status','Successfully updated!');
     }
 
-
-
     public function edit() {
         return DB::table('employee')->get();
     }

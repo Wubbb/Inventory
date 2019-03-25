@@ -61,14 +61,32 @@
                                                          <td>{{$item->depre}}</td>
                                                          <td>{{$item->assignTo}}</td> -->
 
-                                                         <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default"
-                                                         data-mywah="{{$item->wahProp}}" data-mytype="{{$item->type}}" data-mydetail="{{$item->details}}"
-                                                         data-mydate="{{$item->dateProc}}" data-mymethod="{{$item->method}}" data-myfrom="{{$item->from}}"
-                                                         data-mycost="{{$item->cost}}" data-mydepre="{{$item->depre}}" data-myassignto="{{$item->name}}">View </button>
-                                                         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal"
-                                                         data-id="{{$item->id}}" data-mywah="{{$item->wahProp}}" data-mytype="{{$item->type}}" data-mydetail="{{$item->details}}"
-                                                         data-mydate="{{$item->dateProc}}" data-mymethod="{{$item->method}}" data-myfrom="{{$item->from}}" data-myemploy="{{$item->name}}"
-                                                         data-mycost="{{$item->cost}}" data-mydepre="{{$item->depre}}" data-myassignto="{{$item->assignTo}}">Edit</button>
+                                                         <td> <button type="button" class="btn btn-primary btn-sm"
+                                                          data-toggle="modal"
+                                                         data-target="#modal-default"
+                                                         data-mywah="{{$item->wahProp}}" 
+                                                         data-mytype="{{$item->type}}" 
+                                                         data-mydetail="{{$item->details}}"
+                                                         data-mydate="{{$item->dateProc}}" 
+                                                         data-mymethod="{{$item->method}}" 
+                                                         data-myfrom="{{$item->from}}"
+                                                         data-mycost="{{$item->cost}}" 
+                                                         data-mydepre="{{$item->depre}}" 
+                                                         data-myassignto="{{$item->name}}">View</button>
+                                                         <button type="button" class="btn btn-success btn-sm" 
+                                                         data-toggle="modal" 
+                                                         data-target="#editModal"
+                                                         data-id="{{$item->id}}" 
+                                                         data-mywah="{{$item->wahProp}}" 
+                                                         data-mytype="{{$item->type}}" 
+                                                         data-mydetail="{{$item->details}}"
+                                                         data-mydate="{{$item->dateProc}}" 
+                                                         data-mymethod="{{$item->method}}" 
+                                                         data-myfrom="{{$item->from}}" 
+                                                         data-myemploy="{{$item->name}}"
+                                                         data-mycost="{{$item->cost}}" 
+                                                         data-mydepre="{{$item->depre}}" 
+                                                         data-myassignto="{{$item->assignTo}}">Edit</button>
                                                             @csrf
                                                             @method("DELETE")
                                                             <button type="button" class="btn btn-danger btn-sm" name="submit" value="Delete">Delete</button>

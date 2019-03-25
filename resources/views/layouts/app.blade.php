@@ -99,6 +99,19 @@
             modal.find('.modal-body #assignTo1').text(employ);
             modal.find('.modal-body #assignTo1').val(assignto);
         });
+
+
+        $('#employee-view').on('show.bs.modal', function(event){
+        var button = $(event.relatadTarget)
+        var empid = button.data('myid')
+        var empname = button.data('myname')
+        var empassignment = button.data('myassignment')
+        var modal = $(this)
+
+        modal.find('.modal-body #name'.).text(empname);
+        modal.find('.modal-body #assignment').text(empassignment);
+        
+        });
         </script>
 
     </body>
