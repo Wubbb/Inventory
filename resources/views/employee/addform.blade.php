@@ -1,5 +1,9 @@
 @extends('layouts.app', ['title' => __('Add Employee')])
 
+@section('title')
+<title>WAH Inventory</title>
+@endsection
+
 @section('content')
     @include('users.partials.header', ['title' => __('Add Employee')])   
 

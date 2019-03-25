@@ -1,5 +1,9 @@
 @extends('layouts.app', ['title' => __('Items')])
 
+@section('title')
+<title>WAH Inventory</title>
+@endsection
+
 @section('content')
     @include('layouts.headers.cards')
 
@@ -49,13 +53,8 @@
                                             <td>{{$employees->id}}</td>
                                             <td> {{$employees->name}}</td>
                                             <td>{{$employees->assignment}}</td>
-                                            <td> <button type="button" class="btn btn-primary btn-sm"
-                                            data-toggle="modal"
-                                            data-target="#employee-view"
-                                            data-myid="{{$employees->id}}"
-                                            data-myname="{{$employees->name}}"
-                                            data-myassignment="{{$employees->assignment}}" >View </button>
-                                            <button type="button" class="btn btn-success btn-sm">Edit</button>
+                                            <td> <a href="employee/{{$employees->id}}"><button type="button" class="btn btn-primary btn-sm">View </button></a>
+                                            <button type="button" class="btn btn-success btn-sm">Edit</button></td>
                                            </tr>
                                                @endforeach                        
                                             </tbody>
@@ -81,7 +80,8 @@
                               </button>
                           </div>
                         
-                        <div class="modal-body" id="example">
+                        <div class="modal-body">
+                        <input type="text" name="empid">
                         <table class="table align-items-center table-flush">
                         <thead>
                         <tr>
@@ -90,7 +90,7 @@
                         </tr>
                         </thead>
                         <tr>
-                                <td><div id="name"></div></td>
+                                <td><div id="empid"></div></td>
                                 <td><div id="assignment"></div></td>
                         </tr>
                         </table>

@@ -13,7 +13,7 @@ class TechbagsController extends Controller
     //    ->join('items', 'items.id', '=', 'employee.id')
     //    ->select('items.*', 'employee.*')
     //    ->get();
-
+   
      return view('techbag.index');
      }
     // return DB::table('lost_reports')

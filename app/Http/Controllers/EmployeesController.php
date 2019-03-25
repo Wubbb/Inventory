@@ -8,8 +8,13 @@ use DB;
 
 class EmployeesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $employee = Employee::all();
+        
          return view('employee.index')->with('employee', $employee);
         // return DB::table('employee')
         // ->join('employee', 'employee.id', '=','items.assignTo')
@@ -22,8 +27,9 @@ class EmployeesController extends Controller
     }
 
     public function show($id) { 
-       $employee = Employee::find($id);
-        return view('employee.show')->with('employee',$employee); 
+       $employ = Employee::find($id);
+       $employee = DB::table('items')->where('assignTo', $id)->get();
+       return view('employee.show')->with(['employ' => $employ, 'employee' => $employee]); 
     }
 
     public function store(Request $request) {

@@ -1,5 +1,9 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
+@section('title')
+<title>WAH Inventory</title>
+@endsection
+
 @section('content')
     @include('layouts.headers.cards')
 
