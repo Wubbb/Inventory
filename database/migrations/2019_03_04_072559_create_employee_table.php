@@ -17,7 +17,6 @@ class CreateEmployeeTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('assignment');
-            $table->string('assignTo');
             $table->timestamps();
         });
     }

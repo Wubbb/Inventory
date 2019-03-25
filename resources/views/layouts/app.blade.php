@@ -42,6 +42,7 @@
         <script src="{{ asset('argon') }}/vendor/datatables/jquery.dataTables.js"></script>
         <script src="{{ asset('argon') }}/vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="{{ asset('argon') }}/vendor/datatables/datatables-start.js"></script>
+        <script src="{{ asset('argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
         @stack('js')
         
@@ -98,6 +99,19 @@
             $('input[name=depre]').val(depre);
             modal.find('.modal-body #assignTo1').text(employ);
             modal.find('.modal-body #assignTo1').val(assignto);
+        });
+
+
+        $('#employee-view').on('show.bs.modal', function(event){
+        var button = $(event.relatadTarget)
+        var empid = button.data('myid')
+        var empname = button.data('myname')
+        var empassignment = button.data('myassignment')
+        var modal = $(this)
+
+        modal.find('.modal-body #name'.).text(empname);
+        modal.find('.modal-body #assignment').text(empassignment);
+        
         });
         </script>
 
