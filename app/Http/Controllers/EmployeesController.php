@@ -29,7 +29,7 @@ class EmployeesController extends Controller
     public function store(Request $request) {
         Employee::create(["name" => $request->name,"assignment"=>$request->assignment]);
         
-        return redirect('/employee')->with('status','Successfully Added!!');
+        return redirect('/employee')->with('status','Employee Succesfully Added!!');
     }
  
     public function update(Request $request,$id) {
