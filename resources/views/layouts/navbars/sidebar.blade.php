@@ -85,37 +85,37 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('profile.edit') }}">
-                        <i class="ni ni-single-02 text-yellow"></i> {{ __('User profile') }}
+                        <i class="ni ni-single-02 text-blue"></i> {{ __('User profile') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.index') }}">
-                        <i class="ni ni-bullet-list-67 text-red"></i> {{ __('User Management') }}
+                        <i class="ni ni-settings-gear-65 text-black"></i> {{ __('User Management') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('employee.index') }}">
-                        <i class="ni ni-bullet-list-67 text-info"></i> {{ __('Employee') }}
+                        <i class="ni ni-badge text-info"></i> {{ __('Employee') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('reports') }}">
-                        <i class="ni ni-bullet-list-67 text-blue"></i> {{ __('Reports') }}
+                        <i class="ni ni-chart-bar-32 text-blue"></i> {{ __('Reports') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('items.index')}}">
-                        <i class="ni ni-pin-3 text-orange"></i> {{ __('Equipment') }}
+                        <i class="ni ni-box-2 text-orange"></i> {{ __('Equipment') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('techbag')}}">
-                        <i class="ni ni-key-25 text-info"></i> {{ __('Tech Bag') }}
+                        <i class="ni ni-briefcase-24 text-yellow"></i> {{ __('Tech Bag') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="ni ni-circle-08 text-pink"></i> {{ __('Rural Health Unit') }}
+                        <i class="ni ni-building text-pink"></i> {{ __('Rural Health Unit') }}
                     </a>
                 </li>
             </ul>
