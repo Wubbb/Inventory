@@ -39,10 +39,7 @@
                                                     <th scope="col">{{__('ID')}}</th>
                                                     <th scope="col">{{ __('Name') }}</th>
                                                     <th scope="col">{{ __('Department') }}</th>
-                                                    <th scope="col">{{__('Action')}}</th>
-                                                  
-                                                    
-                                                    
+                                                    <th scope="col">{{__('Action')}}</th>        
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -50,18 +47,17 @@
                                             @foreach($employee as $employees)
                                             <tr>
                                             <td>{{$employees->id}}</td>
-                                           <td> {{$employees->name}}</td>
-                                           <td>{{$employees->assignment}}</td>
-                                           <td> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default" data-myid="{{$employees->id}}" data-myname="{{$employees->name}}" data-myassignment="{{$employees->assignment}}" >View </button>
-                                                         <button type="button" class="btn btn-success btn-sm">Edit</button>
+                                            <td> {{$employees->name}}</td>
+                                            <td>{{$employees->assignment}}</td>
+                                            <td> <button type="button" class="btn btn-primary btn-sm"
+                                            data-toggle="modal"
+                                            data-target="#employee-view"
+                                            data-myid="{{$employees->id}}"
+                                            data-myname="{{$employees->name}}"
+                                            data-myassignment="{{$employees->assignment}}" >View </button>
+                                            <button type="button" class="btn btn-success btn-sm">Edit</button>
                                            </tr>
-                                               @endforeach     
-                                            
-                                            
-                                           
-                                            </tbody>
-<!--     <tbody>
-                                                
+                                               @endforeach                        
                                             </tbody>
                                         </table>
                                     </div>
@@ -69,8 +65,52 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
+        </div> 
+
+         <!--view modal employee details-->
+         <div class="row">
+                <div class="col-md-4">
+                    <div class="modal fade" id="employee-view" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                  <div class="modal-dialog modal- modal-dialog-centered modal-lg modal-dark" role="document">
+                      <div class="modal-content">
+                          
+                          <div class="modal-header">
+                          <div id="title"><h1 class="modal-title" id="modal-title-default"></h1></div>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">×</span>
+                              </button>
+                          </div>
+                        
+                        <div class="modal-body" id="example">
+                        <table class="table align-items-center table-flush">
+                        <thead>
+                        <tr>
+                            <th scope="col">{{__('Name')}}</th>
+                            <th scope="col">{{ __('Assignment') }}</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                                <td><div id="name"></div></td>
+                                <td><div id="assignment"></div></td>
+                        </tr>
+                        </table>
+                        </div>
+        
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button> 
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+                </div>     
+                <!--end modal employee details-->
+
+
+
+
+       <!--- <div class="row">
                 <div class="col-md-4">
                     <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
                   <div class="modal-dialog modal- modal-dialog-centered modal-lg modal-dark" role="document">
@@ -110,9 +150,11 @@
                       </div>
                   </div>
               </div>
-                </div>        
+                </div>  
+                -->      
         @include('layouts.footers.auth')
     </div>
+        
     <script>
         window.setTimeout(function() {
     $(".alert").fadeTo(400, 0).slideUp(400, function(){
