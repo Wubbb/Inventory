@@ -8,6 +8,10 @@ use DB;
 class ItemsController extends Controller
 
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $items = DB::table('items')
         ->leftjoin('employee', 'employee.id', '=','items.assignTo')

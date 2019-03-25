@@ -7,7 +7,7 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>WAH Inventory</title>
+        @yield('title')
         <!-- Favicon -->
         <link href="{{ asset('argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
         <!-- Fonts -->
@@ -19,6 +19,8 @@
         <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
         <!-- Datatables CSS -->
         <link href="{{ asset('argon') }}/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="{{ asset('argon') }}/vendor/datatables/buttons.dataTables.min.css" rel="stylesheet">
+
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -27,20 +29,28 @@
             </form>
             @include('layouts.navbars.sidebar')
         @endauth
-        
         <div class="main-content">
             @include('layouts.navbars.navbar')
             @yield('content')
         </div>
-
+        
         @guest()
             @include('layouts.footers.guest')
         @endguest
 
+      
+
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{{ asset('argon') }}/vendor/datatables/jquery.dataTables.js"></script>
+        <script src="{{ asset('argon') }}/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/datatables/dataTables.bootstrap4.js"></script>
+        <script src="{{ asset('argon') }}/vendor/datatables/dataTables.buttons.min.js"></script>
+        <script src="{{ asset('argon') }}/vendor/datatables/buttons.flash.min.js"></script>
+        <script src="{{ asset('argon') }}/vendor/datatables/jszip.min.js"></script>
+        <script src="{{ asset('argon') }}/vendor/datatables/pdfmake.min.js"></script>
+        <script src="{{ asset('argon') }}/vendor/datatables/vfs_fonts.js"></script>
+        <script src="{{ asset('argon') }}/vendor/datatables/buttons.html5.min.js"></script>
+        <script src="{{ asset('argon') }}/vendor/datatables/buttons.print.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/datatables/datatables-start.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
@@ -102,15 +112,12 @@
         });
 
 
-        $('#employee-view').on('show.bs.modal', function(event){
-        var button = $(event.relatadTarget)
-        var empid = button.data('myid')
-        var empname = button.data('myname')
-        var empassignment = button.data('myassignment')
-        var modal = $(this)
+        $('#employee-view').on('show.bs.modal', function (event){
+            var button = $(event.relatedTarget)
+            var empid = button.data('empid')
+            var modal =$(this)
 
-        modal.find('.modal-body #name'.).text(empname);
-        modal.find('.modal-body #assignment').text(empassignment);
+            $('input[name=empid]').val(empid);
         
         });
         </script>
