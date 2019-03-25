@@ -42,6 +42,7 @@
         <script src="{{ asset('argon') }}/vendor/datatables/jquery.dataTables.js"></script>
         <script src="{{ asset('argon') }}/vendor/datatables/dataTables.bootstrap4.js"></script>
         <script src="{{ asset('argon') }}/vendor/datatables/datatables-start.js"></script>
+        <script src="{{ asset('argon') }}/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
         @stack('js')
         

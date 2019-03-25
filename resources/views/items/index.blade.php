@@ -74,7 +74,6 @@
                                                             <button type="button" class="btn btn-danger btn-sm" name="submit" value="Delete">Delete</button>
                                                             <!-- <input type="submit" name="submit" value="Delete"> -->
                                                          </td>
-                                                         <!--  -->
                                                          </tr>
                                                 @endforeach
                                             </tbody>
@@ -142,8 +141,7 @@
                         </div>
         
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-primary">Save changes</button>
-                              <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button> 
+                              <button type="button" class="btn btn-primary ml-auto" data-dismiss="modal">Close</button> 
                           </div>
                           
                       </div>
@@ -157,11 +155,12 @@
      <div class="modal fade" id="editModal">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" align="center"><b>Edit Item</b></h4>
-                  </div>
+                <div class="modal-header">
+                <h2 class="modal-title" id="modal-title-default">Add Item here:</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
                   <div class="modal-body">
                     <form role="form" action="{{route('items.update','test')}}" method="post">
                     {{method_field('patch')}}
@@ -198,12 +197,13 @@
                           </div>
                           <div class="form-group">
                         <label for="wahProp">Depreciation Value</label> 
-                          <input type="text" class="form-control" name="depre" placeholder="Depreciation Value" value="">
+                          <input type="number" class="form-control" name="depre" placeholder="Depreciation Value" value="">
                           </div>
                           <div class="form-group">
                         <label for="wahProp">Assign To</label>  
                                 <select class="form-control" name="assignTo">
-                                    <option value="0" id="assignTo">Select Employee</option>
+                                    <option value="" id="assignTo1" selected hidden disabled></option>
+                                    <option value="0" id="assignTo">None</option>
                                         @foreach ($employee as $employees)  
                                         <option value="{{$employees->id}}" id="assignTo">{{$employees->name}}</option>
                                         @endforeach
@@ -276,23 +276,26 @@
                                                 <strong>{{ $errors->first('details') }}</strong>
                                             </span>
                                         @endif
-
-                                        
                                     </div>
-
                             </div>
 
-                            <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('dateProc') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="dateProc">{{ __('Date Procured ') }}</label>
-                                    <input type="text" name="dateProc" id="dateProc" class="form-control form-control-alternative{{ $errors->has('dateProc') ? ' is-invalid' : '' }}" placeholder="{{ __('Date Procured') }}" value="{{ old('dateProc') }}" required autofocus>
+                        </div>
 
+                            <div class="pl-lg-4">
+                            <div class="orm-group{{ $errors->has('dateProc') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="dateProc">{{ __('Date Procured ') }}</label>
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input  type="text" name="dateProc" id="dateProc" class="form-control datepicker form-control-alternative{{ $errors->has('dateProc') ? ' is-invalid' : '' }}"  placeholder="{{ __('Date Procured') }}" value="01/01/2019"  required autofocus>
                                     @if ($errors->has('dateProc'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('dateProc') }}</strong>
                                         </span>
                                     @endif
                                 </div>
+                            </div>
 
                             <div class="form-group{{ $errors->has('method') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="method">{{ __('Method') }}</label>
@@ -318,7 +321,7 @@
 
                             <div class="form-group{{ $errors->has('cost') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="cost">{{ __('Cost') }}</label>
-                                        <input type="text" name="cost" id="cost" class="form-control form-control-alternative{{ $errors->has('cost') ? ' is-invalid' : '' }}" placeholder="{{ __('Cost') }}" value="{{ old('cost') }}" required>
+                                        <input type="number" name="cost" id="cost" class="form-control form-control-alternative{{ $errors->has('cost') ? ' is-invalid' : '' }}" placeholder="{{ __('Cost') }}" value="{{ old('cost') }}" required>
     
                                         @if ($errors->has('cost'))
                                             <span class="invalid-feedback" role="alert">
@@ -363,7 +366,7 @@
 
                             <div class="form-group{{ $errors->has('depre') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="assignTo">{{ __('Depreciation') }}</label>
-                                        <input type="text" name="depre" id="depre" class="form-control form-control-alternative{{ $errors->has('depre') ? ' is-invalid' : '' }}" placeholder="{{ __('Depreciation') }}" value="{{ old('depre') }}" required>
+                                        <input type="number" name="depre" id="depre" class="form-control form-control-alternative{{ $errors->has('depre') ? ' is-invalid' : '' }}" placeholder="{{ __('Depreciation') }}" value="{{ old('depre') }}" required>
     
                                         @if ($errors->has('depre'))
                                             <span class="invalid-feedback" role="alert">
@@ -374,7 +377,7 @@
                                                                             
                                         
                             <div class="modal-footer">
-            <button type="submit" class="btn btn-success mt-4">{{ __('Add Item') }}</button>
+                <button type="submit" class="btn btn-success mt-4">{{ __('Add Item') }}</button>
                 <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
             </div>
                         </form>
