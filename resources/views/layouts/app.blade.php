@@ -107,8 +107,23 @@
             $('input[name=from]').val(from);
             $('input[name=cost]').val(cost);
             $('input[name=depre]').val(depre);
+            if(assignto != '0'){
             modal.find('.modal-body #assignTo1').text(employ);
             modal.find('.modal-body #assignTo1').val(assignto);
+            $('.modal-body #assignTo').css('font-weight', 'bold');
+            }else{
+            modal.find('.modal-body #assignTo1').text("Not Assigned");
+            modal.find('.modal-body #assignTo1').val("0");
+            }
+            $('#assignTo').change(function(){
+            var j = $(this);
+             if(assignto == '0') {
+                  j.attr('disabled', false);
+                    }    
+             else {
+                j.attr('disabled', true);
+            }
+            }).trigger('change');
         });
 
 

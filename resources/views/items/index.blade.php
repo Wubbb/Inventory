@@ -222,12 +222,11 @@
                           <input type="number" class="form-control" name="depre" placeholder="Depreciation Value" value="">
                           </div>
                           <div class="form-group">
-                        <label for="wahProp">Assign To</label>  
-                                <select class="form-control" name="assignTo">
-                                    <option value="" id="assignTo1" selected hidden disabled></option>
-                                    <option value="0" id="assignTo">None</option>
+                        <label for="wahProp">Assign To</label> 
+                                <select class="form-control" name="assignTo" id="assignTo">
+                                    <option value="" id="assignTo1">None</option>
                                         @foreach ($employee as $employees)  
-                                        <option value="{{$employees->id}}" id="assignTo">{{$employees->name}}</option>
+                                        <option value="{{$employees->id}}">{{$employees->name}}</option>
                                         @endforeach
                                 </select>                     
                         </div>
