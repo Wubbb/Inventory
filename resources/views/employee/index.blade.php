@@ -67,7 +67,6 @@
                     </div>
                 </div>
             </div>
- employee-assignTo
         </div>
 
  <!--add employee modal-->
@@ -238,7 +237,7 @@
                         <label for="wahProp">Department</label> 
                           <input type="text" class="form-control" name="details" placeholder="Details" value="">
                           </div>
-                          <!-- <div class="form-group">
+                           <div class="form-group">
                         <label for="wahProp">Assign To</label>  
                                 <select class="form-control" name="assignTo">
                                     <option value="0" id="assignTo">Select Employee</option>
@@ -263,7 +262,6 @@
 
 
                 </div>  
-                master
         @include('layouts.footers.auth')
     </div>
         

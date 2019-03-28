@@ -98,30 +98,31 @@
             var employ = button.data('myemploy')
             var modal=$(this)
 
-            $('input[name=id]').val(id);
-            $('input[name=wahProp]').val(wah);
-            $('input[name=type]').val(type);
-            $('input[name=details]').val(detail);
-            $('input[name=dateProc]').val(dateProc);
-            $('input[name=method]').val(method);
-            $('input[name=from]').val(from);
-            $('input[name=cost]').val(cost);
-            $('input[name=depre]').val(depre);
-            if(assignto != '0'){
+            $('input[name=id1]').val(id);
+            $('input[name=wahProp1]').val(wah);
+            $('input[name=type1]').val(type);
+            $('input[name=details1]').val(detail);
+            $('input[name=dateProc1]').val(dateProc);
+            $('input[name=method1]').val(method);
+            $('input[name=from1]').val(from);
+            $('input[name=cost1]').val(cost);
+            $('input[name=depre1]').val(depre);
+            if(assignto > 0){
             modal.find('.modal-body #assignTo1').text(employ);
             modal.find('.modal-body #assignTo1').val(assignto);
             $('.modal-body #assignTo').css('font-weight', 'bold');
             }else{
             modal.find('.modal-body #assignTo1').text("Not Assigned");
             modal.find('.modal-body #assignTo1').val("0");
+            $('.modal-body #assignTo').css('font-weight', '');
             }
             $('#assignTo').change(function(){
             var j = $(this);
-             if(assignto == '0') {
-                  j.attr('disabled', false);
+             if(assignto > 0) {
+                  j.attr('disabled', true);
                     }    
              else {
-                j.attr('disabled', true);
+                j.attr('disabled', false);
             }
             }).trigger('change');
         });

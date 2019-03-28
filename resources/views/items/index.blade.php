@@ -178,7 +178,7 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                <h2 class="modal-title" id="modal-title-default">Add Item here:</h2>
+                <h2 class="modal-title" id="modal-title-default">Edit Item here:</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -189,41 +189,41 @@
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
-                        <input type="text" class="form-control" name="id" placeholder="id" value="" hidden>
+                        <input type="text" class="form-control" name="id1" placeholder="id" value="" hidden>
                           <label for="wahProp">Wah Property #</label> 
-                          <input type="text" class="form-control" name="wahProp" placeholder="Wah Property #" value="">
+                          <input type="text" class="form-control" name="wahProp1" placeholder="Wah Property #" value="">
                         </div>
                         <div class="form-group">
                           <label for="type">Type</label> 
-                          <input type="text" class="form-control" name="type" placeholder="Type" value="">
+                          <input type="text" class="form-control" name="type1" placeholder="Type" value="">
                         </div>
                         <div class="form-group">
                         <label for="wahProp">Details</label> 
-                          <input type="text" class="form-control" name="details" placeholder="Details" value="">
+                          <input type="text" class="form-control" name="details1" placeholder="Details" value="">
                           </div>
                           <div class="form-group">
                         <label for="wahProp">Date Procured</label> 
-                          <input type="text" class="form-control" name="dateProc" placeholder="Date Procured" value="">
+                          <input type="text" class="form-control" name="dateProc1" placeholder="Date Procured" value="">
                           </div>
                           <div class="form-group">
                         <label for="wahProp">Method</label> 
-                          <input type="text" class="form-control" name="method" placeholder="Method" value="">
+                          <input type="text" class="form-control" name="method1" placeholder="Method" value="">
                           </div>
                           <div class="form-group">
                         <label for="wahProp">From</label> 
-                          <input type="text" class="form-control" name="from" placeholder="From" value="">
+                          <input type="text" class="form-control" name="from1" placeholder="From" value="">
                           </div>
                           <div class="form-group">
                         <label for="wahProp">Cost</label> 
-                          <input type="text" class="form-control" name="cost" placeholder="Cost" value="">
+                          <input type="text" class="form-control" name="cost1" placeholder="Cost" value="">
                           </div>
                           <div class="form-group">
                         <label for="wahProp">Depreciation Value</label> 
-                          <input type="number" class="form-control" name="depre" placeholder="Depreciation Value" value="">
+                          <input type="number" class="form-control" name="depre1" placeholder="Depreciation Value" value="">
                           </div>
                           <div class="form-group">
                         <label for="wahProp">Assign To</label> 
-                                <select class="form-control" name="assignTo" id="assignTo">
+                                <select class="form-control" name="assignTo1" id="assignTo">
                                     <option value="" id="assignTo1">None</option>
                                         @foreach ($employee as $employees)  
                                         <option value="{{$employees->id}}">{{$employees->name}}</option>
@@ -266,7 +266,7 @@
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('wahProp') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="wahProp">{{ __('Wah Property #') }}</label>
-                                    <input type="text" name="wahProp" id="wahProp" class="form-control form-control-alternative{{ $errors->has('wahProp') ? ' is-invalid' : '' }}" placeholder="{{ __('Wah Property #') }}" value="{{ old('wahProp') }}" required autofocus>
+                                    <input type="text" name="wahProp" id="wahProp" class="form-control form-control-alternative{{ $errors->has('wahProp') ? ' is-invalid' : '' }}" placeholder="{{ __('Wah Property #') }}" required autofocus>
 
                                     @if ($errors->has('wahProp'))
                                         <span class="invalid-feedback" role="alert">
@@ -275,8 +275,8 @@
                                     @endif
                                 </div>
                                 <div class="form-group{{ $errors->has('type') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="type">{{ __('Type') }}</label>
-                                    <input type="text" name="type" id="type" class="form-control form-control-alternative{{ $errors->has('type') ? ' is-invalid' : '' }}" placeholder="{{ __('Type') }}" value="{{ old('type') }}" required>
+                                    <label class="form-control-label" for="type">{{ __('Equipment Type') }}</label>
+                                    <input type="text" name="type" id="type" class="form-control form-control-alternative{{ $errors->has('type') ? ' is-invalid' : '' }}" placeholder="{{ __('Equipment Type') }}" required>
 
                                     @if ($errors->has('type'))
                                         <span class="invalid-feedback" role="alert">
@@ -286,11 +286,11 @@
                                 </div>
                                 
                                 <div class="form-group{{ $errors->has('details') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="details">{{ __('Details') }}</label>
+                                        <label class="form-control-label" for="details">{{ __('Brand/Specs') }}</label>
                                        
                                          
                                                                   
-                                        <input type="text" name="details" id="details" class="form-control form-control-alternative{{ $errors->has('details') ? ' is-invalid' : '' }}" placeholder="{{ __('Details') }}" value="{{ old('details') }}" required>
+                                        <input type="text" name="details" id="details" class="form-control form-control-alternative{{ $errors->has('details') ? ' is-invalid' : '' }}" placeholder="{{ __('Brand/Specs') }}" required>
     
                                         @if ($errors->has('details'))
                                             <span class="invalid-feedback" role="alert">
@@ -320,8 +320,12 @@
 
                             <div class="form-group{{ $errors->has('method') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="method">{{ __('Method') }}</label>
-                                        <input type="text" name="method" id="method" class="form-control form-control-alternative{{ $errors->has('method') ? ' is-invalid' : '' }}" placeholder="{{ __('Method') }}" value="{{ old('method') }}" required>
-    
+                                        <!-- <input type="text" name="method" id="method" class="form-control form-control-alternative{{ $errors->has('method') ? ' is-invalid' : '' }}" placeholder="{{ __('Method') }}" value="{{ old('method') }}" required> -->
+                                        <select class="form-control" name="method">
+                                            <option value="Purchased">Purchased</option>
+                                            <option value="Donation">Donation</option>
+                                        </select>
+
                                         @if ($errors->has('method'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('method') }}</strong>
@@ -331,7 +335,7 @@
 
                             <div class="form-group{{ $errors->has('from') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="method">{{ __('From') }}</label>
-                                        <input type="text" name="from" id="from" class="form-control form-control-alternative{{ $errors->has('from') ? ' is-invalid' : '' }}" placeholder="{{ __('From') }}" value="{{ old('from') }}" required>
+                                        <input type="text" name="from" id="from" class="form-control form-control-alternative{{ $errors->has('from') ? ' is-invalid' : '' }}" placeholder="{{ __('From') }}" required>
     
                                         @if ($errors->has('method'))
                                             <span class="invalid-feedback" role="alert">
@@ -342,7 +346,7 @@
 
                             <div class="form-group{{ $errors->has('cost') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="cost">{{ __('Cost') }}</label>
-                                        <input type="number" name="cost" id="cost" class="form-control form-control-alternative{{ $errors->has('cost') ? ' is-invalid' : '' }}" placeholder="{{ __('Cost') }}" value="{{ old('cost') }}" required>
+                                        <input type="number" name="cost" id="cost" class="form-control form-control-alternative{{ $errors->has('cost') ? ' is-invalid' : '' }}" placeholder="{{ __('Cost') }}" required>
     
                                         @if ($errors->has('cost'))
                                             <span class="invalid-feedback" role="alert">
@@ -387,7 +391,7 @@
 
                             <div class="form-group{{ $errors->has('depre') ? ' has-danger' : '' }}">
                                         <label class="form-control-label" for="assignTo">{{ __('Depreciation') }}</label>
-                                        <input type="number" name="depre" id="depre" class="form-control form-control-alternative{{ $errors->has('depre') ? ' is-invalid' : '' }}" placeholder="{{ __('Depreciation') }}" value="{{ old('depre') }}" required>
+                                        <input type="number" name="depre" id="depre" class="form-control form-control-alternative{{ $errors->has('depre') ? ' is-invalid' : '' }}" placeholder="{{ __('Depreciation') }}" required>
     
                                         @if ($errors->has('depre'))
                                             <span class="invalid-feedback" role="alert">
