@@ -17,10 +17,11 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('employee#');
             $table->string('name');
-            $table->string('username')->unique();
-            $table->string('password');
+            $table->string('username')->unique()->nullable();
+            $table->string('password')->nullable();
             $table->string('designation');
-            $table->integer('active');
+            $table->string('active');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

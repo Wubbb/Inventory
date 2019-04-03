@@ -1,5 +1,9 @@
 @extends('layouts.app', ['class' => 'bg-default'])
 
+@section('title')
+<title>WAH Inventory</title>
+@endsection
+
 @section('content')
     @include('layouts.headers.guest')
 
@@ -28,12 +32,25 @@
                         <form role="form" method="POST" action="{{ route('register') }}">
                             @csrf
 
+                            <div class="form-group{{ $errors->has('employee#') ? ' has-danger' : '' }}">
+                                <div class="input-group input-group-alternative mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                                    </div>
+                                    <input class="form-control{{ $errors->has('employee#') ? ' is-invalid' : '' }}" placeholder="{{ __('Employee No.') }}" type="text" name="employee#" value="{{ old('employee#') }}" required autofocus>
+                                </div>
+                                @if ($errors->has('employee#'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('employee#') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                        <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Full Name') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
                                 </div>
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -41,16 +58,16 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                            <div class="form-group{{ $errors->has('username') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                        <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" required>
+                                    <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="{{ __('Username') }}" type="text" name="username" value="{{ old('username') }}" required>
                                 </div>
-                                @if ($errors->has('email'))
+                                @if ($errors->has('username'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -75,19 +92,34 @@
                                     <input class="form-control" placeholder="{{ __('Confirm Password') }}" type="password" name="password_confirmation" required>
                                 </div>
                             </div>
-                            <div class="text-muted font-italic">
-                                <small>{{ __('password strength') }}: <span class="text-success font-weight-700">{{ __('strong') }}strong</span></small>
-                            </div>
-                            <div class="row my-4">
-                                <div class="col-12">
-                                    <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                                        <label class="custom-control-label" for="customCheckRegister">
-                                            <span class="text-muted">{{ __('I agree with the') }} <a href="#!">{{ __('Privacy Policy') }}</a></span>
-                                        </label>
+                            <div class="form-group{{ $errors->has('designation') ? ' has-danger' : '' }}">
+                                <div class="input-group input-group-alternative mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-single-copy-04"></i></span>
                                     </div>
+                                    <input class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" placeholder="{{ __('Designation') }}" type="text" name="designation" value="{{ old('designation') }}" required autofocus>
                                 </div>
+                                @if ($errors->has('designation'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('designation') }}</strong>
+                                    </span>
+                                @endif
                             </div>
+                            <div class="custom-control custom-control-alternative custom-checkbox">
+                                <input name="active" value="No" type="hidden">
+                                <input name="active" value="Yes" type="checkbox" checked>
+                               &nbsp; &nbsp;<span class="text-muted">{{ __('Active') }}</span>
+                            </div>
+                            <!-- <div class="form-group{{ $errors->has('active') ? ' has-danger' : '' }}">
+                                <div class="input-group input-group-alternative mb-3">
+                                    <input class="form-control{{ $errors->has('active') ? ' is-invalid' : '' }}" type="checkbox" name="active" value="Yes" checked autofocus>Active
+                                </div>
+                                @if ($errors->has('active'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('active') }}</strong>
+                                    </span>
+                                @endif
+                            </div> -->
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary mt-4">{{ __('Create account') }}</button>
                             </div>
