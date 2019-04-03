@@ -15,7 +15,7 @@ class ItemsTableSeeder extends Seeder
         for ($i=0;$i<100;$i++) {
         Item::create(
             [
-                "wahProp" => $faker->phoneNumber ,
+                "prop#" => $faker->phoneNumber ,
                 "type" => $faker->word,
                 "details"=> $faker->catchPhrase,
                 "dateProc"=> $faker->word,
