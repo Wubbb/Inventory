@@ -15,15 +15,19 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('wahProp');
+            $table->string('prop#');
             $table->string('type');
-            $table->text('details');
-            $table->string('dateProc');
-            $table->string('method');
-            $table->string('from');
-            $table->integer('cost');
-            $table->integer('assignTo');
-            $table->integer('depre');
+            $table->text('item_name');
+            $table->date('date_procured');
+            $table->date('date_acquired');
+            $table->string('cost');
+            $table->integer('salvage_value');
+            $table->integer('life_span');
+            $table->integer('age')->nullable();
+            $table->date('disposed_date')->nullable();
+            $table->string('disposed_method')->nullable();
+            $table->string('remarks')->nullable();
+            $table->string('location')->nullable();
             $table->timestamps();
         });
     }
