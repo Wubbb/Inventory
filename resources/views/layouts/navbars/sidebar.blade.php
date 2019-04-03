@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg">
                         </span>
                     </div>
                 </a>
@@ -26,7 +26,7 @@
                         <i class="ni ni-single-02"></i>
                         <span>{{ __('My profile') }}</span>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    <!-- <a href="#" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
                         <span>{{ __('Settings') }}</span>
                     </a>
@@ -37,7 +37,7 @@
                     <a href="#" class="dropdown-item">
                         <i class="ni ni-support-16"></i>
                         <span>{{ __('Support') }}</span>
-                    </a>
+                    </a> -->
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('home') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -78,28 +78,28 @@
             </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('profile.edit') }}">
+                    <a class="nav-link" href="#">
                         <i class="ni ni-single-02 text-blue"></i> {{ __('User profile') }}
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.index') }}">
-                        <i class="ni ni-settings-gear-65 text-black"></i> {{ __('User Management') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('employee.index') }}">
                         <i class="ni ni-badge text-info"></i> {{ __('Employee') }}
                     </a>
                 </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-badge text-info"></i> {{ __('Employee') }}
+                    </a>
+                </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('reports') }}">
+                    <a class="nav-link" href="#">
                         <i class="ni ni-chart-bar-32 text-blue"></i> {{ __('Reports') }}
                     </a>
                 </li>
@@ -109,20 +109,20 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('techbag')}}">
+                    <a class="nav-link" href="#">
                         <i class="ni ni-briefcase-24 text-yellow"></i> {{ __('Tech Bag') }}
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-building text-pink"></i> {{ __('Rural Health Unit') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('utilities')}}">
+                    <a class="nav-link" href="#">
                         <i class="ni ni-settings text-black"></i> {{ __('Utilities') }}
                     </a>
-                </li>
+                </li> -->
             </ul>
             
         </div>

@@ -29,10 +29,3 @@ Route::group(['middleware' => 'auth'], function () {
 // Route::resource('items', 'ItemsController');
 Route::resource('items','ItemsController');
 
-//Route::get('/',"RedirectController@index")->name("RedirectIndex");
-
-
-Route::get('/reports','ReportsController@index')->name('reports');
-
-Route::get('/techbag','TechbagsController@index')->name('techbag');
-
