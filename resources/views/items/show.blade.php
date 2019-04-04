@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,4 +11,4 @@
   <p>Description: {{$item->desc}}</p>
   <p>From: {{$item->from}}</p>
 </body>
-</html>
+</html> -->

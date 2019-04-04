@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Add Item')])
+<!-- @extends('layouts.app', ['title' => __('Add Item')])
 
 @section('title')
 <title>WAH Inventory</title>
@@ -71,4 +71,4 @@
         
         @include('layouts.footers.auth')
     </div>
-@endsection
+@endsection -->

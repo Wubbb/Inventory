@@ -16,8 +16,9 @@
                             <div class="col-8">
                                 <h3 class="mb-0">{{ __('Items') }}</h3>
                             </div>
-                            <div class="col-4 text-right">
-                                <a href="{{ route('items.index') }}" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-addItem">{{ __('Add Item') }}</a>
+                            <div class="col-4 text-right" >
+                                <button id="add" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                data-target="#modal-addItem">{{ __('Add Item') }}</button>
                             </div>
                         </div>
                     </div>
@@ -25,8 +26,17 @@
                     <div class="col-12">
                         @if (session('status'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
+                                <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>&nbsp;
                                 {{ session('status') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                        @if (session('failed'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <span class="alert-inner--icon"><i class="fa fa-exclamation-triangle"></i></span>&nbsp;
+                                {{ session('failed') }}
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -37,64 +47,67 @@
                     <div class="card mb-3">
                             <div class="card-body">
                               <div class="table-responsive">
-                                    <table class="table align-items-center table-flush table-dark" id="dataTable">
+                                    <table class="table align-items-center table-flush table-dark table-advance" id="dataTable">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">{{__('Wah Property #')}}</th>
-                                                    <th scope="col">{{ __('Type') }}</th>
-                                                    <th scope="col">{{ __('Details') }}</th>
-                                                    <!-- <th scope="col">{{ __('Date Procured') }}</th>
-                                                    <th scope="col">{{ __('Method') }}</th>
-                                                    <th scope="col">{{ __('From') }}</th>
-                                                    <th scope="col">{{ __('Cost') }}</th>
-                                                    <th scope="col">{{ __('Depreciation Value') }}</th>
-                                                    <th scope="col">{{ __('Assigned To') }}</th>-->
+                                                    <!-- <th scope="col"></th> -->
+                                                    <th scope="col">{{__('Property #')}}</th>
+                                                    <th scope="col">{{ __('Organization') }}</th>
+                                                    <th scope="col">{{ __('Item Type') }}</th>
+                                                    <th scope="col">{{__('Item Name')}}</th>
+                                                    <th scope="col">{{__('Location')}}</th>
+                                                    <th scope="col">{{__('Age')}}</th>
                                                     <th scope="col">{{__('Action')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($items as $item)
                                                     <tr>
-                                                         <td>{{$item->wahProp}}</td>
+                                                        <!-- <td><button><i class="fas fa-pencil-alt"></i></button></td> -->
+                                                         <td>{{$item->prop_no}}</td>
+                                                         <td>{{$item->org}}</td>
                                                          <td>{{$item->type}}</td>
-                                                         <td>{{$item->details}}</td>
-                                                         <!-- <td>{{$item->dateProc}}</td>
-                                                         <td>{{$item->method}}</td>
-                                                         <td>{{$item->from}}</td>
-                                                         <td>{{$item->cost}}</td>
-                                                         <td>{{$item->depre}}</td>
-                                                         <td>{{$item->assignTo}}</td> -->
+                                                         <td>{{$item->item_name}}</td>
+                                                         <td>{{$item->location}}</td>
+                                                         <td>
+                                                         @php
+                                                         $date = $item->date_acquired;
+                                                         $date = explode("-", $date);
 
-                                                         <td> <button type="button" class="btn btn-primary btn-sm"
+                                                        $age = (date("md", date("U", mktime(0, 0, 0, $date[2], $date[1], $date[0]))) > date("md") ? ((date("Y")-$date[0])-1):(date("Y")-$date[0]));
+                                                         
+
+                                                         echo $age;
+
+                                                         @endphp
+                                                         </td>
+                                                         
+
+                                                         <td> <form action="items/{{$item->id}}" method="post">
+                                                         <button type="button" class="btn btn-primary btn-sm"
                                                           data-toggle="modal"
-                                                         data-target="#modal-default"
-                                                         data-mywah="{{$item->wahProp}}" 
-                                                         data-mytype="{{$item->type}}" 
-                                                         data-mydetail="{{$item->details}}"
-                                                         data-mydate="{{$item->dateProc}}" 
-                                                         data-mymethod="{{$item->method}}" 
-                                                         data-myfrom="{{$item->from}}"
-                                                         data-mycost="{{$item->cost}}" 
-                                                         data-mydepre="{{$item->depre}}" 
-                                                         data-myassignto="{{$item->name}}">View</button>
-                                                         <button type="button" class="btn btn-success btn-sm" 
+                                                         data-target="#modal-default" >View Item Movement</button>
+                                                        
+                                                         <button id="btn-edit{{$item->id}}" type="button" class="btn btn-success btn-sm"
                                                          data-toggle="modal" 
                                                          data-target="#editModal"
                                                          data-id="{{$item->id}}" 
-                                                         data-mywah="{{$item->wahProp}}" 
+                                                         data-mywah="{{$item->prop_no}}"
+                                                         data-myorg="{{$item->org}}" 
                                                          data-mytype="{{$item->type}}" 
-                                                         data-mydetail="{{$item->details}}"
-                                                         data-mydate="{{$item->dateProc}}" 
-                                                         data-mymethod="{{$item->method}}" 
-                                                         data-myfrom="{{$item->from}}" 
-                                                         data-myemploy="{{$item->name}}"
+                                                         data-mydetail="{{$item->item_name}}"
+                                                         data-mydate="{{$item->date_procured}}" 
+                                                         data-myacquired="{{$item->date_acquired}}" 
+                                                         data-myfrom="{{$item->source}}" 
+                                                         data-mysalvage="{{$item->salvage_value}}"
                                                          data-mycost="{{$item->cost}}" 
-                                                         data-mydepre="{{$item->depre}}" 
-                                                         data-myassignto="{{$item->assignTo}}">Edit</button>
+                                                         data-myspan="{{$item->life_span}}">Edit</button>
+                                                         
                                                             @csrf
                                                             @method("DELETE")
-                                                            <button type="button" class="btn btn-danger btn-sm" name="submit" value="Delete">Delete</button>
+                                                            <button type="submit" class="btn btn-danger btn-sm" name="submit" value="Delete">Del</button>
                                                             <!-- <input type="submit" name="submit" value="Delete"> -->
+                                                            </form>
                                                          </td>
                                                          </tr>
                                                 @endforeach
@@ -221,15 +234,7 @@
                         <label for="wahProp">Depreciation Value</label> 
                           <input type="number" class="form-control" name="depre1" placeholder="Depreciation Value" value="">
                           </div>
-                          <div class="form-group">
-                        <label for="wahProp">Assign To</label> 
-                                <select class="form-control" name="assignTo1" id="assignTo">
-                                    <option value="" id="assignTo1">None</option>
-                                        @foreach ($employee as $employees)  
-                                        <option value="{{$employees->id}}">{{$employees->name}}</option>
-                                        @endforeach
-                                </select>                     
-                        </div>
+                     
                         <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -264,140 +269,112 @@
                             @csrf
                             
                             <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('wahProp') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="wahProp">{{ __('Wah Property #') }}</label>
-                                    <input type="text" name="wahProp" id="wahProp" class="form-control form-control-alternative{{ $errors->has('wahProp') ? ' is-invalid' : '' }}" placeholder="{{ __('Wah Property #') }}" required autofocus>
+                                <div class="form-group{{ $errors->has('prop_no') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="prop_no">{{ __('Property #') }}</label>
+                                    <input type="text" name="prop_no" id="prop_no" class="form-control form-control-alternative{{ $errors->has('prop_no') ? ' is-invalid' : '' }}"  required autofocus>
 
-                                    @if ($errors->has('wahProp'))
+                                    @if ($errors->has('prop_no'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('wahProp') }}</strong>
+                                            <strong>{{ $errors->first('prop_no') }}</strong>
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group{{ $errors->has('type') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="type">{{ __('Equipment Type') }}</label>
-                                    <input type="text" name="type" id="type" class="form-control form-control-alternative{{ $errors->has('type') ? ' is-invalid' : '' }}" placeholder="{{ __('Equipment Type') }}" required>
 
-                                    @if ($errors->has('type'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('type') }}</strong>
-                                        </span>
-                                    @endif
+                                <div class="form-group">
+                                        <label class="form-control-label" for="org">{{ __('Organization') }}</label>
+                                        <select class="form-control form-control-alternative" name="org">
+                                            <option value="WAH">WAH</option>
+                                            <option value="HCI">HCI</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+
+                                        
+                                    </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="type">{{ __('Item Type') }}</label>
+                                    <input type="text" name="type" id="type" class="form-control form-control-alternative"  required>
                                 </div>
                                 
-                                <div class="form-group{{ $errors->has('details') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="details">{{ __('Brand/Specs') }}</label>
+                                <div class="form-group">
+                                        <label class="form-control-label" for="item_name">{{ __('Item Name') }}</label>
                                        
                                          
                                                                   
-                                        <input type="text" name="details" id="details" class="form-control form-control-alternative{{ $errors->has('details') ? ' is-invalid' : '' }}" placeholder="{{ __('Brand/Specs') }}" required>
+                                        <input type="text" name="item_name" id="item_name" class="form-control form-control-alternative"  required>
     
-                                        @if ($errors->has('details'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('details') }}</strong>
-                                            </span>
-                                        @endif
                                     </div>
-                            </div>
+                             <div class="form-group">
+                                        <label class="form-control-label" for="source">{{ __('Source') }}</label>
+                                        <select class="form-control form-control-alternative" name="source">
+                                            <option value="WAH">WAH</option>
+                                            <option value="PGT">PGT</option>
+                                            <option value="RTI">RTI</option>
+                                            <option value="Others">Others</option>
+                                        </select>
 
-                        </div>
+                                        
+                                </div>
+                                
 
-                            <div class="pl-lg-4">
-                            <div class="orm-group{{ $errors->has('dateProc') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="dateProc">{{ __('Date Procured ') }}</label>
+                            <div class="form-group">
+                                <label class="form-control-label" for="date_procured">{{ __('Date Procured ') }}</label>
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input  type="text" name="dateProc" id="dateProc" class="form-control datepicker form-control-alternative{{ $errors->has('dateProc') ? ' is-invalid' : '' }}"  placeholder="{{ __('Date Procured') }}" value="01/01/2019"  required autofocus>
-                                    @if ($errors->has('dateProc'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('dateProc') }}</strong>
-                                        </span>
-                                    @endif
+                                    <input  type="text" name="date_procured" id="date_procured" class="form-control datepicker" data-date-format="yyyy-mm-dd" value="2019-01-01"  required autofocus>
+                                   
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('method') ? ' has-danger' : '' }}">
+                            <div class="form-group">
+                                <label class="form-control-label" for="date_acquired">{{ __('Date Acquired ') }}</label>
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input  type="text" name="date_acquired" id="date_acquired" class="form-control datepicker" data-date-format="yyyy-mm-dd" value="2019-01-01"  required autofocus>
+                                   
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-group">
                                         <label class="form-control-label" for="method">{{ __('Method') }}</label>
-                                        <!-- <input type="text" name="method" id="method" class="form-control form-control-alternative{{ $errors->has('method') ? ' is-invalid' : '' }}" placeholder="{{ __('Method') }}" value="{{ old('method') }}" required> -->
-                                        <select class="form-control" name="method">
+                                        <select class="form-control form-control-alternative" name="method">
                                             <option value="Purchased">Purchased</option>
                                             <option value="Donation">Donation</option>
                                         </select>
 
-                                        @if ($errors->has('method'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('method') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
+                                        
+                                    </div> -->
 
-                            <div class="form-group{{ $errors->has('from') ? ' has-danger' : '' }}">
+                            <!-- <div class="form-group">
                                         <label class="form-control-label" for="method">{{ __('From') }}</label>
-                                        <input type="text" name="from" id="from" class="form-control form-control-alternative{{ $errors->has('from') ? ' is-invalid' : '' }}" placeholder="{{ __('From') }}" required>
+                                        <input type="text" name="from" id="from" class="form-control form-control-alternative" required>
     
-                                        @if ($errors->has('method'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('from') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div> 
+                                       
+                                    </div>  -->
 
-                            <div class="form-group{{ $errors->has('cost') ? ' has-danger' : '' }}">
+                            <div class="form-group">
                                         <label class="form-control-label" for="cost">{{ __('Cost') }}</label>
-                                        <input type="number" name="cost" id="cost" class="form-control form-control-alternative{{ $errors->has('cost') ? ' is-invalid' : '' }}" placeholder="{{ __('Cost') }}" required>
+                                        <input type="number" name="cost" id="cost" class="form-control form-control-alternative" required>
     
-                                        @if ($errors->has('cost'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('cost') }}</strong>
-                                            </span>
-                                        @endif
+                                       
                                     </div>  
 
-                            <div class="form-group{{ $errors->has('assignTo') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="assignTo">{{ __('Assign To') }}</label>
-                                <select class="form-control" name="assignTo">
-                                    <option value="0" id="assignTo">Select Employee</option>
-                                        @foreach ($employee as $employees)  
-                                        <option value="{{$employees->id}}" id="assignTo">{{$employees->name}}</option>
-                                        @endforeach
-                                         </select>   
-                                        @if ($errors->has('assignTo'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('assignTo') }}</strong>
-                                            </span>
-                                        @endif
-                                </select>
-                            </div>
-
-                            <!--<div class="form-group{{ $errors->has('assignTo') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="assignTo">{{ __('Assign To') }}</label>
-                                         <input type="text" name="assignTo" id="assignTo" class="form-control form-control-alternative{{ $errors->has('assignTo') ? ' is-invalid' : '' }}" placeholder="{{ __('Assign To') }}" value="{{ old('assignTo') }}" required>
-     
-                                        <select name="assignTo">
-                                        <option value="0" id="assignTo">None</option>
-                                        @foreach ($employee as $employees)  
-                                        <option value="{{$employees->id}}" id="assignTo">{{$employees->name}}</option>
-                                        @endforeach
-                                         </select>   
-                                        @if ($errors->has('assignTo'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('assignTo') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>  --> 
-
-
-                            <div class="form-group{{ $errors->has('depre') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="assignTo">{{ __('Depreciation') }}</label>
-                                        <input type="number" name="depre" id="depre" class="form-control form-control-alternative{{ $errors->has('depre') ? ' is-invalid' : '' }}" placeholder="{{ __('Depreciation') }}" required>
+                            <div class="form-group">
+                                        <label class="form-control-label" for="salvage_value">{{ __('Salvage Value') }}</label>
+                                        <input type="number" name="salvage_value" id="salvage_value" class="form-control form-control-alternative" required>
     
-                                        @if ($errors->has('depre'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('depre') }}</strong>
-                                            </span>
-                                        @endif
+                                       
+                                    </div>  
+
+                            <div class="form-group">
+                                        <label class="form-control-label" for="life_span">{{ __('Life Span') }}</label>
+                                        <input type="number" name="life_span" id="life_span" class="form-control form-control-alternative" required>
+    
+                                       
                                     </div>  
                                                                             
                                         
@@ -412,8 +389,10 @@
         </div>
     </div>
 </div>
+</div>
+</div>
   <!--end add item modal-->  
-                 
+             </div>    
         @include('layouts.footers.auth')
     </div>
     <script>
@@ -423,4 +402,5 @@
     });
 }, 4000);
     </script>
+    
 @endsection
