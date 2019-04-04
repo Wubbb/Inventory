@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Item;
 use DB;
+use Validator;
 class ItemsController extends Controller
 
 {
@@ -13,24 +14,32 @@ class ItemsController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        $items = DB::table('items')
-        ->leftjoin('employee', 'employee.id', '=','items.assignTo')
-        ->select('items.*','employee.name')
-        ->get();
-        $employee = DB::table('employee')->get();
-        return view('items.index')->with(['items' => $items, 'employee' => $employee]);
+        $items = DB::table('items')->get();
+        return view('items.index')->with('items', $items);
     }
 
     public function store(Request $request) {
-        Item::create(["wahProp" => $request->wahProp,
+
+        $validator = Validator::make($request->all(), [
+            'prop_no' => 'required|unique:items'
+        ]);
+         
+        if ($validator->fails()) {
+            return redirect('/items')
+                        ->with('failed','Failed Adding Item!')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        Item::create(["prop_no" => $request->prop_no,
+        "org"=>$request->org,
         "type"=>$request->type,
-        "details" => $request->details,
-        "dateProc" => $request->dateProc,
-        "method" => $request->method,
-        "from" => $request->from,
+        "item_name" => $request->item_name,
+        "source" => $request->source,
+        "date_procured" => $request->date_procured,
+        "date_acquired" => $request->date_acquired,
         "cost" => $request->cost,
-        "assignTo" => $request->assignTo,
-        "depre" => $request->depre        
+        "salvage_value" => $request->salvage_value,
+        "life_span" => $request->life_span        
         ]);
         
         return redirect('/items')->with('status','Successfully Added!!');
@@ -43,7 +52,7 @@ class ItemsController extends Controller
     public function destroy($id) {
         $item = Item::find($id);
         $item->delete();
-        return redirect('/items')->with('status','Successfully Deleted Item '. $item->title). '!';
+        return redirect('/items')->with('status','Successfully Deleted Item '. $item->prop_no). '!';
     }
     public function show($id) { 
         $item = Item::find($id);
