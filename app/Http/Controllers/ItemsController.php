@@ -65,15 +65,16 @@ class ItemsController extends Controller
     }
     public function update(Request $request) {
         $item = Item::find($request->id1);
-        $item->wahProp = $request->wahProp1;
+        $item->prop_no = $request->wahProp1;
+        $item->org = $request->org1;
         $item->type = $request->type1;
-        $item->details = $request->details1;
-        $item->dateProc = $request->dateProc1;
-        $item->method = $request->method1;
-        $item->from = $request->from1;
+        $item->item_name = $request->name1;
+        $item->source = $request->source1;
+        $item->date_procured = $request->dateProc1;
+        $item->date_acquired = $request->dateAcq1;
         $item->cost = $request->cost1;
-        $item->assignTo = $request->assignTo1;
-        $item->depre = $request->depre1;
+        $item->salvage_value = $request->salv_val1;
+        $item->life_span = $request->life_span1;
 
         $item->save();
 
