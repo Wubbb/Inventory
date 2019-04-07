@@ -40,7 +40,7 @@
 
       
 
-        <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+        
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/datatables/dataTables.bootstrap4.js"></script>
@@ -59,82 +59,92 @@
         <!-- Argon JS -->
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
         <script>
-        $('#modal-default').on('show.bs.modal', function (event){
-            var button = $(event.relatedTarget)
-            var wah = button.data('mywah')
-            var type = button.data('mytype')
-            var detail = button.data('mydetail')
-            var dateProc = button.data('mydate')
-            var method = button.data('mymethod')
-            var from = button.data('myfrom')
-            var cost = button.data('mycost')
-            var depre = button.data('mydepre')
-            var assignto = button.data('myassignto')
-            var modal =$(this)
+        // $('#modal-default').on('show.bs.modal', function (event){
+        //     var button = $(event.relatedTarget)
+        //     var wah = button.data('mywah')
+        //     var type = button.data('mytype')
+        //     var detail = button.data('mydetail')
+        //     var dateProc = button.data('mydate')
+        //     var method = button.data('mymethod')
+        //     var from = button.data('myfrom')
+        //     var cost = button.data('mycost')
+        //     var depre = button.data('mydepre')
+        //     var assignto = button.data('myassignto')
+        //     var modal =$(this)
 
-            modal.find('.modal-body #wahProp').text(wah);
-            modal.find('.modal-body #type').text(type);
-            modal.find('.modal-body #detail').text(detail);
-            modal.find('.modal-body #dateProc').text(dateProc);
-            modal.find('.modal-body #method').text(method);
-            modal.find('.modal-body #from').text(from);
-            modal.find('.modal-body #cost').text(cost);
-            modal.find('.modal-body #DV').text(depre);
-            modal.find('.modal-body #assignto').text(assignto);
-        });
-        
+        //     modal.find('.modal-body #wahProp').text(wah);
+        //     modal.find('.modal-body #type').text(type);
+        //     modal.find('.modal-body #detail').text(detail);
+        //     modal.find('.modal-body #dateProc').text(dateProc);
+        //     modal.find('.modal-body #method').text(method);
+        //     modal.find('.modal-body #from').text(from);
+        //     modal.find('.modal-body #cost').text(cost);
+        //     modal.find('.modal-body #DV').text(depre);
+        //     modal.find('.modal-body #assignto').text(assignto);
+        // });
+        // $("#add").click(function(){
+        //     var wah = $('#add').attr('data-mywah');
+        // }):
         $('#editModal').on('show.bs.modal', function (event){
-            var button = $(event.relatedTarget)
-            var id = button.data('id')
-            var wah = button.data('mywah')
-            var type = button.data('mytype')
-            var detail = button.data('mydetail')
-            var dateProc = button.data('mydate')
-            var method = button.data('mymethod')
-            var from = button.data('myfrom')
-            var cost = button.data('mycost')
-            var depre = button.data('mydepre')
-            var assignto = button.data('myassignto')
-            var employ = button.data('myemploy')
-            var modal=$(this)
+            var button = $(event.relatedTarget);
+            var id = button.attr('data-myid');
+            var wah = button.attr('data-myprop');
+            var org = button.attr('data-myorg');
+            var type = button.attr('data-mytype');
+            var name = button.attr('data-myname');
+            var source = button.attr('data-mysource');
+            var dateproc = button.attr('data-mydateproc');
+            var dateacq = button.attr('data-mydateacq');
+            var cost = button.attr('data-mycost');
+            var salvage = button.attr('data-mysalvage');
+            var lifespan = button.attr('data-myspan');
+            var modal=$(this);
 
             $('input[name=id1]').val(id);
             $('input[name=wahProp1]').val(wah);
+            $('input[name=org1]').val(org);
             $('input[name=type1]').val(type);
-            $('input[name=details1]').val(detail);
-            $('input[name=dateProc1]').val(dateProc);
-            $('input[name=method1]').val(method);
-            $('input[name=from1]').val(from);
+            $('input[name=name1]').val(name);
+            $('input[name=source1]').val(source);
+            $('input[name=dateProc1]').val(dateproc);
+            $('input[name=dateAcq1]').val(dateacq);
             $('input[name=cost1]').val(cost);
-            $('input[name=depre1]').val(depre);
-            if(assignto > 0){
-            modal.find('.modal-body #assignTo1').text(employ);
-            modal.find('.modal-body #assignTo1').val(assignto);
-            $('.modal-body #assignTo').css('font-weight', 'bold');
-            }else{
-            modal.find('.modal-body #assignTo1').text("Not Assigned");
-            modal.find('.modal-body #assignTo1').val("0");
-            $('.modal-body #assignTo').css('font-weight', '');
-            }
-            $('#assignTo').change(function(){
-            var j = $(this);
-             if(assignto > 0) {
-                  j.attr('disabled', true);
-                    }    
-             else {
-                j.attr('disabled', false);
-            }
-            }).trigger('change');
+            $('input[name=salv_val1]').val(salvage);
+            $('input[name=life_span1]').val(lifespan);
+            // if(assignto > 0){
+            // modal.find('.modal-body #assignTo1').text(employ);
+            // modal.find('.modal-body #assignTo1').val(assignto);
+            // $('.modal-body #assignTo').css('font-weight', 'bold');
+            // }else{
+            // modal.find('.modal-body #assignTo1').text("Not Assigned");
+            // modal.find('.modal-body #assignTo1').val("0");
+            // $('.modal-body #assignTo').css('font-weight', '');
+            // }
+            // $('#assignTo').change(function(){
+            // var j = $(this);
+            //  if(assignto > 0) {
+            //       j.attr('disabled', true);
+            //         }    
+            //  else {
+            //     j.attr('disabled', false);
+            // }
+            // }).trigger('change');
         });
 
 
-        $('#employee-view').on('show.bs.modal', function (event){
-            var button = $(event.relatedTarget)
-            var empid = button.data('empid')
-            var modal =$(this)
 
-            $('input[name=empid]').val(empid);
+        // $('#employee-view').on('show.bs.modal', function (event){
+        //     var button = $(event.relatedTarget)
+        //     var empid = button.data('empid')
+        //     var modal =$(this)
+
+        //     $('input[name=empid]').val(empid);
         
+        // });
+        $("#editModal").on("hidden.bs.modal", function () {
+            $('#add').text("Add Item");
+            $('#add').attr("class","btn btn-sm btn-primary");
+            $('#add').attr("data-target","#modal-addItem");
         });
         </script>
 
