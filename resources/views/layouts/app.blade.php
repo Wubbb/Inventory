@@ -20,7 +20,16 @@
         <!-- Datatables CSS -->
         <link href="{{ asset('argon') }}/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <link href="{{ asset('argon') }}/vendor/datatables/buttons.dataTables.min.css" rel="stylesheet">
+        <style>
+        input[type='number'] {
+            -moz-appearance:textfield;
+        }
 
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        </style>
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()

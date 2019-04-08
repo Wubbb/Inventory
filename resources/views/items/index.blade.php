@@ -235,15 +235,15 @@
                            <div class="col">
                           <div class="form-group">
                         <label for="cost1">Cost</label> 
-                          <input type="text" class="form-control" name="cost1" id="cost1" value="" onkeyup="compute()">
+                          <input type="number" class="form-control" name="cost1" id="cost1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group">
                         <label for="salv_val1">Salvage Value</label> 
-                          <input type="text" class="form-control" name="salv_val1" id="salv1" value="" onkeyup="compute()">
+                          <input type="number" class="form-control" name="salv_val1" id="salv1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group">
                         <label for="life_span1">Life Span</label> 
-                          <input type="text" class="form-control" name="life_span1" id="life_span1" value="" onkeyup="compute()">
+                          <input type="number" class="form-control" name="life_span1" id="life_span1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group" style="height:200px;overflow:auto;">
                           <table class="table align-items-center table-flush">
@@ -262,7 +262,7 @@
                           </div>
                           <div class="form-group">
                         <label for="disposed_date">Dispose Date</label> 
-                          <input type="date" class="form-control" name="disposed_date" value="">
+                          <input type="date" class="form-control form-control-alternative" name="disposed_date" value="">
                           </div>
                           <div class="form-group">
                                         <label for="disposed_method">Dispose Method</label>
@@ -275,7 +275,7 @@
                                     </div>
                                     <div class="form-group">
                         <label for="remarks">Remarks</label> 
-                          <input type="text" class="form-control" name="remarks" value="">
+                          <input type="text" class="form-control form-control-alternative" name="remarks" value="">
                           </div>
                           </div> <!-- end column -->
                           </div> <!-- end row -->
