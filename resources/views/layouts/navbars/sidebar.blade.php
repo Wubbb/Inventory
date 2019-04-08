@@ -68,15 +68,36 @@
             <!-- Form -->
             <!-- Navigation -->
             <ul class="navbar-nav">
+<
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-single-02 text-blue"></i> {{ __('User profile') }}
+                    </a>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.index') }}">
                         <i class="ni ni-badge text-info"></i> {{ __('Employee') }}
                     </a>
                 </li>
 
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/userReports">
+
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="ni ni-badge text-info"></i> {{ __('Employee') }}
+                    </a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+
                         <i class="ni ni-chart-bar-32 text-blue"></i> {{ __('Reports') }}
                     </a>
                 </li>
@@ -90,8 +111,11 @@
                         <i class="ni ni-briefcase-24 text-yellow"></i> {{ __('Tech Bag') }}
                     </a>
                 </li>
+
             </ul>
             
         </div>
     </div>
+
 </nav>
+

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+
 use DB;
 use App\Http\Requests\UserRequest;
-
-
 class UserController extends Controller
 {
     /**

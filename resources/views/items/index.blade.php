@@ -74,6 +74,7 @@
                                                          $date = $item->date_acquired;
                                                          $date = explode("-", $date);
 
+
                                                          $age = (date("md", date("U", mktime(0, 0, 0, $date[2], $date[1], $date[0]))) > date("md") ? ((date("Y")-$date[0])-1):(date("Y")-$date[0]));
                                                          
 
@@ -430,4 +431,8 @@
     });
     </script>
     @endforeach
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 0b113f1d368c8614b6124c47bc423933f380449a
