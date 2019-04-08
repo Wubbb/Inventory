@@ -28,10 +28,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Route::resource('items', 'ItemsController');
 Route::resource('items','ItemsController');
-//Route::resource('employee', 'EmployeeController');
 
-//Route::get('/',"RedirectController@index")->name("RedirectIndex");
-
-Route::get('/redirectme', function() {
-	return redirect('/items')->with('status','ulol!');
+Route::get('userReports', function(){
+    $users = DB::table('users')->get();
+    return view('reports.users')->with('users', $users);
+});
+Route::get('itemsReports', function(){
+    $items = DB::table('items')->get();
+    return view('reports.items')->with('items', $items);
 });
