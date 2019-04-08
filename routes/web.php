@@ -29,3 +29,11 @@ Route::group(['middleware' => 'auth'], function () {
 // Route::resource('items', 'ItemsController');
 Route::resource('items','ItemsController');
 
+Route::get('userReports', function(){
+    $users = DB::table('users')->get();
+    return view('reports.users')->with('users', $users);
+});
+Route::get('itemsReports', function(){
+    $items = DB::table('items')->get();
+    return view('reports.items')->with('items', $items);
+});
