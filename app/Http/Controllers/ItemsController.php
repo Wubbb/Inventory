@@ -14,8 +14,10 @@ class ItemsController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        $items = DB::table('items')->get();
+        $items = DB::table('items')->whereNull('disposed_date')->get();
         return view('items.index')->with('items', $items);
+
+        // whereNull / whereNotNull
     }
 
     public function store(Request $request) {
@@ -75,6 +77,9 @@ class ItemsController extends Controller
         $item->cost = $request->cost1;
         $item->salvage_value = $request->salv_val1;
         $item->life_span = $request->life_span1;
+        $item->disposed_date = $request->disposed_date;
+        $item->disposed_method = $request->disposed_method;
+        $item->remarks = $request->remarks;
 
         $item->save();
 

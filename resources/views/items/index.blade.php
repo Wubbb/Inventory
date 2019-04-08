@@ -71,14 +71,11 @@
                                                          <td>{{$item->location}}</td>
                                                          <td>
                                                          @php
-                                                         $date = $item->date_acquired;
-                                                         $date = explode("-", $date);
+                                                         $date = $item->date_procured;
+                                                         $years = \Carbon\Carbon::parse($date)->age;
 
-                                                        $age = (date("md", date("U", mktime(0, 0, 0, $date[2], $date[1], $date[0]))) > date("md") ? ((date("Y")-$date[0])-1):(date("Y")-$date[0]));
-                                                         
-
-                                                         echo $age;
-
+                                                            echo $years;
+                                                        
                                                          @endphp
                                                          </td>
                                                          
@@ -186,11 +183,13 @@
                 <!--end modal item details-->
 
 
- <!-- edit item modal -->   
-     <div class="modal fade" id="editModal">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
+ <!-- edit item modal --> 
+ <div class="row">
+  <div class="col-md-4">
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
                 <h2 class="modal-title" id="modal-title-default">Edit Item here:</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -201,48 +200,85 @@
                     {{method_field('patch')}}
                     @csrf
                     <div class="box-body">
+                    <div class="row">
+                    <div class="col">
                         <div class="form-group">
                         <input type="text" class="form-control" name="id1" value="" hidden>
-                          <label for="wahProp">Property #</label> 
+                          <label for="wahProp1">Property #</label> 
                           <input type="text" class="form-control" name="wahProp1" value="">
                         </div>
                         <div class="form-group">
-                          <label for="type">Organization</label> 
+                          <label for="org1">Organization</label> 
                           <input type="text" class="form-control" name="org1" value="">
                         </div>
                         <div class="form-group">
-                          <label for="type">Item Type</label> 
+                          <label for="type1">Item Type</label> 
                           <input type="text" class="form-control" name="type1" value="">
                         </div>
                         <div class="form-group">
-                        <label for="wahProp">Item Name</label> 
+                        <label for="name1">Item Name</label> 
                           <input type="text" class="form-control" name="name1" value="">
                           </div>
                           <div class="form-group">
-                          <label for="type">Source</label> 
+                          <label for="source1">Source</label> 
                           <input type="text" class="form-control" name="source1" value="">
                         </div>
                           <div class="form-group">
-                        <label for="wahProp">Date Procured</label> 
-                          <input type="text" class="form-control" name="dateProc1" value="">
+                        <label for="dateProc1">Date Procured</label> 
+                          <input type="date" class="form-control" name="dateProc1" value="">
                           </div>
                           <div class="form-group">
-                        <label for="wahProp">Date Acquired</label> 
-                          <input type="text" class="form-control" name="dateAcq1" value="">
+                        <label for="dateAcq1">Date Acquired</label> 
+                          <input type="date" class="form-control" name="dateAcq1" value="">
+                          </div>
+                           </div> <!-- end column -->
+                           <div class="col">
+                          <div class="form-group">
+                        <label for="cost1">Cost</label> 
+                          <input type="text" class="form-control" name="cost1" id="cost1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group">
-                        <label for="wahProp">Cost</label> 
-                          <input type="text" class="form-control" name="cost1" value="">
+                        <label for="salv_val1">Salvage Value</label> 
+                          <input type="text" class="form-control" name="salv_val1" id="salv1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group">
-                        <label for="wahProp">Salvage Value</label> 
-                          <input type="text" class="form-control" name="salv_val1" value="">
+                        <label for="life_span1">Life Span</label> 
+                          <input type="text" class="form-control" name="life_span1" id="life_span1" value="" onkeyup="compute()">
+                          </div>
+                          <div class="form-group" style="height:200px;overflow:auto;">
+                          <table class="table align-items-center table-flush">
+                          <thead>
+                          <tr>
+                            <th scope="col">{{ __('Year') }}</th>
+                            <th scope="col">{{ __('Salvage') }}</th>
+                            <th scope="col">{{ __('Price') }}</th>
+                          </tr>
+                          </thead>
+                          
+                          <tbody id="computation">
+                          
+                          </tbody>
+                          </table>
                           </div>
                           <div class="form-group">
-                        <label for="wahProp">Life Span</label> 
-                          <input type="number" class="form-control" name="life_span1" value="">
+                        <label for="disposed_date">Dispose Date</label> 
+                          <input type="date" class="form-control" name="disposed_date" value="">
                           </div>
-                     
+                          <div class="form-group">
+                                        <label for="disposed_method">Dispose Method</label>
+                                        <select class="form-control form-control-alternative" name="disposed_method">
+                                            <option value=""></option>
+                                            <option value="Thrown">Thrown</option>
+                                            <option value="Lost">Lost</option>
+                                            <option value="Donated">Donated</option>
+                                        </select> 
+                                    </div>
+                                    <div class="form-group">
+                        <label for="remarks">Remarks</label> 
+                          <input type="text" class="form-control" name="remarks" value="">
+                          </div>
+                          </div> <!-- end column -->
+                          </div> <!-- end row -->
                         <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -252,8 +288,9 @@
                 </div>
               </div>
             </div> 
+            </div>
            </div> 
-
+</div>
     <!-- edit item modal end -->
 
 
@@ -331,7 +368,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input  type="text" name="date_procured" id="date_procured" class="form-control datepicker" data-date-format="yyyy-mm-dd" value="2019-01-01"  required autofocus>
+                                    <input  type="date" name="date_procured" id="date_procured" class="form-control"  required autofocus>
                                    
                                 </div>
                             </div>
@@ -342,7 +379,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input  type="text" name="date_acquired" id="date_acquired" class="form-control datepicker" data-date-format="yyyy-mm-dd" value="2019-01-01"  required autofocus>
+                                    <input  type="date" name="date_acquired" id="date_acquired" class="form-control" required autofocus>
                                    
                                 </div>
                             </div>
@@ -398,7 +435,6 @@
     </div>
 </div>
 </div>
-</div>
   <!--end add item modal-->  
              </div>    
         @include('layouts.footers.auth')
@@ -427,7 +463,30 @@
         $('#add').attr("data-mycost","{{$item->cost}}");
         $('#add').attr("data-mysalvage","{{$item->salvage_value}}");
         $('#add').attr("data-myspan","{{$item->life_span}}");
+        
     });
     </script>
     @endforeach
+    
+    <script>
+    function compute(){
+                          var i;
+                          var lf = document.getElementById("life_span1").value;
+                          var cost = document.getElementById("cost1").value;
+                          var salvage = document.getElementById("salv1").value;
+                           text = "";
+                             for(i=1;i<=lf;i++){
+                                cost = cost-salvage;
+                                cost = Math.max(0, cost);
+                                text += "<tr>";
+                                text += "<td>" + i + "</td>";
+                                text += "<td>" + salvage + "</td>";
+                                text += "<td>" + cost + "</td>";
+                                text += "</tr>";
+                                
+                             }
+                             document.getElementById("computation").innerHTML = text;
+    }
+    
+                          </script>
 @endsection

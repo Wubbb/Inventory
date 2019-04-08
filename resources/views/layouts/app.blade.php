@@ -111,6 +111,22 @@
             $('input[name=cost1]').val(cost);
             $('input[name=salv_val1]').val(salvage);
             $('input[name=life_span1]').val(lifespan);
+            
+            var i;
+            var cost1=cost;
+            text = "";
+            for(i=1;i<=lifespan;i++){
+                cost1 = cost1-salvage;
+                cost1 = Math.max(0, cost1);
+                text += "<tr>";
+                text += "<td>" + i + "</td>";
+                text += "<td>" + salvage + "</td>";
+                text += "<td>" + cost1 + "</td>";
+                text += "</tr>";
+            }
+            document.getElementById("computation").innerHTML = text;
+
+            
             // if(assignto > 0){
             // modal.find('.modal-body #assignTo1').text(employ);
             // modal.find('.modal-body #assignTo1').val(assignto);
