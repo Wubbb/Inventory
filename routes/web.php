@@ -29,6 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
 // Route::resource('items', 'ItemsController');
 Route::resource('items','ItemsController');
 
+Route::resource('disposed', 'DisposedItemsController');
+//Route::resource('employee', 'EmployeeController');
+
+
 Route::get('userReports', function(){
     $users = DB::table('users')->get();
     return view('reports.users')->with('users', $users);

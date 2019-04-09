@@ -89,13 +89,36 @@
                     </a>
                 </li> -->
                 <li class="nav-item">
+                    <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="ni ni-chart-bar-32 text-blue"></i>
+                        <span class="nav-link-text">{{ __('Reports') }}</span>
+                    </a>
+
+                    <div class="collapse hide" id="navbar-examples">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    {{ __('Techbag Reports') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('disposed.index')}}">
+                                    {{ __('Disposed Items') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">
                     <a class="nav-link" href="userReports">
+
                         <i class="ni ni-chart-bar-32 text-blue"></i> {{ __('Reports') }}
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('items.index')}}">
-                        <i class="ni ni-box-2 text-orange"></i> {{ __('Equipment') }}
+                        <i class="ni ni-box-2 text-orange"></i> {{ __('Items') }}
                     </a>
                 </li>
                 <li class="nav-item">
