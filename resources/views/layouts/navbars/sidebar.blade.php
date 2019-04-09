@@ -111,6 +111,8 @@
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="#">
+                    <a class="nav-link" href="userReports">
+
                         <i class="ni ni-chart-bar-32 text-blue"></i> {{ __('Reports') }}
                     </a>
                 </li> -->
