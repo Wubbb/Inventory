@@ -488,5 +488,5 @@
                              document.getElementById("computation").innerHTML = text;
     }
     
-                          </script>
+    </script>
 @endsection
