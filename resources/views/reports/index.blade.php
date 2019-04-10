@@ -6,7 +6,13 @@
 
 @section('content')
     @include('layouts.headers.cards')
-
+<style>
+.dataTables_wrapper .dataTables_filter {
+float: right;
+text-align: right;
+visibility: hidden;
+}
+</style>
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col">
@@ -23,7 +29,17 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table align-items-center table-flush table-dark table-advance" id="dataTable">
+                            <table cellspacing="5" cellpadding="5" border="0" align="center">
+        <tbody><tr>
+            <td>Minimum age:</td>
+            <td><input type="text" id="min" name="min"></td>
+        
+            <td>Maximum age:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody></table>
+    <br>
+                                <table class="table align-items-center table-flush table-dark table-advance" id="techbag">
                                     <thead class="thead-dark">
                                     <tr>
 
@@ -42,7 +58,15 @@
                                             <td>{{$item->location}}</td>
                                             <td>{{$item->type}}</td>
                                             <td>{{$item->item_name}}</td>
-                                            <td>{{$item->age}}</td>
+                                            <td>
+                                            @php
+                                                         $date = $item->date_procured;
+                                                         $years = \Carbon\Carbon::parse($date)->age;
+
+                                                            echo $years;
+
+                                                         @endphp
+                                            </td>
                                             <td>{{$item->life_span}}</td>
                                             <td>{{$item->cost}}</td>
                                         </tr>
