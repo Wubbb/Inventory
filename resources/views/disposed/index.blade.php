@@ -28,25 +28,39 @@
                                                 <tr>
                                                     
                                                     <th scope="col">{{__('Property #')}}</th>
-                                                    <th scope="col">{{ __('Organization') }}</th>
                                                     <th scope="col">{{ __('Item Type') }}</th>
                                                     <th scope="col">{{__('Item Name')}}</th>
+                                                    <th scope="col">{{__('Date Procured')}}</th>
+                                                    <th scope="col">{{__('Age')}}</th>
+                                                    <th scope="col">{{__('Life Span')}}</th>
                                                     <th scope="col">{{__('Disposed Date')}}</th>
                                                     <th scope="col">{{__('Dispose Method')}}</th>
                                                     <th scope="col">{{__('Remarks')}}</th>
-                                                    <!-- <th scope="col">{{__('Action')}}</th> -->
+                                                    <th scope="col">{{__('Action')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($items as $item)
                                                     <tr>
                                                          <td>{{$item->prop_no}}</td>
-                                                         <td>{{$item->org}}</td>
                                                          <td>{{$item->type}}</td>
                                                          <td>{{$item->item_name}}</td>
+                                                         <td>{{$item->date_procured}}</td>
+                                                         <td>
+                                                         @php
+                                                         $date = $item->date_procured;
+                                                         $date2 = \Carbon\Carbon::parse($item->disposed_date);
+                                                         $years = \Carbon\Carbon::parse($date)->diffInYears($date2);
+
+                                                            echo $years;
+                                                        
+                                                         @endphp
+                                                         </td>
+                                                         <td>{{$item->life_span}}</td>
                                                          <td>{{$item->disposed_date}}</td>
                                                          <td>{{$item->disposed_method}}</td>
                                                          <td>{{$item->remarks}}</td>
+                                                         <td>Button</td>
                                                          
                                                     </tr>
                                                 @endforeach
