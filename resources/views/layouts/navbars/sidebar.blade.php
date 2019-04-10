@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="{{ route('home') }}">
+        <a class="navbar-brand pt-0" href="{{ route('user.index') }}">
             <img src="{{ asset('argon') }}/img/brand/wah-logo-blue.png" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
@@ -53,7 +53,7 @@
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="{{ route('home') }}">
+                        <a href="{{ route('user.index') }}">
                             <img src="{{ asset('argon') }}/img/brand/wah-logo-blue.png">
                         </a>
                     </div>
@@ -97,7 +97,7 @@
                     <div class="collapse hide" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/techbagReports">
                                     {{ __('Techbag Reports') }}
                                 </a>
                             </li>

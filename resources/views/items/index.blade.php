@@ -75,7 +75,7 @@
                                                          $years = \Carbon\Carbon::parse($date)->age;
 
                                                             echo $years;
-                                                        
+
                                                          @endphp
                                                          </td>
                                                          

@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'UserController@index')->name('home');
 //Route::get('/reports', 'HomeController@craig')->name('reports');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -41,3 +41,5 @@ Route::get('itemsReports', function(){
     $items = DB::table('items')->get();
     return view('reports.items')->with('items', $items);
 });
+
+Route::resource('techbagReports','TechbagReportsController');
