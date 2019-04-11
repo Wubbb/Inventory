@@ -234,8 +234,8 @@
                           <thead>
                           <tr>
                             <th scope="col">{{ __('Year') }}</th>
-                            <th scope="col">{{ __('Salvage') }}</th>
-                            <th scope="col">{{ __('Price') }}</th>
+                            <th scope="col">{{ __('Cost') }}</th>
+                            <th scope="col">{{ __('Book Value') }}</th>
                           </tr>
                           </thead>
                           
@@ -252,9 +252,10 @@
                                         <label for="disposed_method">Dispose Method</label>
                                         <select class="form-control form-control-alternative" name="disposed_method">
                                             <option value=""></option>
-                                            <option value="Thrown">Thrown</option>
+                                            <option value="Throw">Throw</option>
                                             <option value="Lost">Lost</option>
-                                            <option value="Donated">Donated</option>
+                                            <option value="Donate">Donate</option>
+                                            <option value="Sell">Sell</option>
                                         </select> 
                                     </div>
                                     <div class="form-group">
@@ -459,14 +460,20 @@
                           var cost = document.getElementById("cost1").value;
                           var salvage = document.getElementById("salv1").value;
                            text = "";
+                           var total = cost-salvage;
+                           var depre = total/lf;
+                           var cost2 = cost;
                              for(i=1;i<=lf;i++){
-                                cost = cost-salvage;
+                                cost = cost-depre;
                                 cost = Math.max(0, cost);
+                                cost = cost.toFixed(2);
                                 text += "<tr>";
                                 text += "<td>" + i + "</td>";
-                                text += "<td>" + salvage + "</td>";
-                                text += "<td>" + cost + "</td>";
+                                text += "<td>₱ " + cost2 + "</td>";
+                                text += "<td>₱ " + cost + "</td>";
                                 text += "</tr>";
+                                cost2 = cost2-depre;
+                                cost2 = cost2.toFixed(2);
                                 
                              }
                              document.getElementById("computation").innerHTML = text;
