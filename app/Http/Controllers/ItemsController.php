@@ -86,9 +86,5 @@ class ItemsController extends Controller
         return redirect('/items')->with('status','Successfully updated!');
     }
 
-    
-
-
-
     //
  }

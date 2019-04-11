@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\User;
 use App\Http\Requests\UserRequest;
 
@@ -28,6 +29,7 @@ class UserController extends Controller
         return view('users.create');
     }
 
+
     /**
      * Store a newly created user in storage
      *
@@ -40,6 +42,21 @@ class UserController extends Controller
         $model->create($request->merge(['password' => bcrypt($request->get('password'))])->all());
 
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
+    }
+
+
+    public function show($id) {
+        $assigns = DB::table('assigns')
+            ->join("items", "assigns.item_id", "=", "items.id")
+            ->join("users", "assigns.user_id", "=", "users.id")
+            ->where("user_id","=",$id)
+            ->select("items.prop_no","items.type","items.item_name","items.age","items.date_acquired","items.date_procured"
+                ,"items.remarks","items.location","assigns.date_returned")
+            ->get();
+
+
+            return view('users.show')->with('assigns',$assigns);
+
     }
 
     /**
@@ -82,5 +99,6 @@ class UserController extends Controller
 
         return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
     }
+
     
 }

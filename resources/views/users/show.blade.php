@@ -14,7 +14,8 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Item Movement') }}</h3>
+                                <h3 class="mb-0">{{ __('Assigned Items') }}</h3>
+
                             </div>
                         </div>
                     </div>
@@ -29,38 +30,28 @@
                                         <th scope="col">{{__('Property #')}}</th>
                                         <th scope="col">{{ __('Item Type') }}</th>
                                         <th scope="col">{{__('Item Name')}}</th>
+                                        <th scope="col">{{__('Date Acquired')}}</th>
                                         <th scope="col">{{__('Date Procured')}}</th>
-                                        <th scope="col">{{__('Age')}}</th>
-                                        <th scope="col">{{__('Life Span')}}</th>
-                                        <th scope="col">{{__('Disposed Date')}}</th>
-                                        <th scope="col">{{__('Dispose Method')}}</th>
+                                        <th scope="col">{{__('Location')}}</th>
+                                        <th scope="col">{{__('Date Returned')}}</th>
                                         <th scope="col">{{__('Remarks')}}</th>
                                         <th scope="col">{{__('Action')}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($assigns as $assign)
                                         <tr>
-                                            <td>{{$item->prop_no}}</td>
-                                            <td>{{$item->type}}</td>
-                                            <td>{{$item->item_name}}</td>
-                                            <td>{{$item->date_procured}}</td>
-                                            <td>
-                                                @php
-                                                    $date = $item->date_procured;
-                                                    $date2 = \Carbon\Carbon::parse($item->disposed_date);
-                                                    $years = \Carbon\Carbon::parse($date)->diffInYears($date2);
-
-                                                       echo $years;
-
-                                                @endphp
-                                            </td>
-                                            <td>{{$item->life_span}}</td>
-                                            <td>{{$item->disposed_date}}</td>
-                                            <td>{{$item->disposed_method}}</td>
-                                            <td>{{$item->remarks}}</td>
-                                            <td>Button</td>
-
-                                        </tr>
+                                        <td>{{$assign->prop_no}}</td>
+                                        <td>{{$assign->type}}</td>
+                                        <td>{{$assign->item_name}}</td>
+                                        <td>{{$assign->date_acquired}}</td>
+                                        <td>{{$assign->date_procured}}</td>
+                                        <td>{{$assign->location}}</td>
+                                        <td>{{$assign->date_returned}}</td>
+                                        <td>{{$assign->remarks}}</td>
+                                        <td>Button</td>
+                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

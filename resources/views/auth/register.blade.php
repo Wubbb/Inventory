@@ -32,16 +32,16 @@
                         <form role="form" method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <div class="form-group{{ $errors->has('employee#') ? ' has-danger' : '' }}">
+                            <div class="form-group{{ $errors->has('employee_no') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-badge"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('employee#') ? ' is-invalid' : '' }}" placeholder="{{ __('Employee No.') }}" type="text" name="employee#" value="{{ old('employee#') }}" required autofocus>
+                                    <input class="form-control{{ $errors->has('employee_no') ? ' is-invalid' : '' }}" placeholder="{{ __('Employee No.') }}" type="text" name="employee_no" value="{{ old('employee_no') }}" required autofocus>
                                 </div>
-                                @if ($errors->has('employee#'))
+                                @if ($errors->has('employee_no'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('employee#') }}</strong>
+                                        <strong>{{ $errors->first('employee_no') }}</strong>
                                     </span>
                                 @endif
                             </div>

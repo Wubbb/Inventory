@@ -81,25 +81,9 @@
                                                          
 
                                                          <td> <form action="items/{{$item->id}}" method="post">
-                                                         <button type="button" class="btn btn-primary btn-sm"
-                                                          data-toggle="modal"
-                                                         data-target="#modal-default" >View Item Movement</button>
-                                                        
-                                                         <!-- <button id="btn-edit{{$item->id}}" type="button" class="btn btn-success btn-sm"
-                                                         data-toggle="modal" 
-                                                         data-target="#editModal"
-                                                         data-id="{{$item->id}}" 
-                                                         data-mywah="{{$item->prop_no}}"
-                                                         data-myorg="{{$item->org}}" 
-                                                         data-mytype="{{$item->type}}" 
-                                                         data-mydetail="{{$item->item_name}}"
-                                                         data-mydate="{{$item->date_procured}}" 
-                                                         data-myacquired="{{$item->date_acquired}}" 
-                                                         data-myfrom="{{$item->source}}" 
-                                                         data-mysalvage="{{$item->salvage_value}}"
-                                                         data-mycost="{{$item->cost}}" 
-                                                         data-myspan="{{$item->life_span}}">Edit</button> -->
-                                                         
+                                                                 <a href="items/{{$item->id}}"><button type="button" class="btn btn-primary btn-sm">
+                                                                         View Item Movement</button></a>
+
                                                             @csrf
                                                             @method("DELETE")
                                                             <button type="submit" class="btn btn-danger btn-sm" name="submit" value="Delete">Del</button>
