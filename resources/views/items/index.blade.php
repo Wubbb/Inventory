@@ -268,9 +268,10 @@
                                         <label for="disposed_method">Dispose Method</label>
                                         <select class="form-control form-control-alternative" name="disposed_method">
                                             <option value=""></option>
-                                            <option value="Thrown">Thrown</option>
+                                            <option value="Throw">Throw</option>
                                             <option value="Lost">Lost</option>
-                                            <option value="Donated">Donated</option>
+                                            <option value="Donate">Donate</option>
+                                            <option value="Sell">Sell</option>
                                         </select> 
                                     </div>
                                     <div class="form-group">
