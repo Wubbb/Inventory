@@ -123,15 +123,21 @@
             
             var i;
             var cost1=cost;
+            var total1=cost-salvage;
+            var depre1=total1/lifespan;
+            var cost3=cost1;
             text = "";
             for(i=1;i<=lifespan;i++){
-                cost1 = cost1-salvage;
+                cost1 = cost1-depre1;
                 cost1 = Math.max(0, cost1);
+                cost1 = cost1.toFixed(2);
                 text += "<tr>";
                 text += "<td>" + i + "</td>";
-                text += "<td>" + salvage + "</td>";
-                text += "<td>" + cost1 + "</td>";
+                text += "<td>₱ " + cost3 + "</td>";
+                text += "<td>₱ " + cost1 + "</td>";
                 text += "</tr>";
+                cost3=cost3-depre1;
+                cost3 = cost3.toFixed(2);
             }
             document.getElementById("computation").innerHTML = text;
 
