@@ -20,7 +20,7 @@ Route::get('/home', 'UserController@index')->name('home');
 //Route::get('/reports', 'HomeController@craig')->name('reports');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', 'UserController', ['except' => ['show']]);
+	Route::resource('user', 'UserController');
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
@@ -32,14 +32,15 @@ Route::resource('items','ItemsController');
 Route::resource('disposed', 'DisposedItemsController');
 //Route::resource('employee', 'EmployeeController');
 
-
-Route::get('userReports', function(){
-    $users = DB::table('users')->get();
-    return view('reports.users')->with('users', $users);
-});
-Route::get('itemsReports', function(){
-    $items = DB::table('items')->get();
-    return view('reports.items')->with('items', $items);
-});
+//
+//Route::get('userReports', function(){
+//    $users = DB::table('users')->get();
+//    return view('reports.users')->with('users', $users);
+//});
+//Route::get('itemMovement', function(){
+//    $items = DB::table('items')->get();
+//    return view('items.movement')->with('items',$items);
+//});
 
 Route::resource('techbagReports','TechbagReportsController');
+
