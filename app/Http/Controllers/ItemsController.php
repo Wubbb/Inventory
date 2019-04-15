@@ -77,6 +77,7 @@ class ItemsController extends Controller
         $item->cost = $request->cost1;
         $item->salvage_value = $request->salv_val1;
         $item->life_span = $request->life_span1;
+        $item->location = $request->loc1;
         $item->disposed_date = $request->disposed_date;
         $item->disposed_method = $request->disposed_method;
         $item->remarks = $request->remarks;

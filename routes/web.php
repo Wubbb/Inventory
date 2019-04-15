@@ -17,7 +17,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'UserController@index')->name('home');
-//Route::get('/reports', 'HomeController@craig')->name('reports');
+Route::get('/assign/{assign}', 'AssignsController@index')->name('assign.index');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController');
@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Route::resource('items', 'ItemsController');
 Route::resource('items','ItemsController');
+Route::resource('assignto','NewAssignToController');
 
 Route::resource('disposed', 'DisposedItemsController');
 //Route::resource('employee', 'EmployeeController');
@@ -43,4 +44,3 @@ Route::resource('disposed', 'DisposedItemsController');
 //});
 
 Route::resource('techbagReports','TechbagReportsController');
-

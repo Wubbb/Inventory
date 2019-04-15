@@ -107,6 +107,7 @@
             var cost = button.attr('data-mycost');
             var salvage = button.attr('data-mysalvage');
             var lifespan = button.attr('data-myspan');
+            var loc = button.attr('data-myloc');
             var modal=$(this);
 
             $('input[name=id1]').val(id);
@@ -120,6 +121,7 @@
             $('input[name=cost1]').val(cost);
             $('input[name=salv_val1]').val(salvage);
             $('input[name=life_span1]').val(lifespan);
+            $('input[name=loc1]').val(loc);
             
             var i;
             var cost1=cost;

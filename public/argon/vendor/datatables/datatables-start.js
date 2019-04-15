@@ -53,7 +53,7 @@ dom: 'Bfrtip',
                 head.appendChild(style);
          }
       },
-      'pdf','excel'
+      'excel'
 ]
   });
 });

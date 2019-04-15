@@ -50,12 +50,12 @@ class UserController extends Controller
             ->join("items", "assigns.item_id", "=", "items.id")
             ->join("users", "assigns.user_id", "=", "users.id")
             ->where("user_id","=",$id)
-            ->select("items.prop_no","items.type","items.item_name","items.age","items.date_acquired","items.date_procured"
-                ,"items.remarks","items.location","assigns.date_returned")
+            ->select("assigns.id","assigns.date_assigned","items.prop_no","items.type","items.item_name","items.age","items.date_acquired","items.date_procured"
+                ,"assigns.remarks","items.location","assigns.date_returned")
             ->get();
+        $users = User::find($id);
 
-
-            return view('users.show')->with('assigns',$assigns);
+            return view('users.show')->with(['assigns'=>$assigns, 'users'=>$users]);
 
     }
 
