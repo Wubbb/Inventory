@@ -18,7 +18,8 @@ class CreateAssignsTable extends Migration
             $table->integer('item_id')->unsigned();
             $table->integer("user_id")->unsigned();
             $table->date('date_assigned');
-            $table->date('date_returned');
+            $table->date('date_returned')->nullable();
+            $table->text('remarks')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

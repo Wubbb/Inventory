@@ -215,6 +215,10 @@
                         <label for="dateAcq1">Date Acquired</label> 
                           <input type="date" class="form-control" name="dateAcq1" value="">
                           </div>
+                          <div class="form-group">
+                          <label for="loc1">Location</label> 
+                          <input type="text" class="form-control" name="loc1" value="">
+                        </div>
                            </div> <!-- end column -->
                            <div class="col">
                           <div class="form-group">
@@ -448,6 +452,7 @@
         $('#add').attr("data-mycost","{{$item->cost}}");
         $('#add').attr("data-mysalvage","{{$item->salvage_value}}");
         $('#add').attr("data-myspan","{{$item->life_span}}");
+        $('#add').attr("data-myloc","{{$item->location}}");
         
     });
     </script>
