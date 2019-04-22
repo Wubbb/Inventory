@@ -23,7 +23,7 @@
                     <div class="card mb-3">
                             <div class="card-body">
                               <div class="table-responsive">
-                                    <table class="table align-items-center table-flush table-dark table-advance" id="dataTable">
+                                    <table class="table align-items-center table-flush table-dark table-advance" id="dataTabledispose">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     
@@ -50,7 +50,7 @@
                                                          @php
                                                          $date = $item->date_procured;
                                                          $date2 = \Carbon\Carbon::parse($item->disposed_date);
-                                                         $years = \Carbon\Carbon::parse($date)->diffInYears($date2);
+                                                         $years = \Carbon\Carbon::parse($date)->diff($date2)->format('%y yrs, %m mos');
 
                                                             echo $years;
                                                         
@@ -60,7 +60,8 @@
                                                          <td>{{$item->disposed_date}}</td>
                                                          <td>{{$item->disposed_method}}</td>
                                                          <td>{{$item->remarks}}</td>
-                                                         <td>Button</td>
+                                                         <td><a href="disposed/{{$item->id}}"><button type="button" class="btn btn-primary btn-sm">
+                                                                         View Item Movement</button></a></td>
                                                          
                                                     </tr>
                                                 @endforeach

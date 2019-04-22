@@ -43,11 +43,23 @@
                             </div>
                         @endif
                     </div>
-
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            <table cellspacing="5" cellpadding="5" border="0" align="center">
+        <tbody><tr>
+            <td>Minimum age:</td>
+            <td><input type="text" id="min1" name="min1"></td>
+        
+            <td>Maximum age:</td>
+            <td><input type="text" id="max1" name="max1"></td>
+        </tr>
+    </tbody></table>
+    <br>
                     <div class="card mb-3">
                             <div class="card-body">
                               <div class="table-responsive">
-                                    <table class="table align-items-center table-flush table-dark table-advance" id="dataTable">
+                                    <table class="table align-items-center table-flush table-dark table-advance" id="itemTable">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col"></th>
@@ -101,72 +113,6 @@
             </div>
         </div>
 
-        <!--view modal item details-->
-        <!-- <div class="row">
-                <div class="col-md-4">
-                    <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-                  <div class="modal-dialog modal- modal-dialog-centered modal-lg modal-dark" role="document">
-                      <div class="modal-content">
-                          
-                          <div class="modal-header">
-                          <div id="title"><h1 class="modal-title" id="modal-title-default"></h1></div>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">×</span>
-                              </button>
-                          </div>
-                        
-                        <div class="modal-body" id="example">
-                        <table class="table align-items-center table-flush">
-                        <thead>
-                        <tr>
-                            <th scope="col">{{__('Wah Property #')}}</th>
-                            <th scope="col">{{ __('Type') }}</th>
-                            <th scope="col">{{ __('Details') }}</th>
-                            <th scope="col">{{ __('Date Procured') }}</th>
-                        </tr>
-                        </thead>
-                        <tr>
-                                <td><div id="wahProp"></div></td>
-                                <td><div id="type"></div></td>
-                                <td><div id="detail"></div></td>
-                                <td><div id="dateProc"></div></td>
-                        </tr>
-                        <thead>
-                        <tr>
-                            <th scope="col">{{ __('Method') }}</th>
-                            <th scope="col">{{ __('From') }}</th>
-                            <th scope="col">{{ __('Cost') }}</th>
-                            <th scope="col">{{ __('Depreciation Value') }}</th>
-                        </tr>
-                        </thead>
-                        <tr>
-                                <td><div id="method"></div></td>
-                                <td><div id="from"></div></td>
-                                <td><div id="cost"></div></td>
-                                <td><div id="DV"></div></td>
-                        </tr>
-                        <thead>
-                        <tr>
-                            <th scope="col">{{ __('Assigned To') }}</th>
-                        </tr>
-                        </thead>
-                        <tr>
-                                <td><div id="assignto"></div></td>
-                        </tr>
-                        </table>
-                        </div>
-        
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-primary ml-auto" data-dismiss="modal">Close</button> 
-                          </div>
-                          
-                      </div>
-                  </div>
-              </div>
-                </div>      -->
-                <!--end modal item details-->
-
-
  <!-- edit item modal --> 
  <div class="row">
   <div class="col-md-4">
@@ -193,7 +139,13 @@
                         </div>
                         <div class="form-group">
                           <label for="org1">Organization</label> 
-                          <input type="text" class="form-control" name="org1" value="">
+                          <!-- <input type="text" class="form-control" name="org1" value=""> -->
+                          <select class="form-control form-control-alternative" name="org1">
+                                            <option value="WAH">WAH</option>
+                                            <option value="WAH-Techbag">WAH-Techbag</option>
+                                            <option value="HCI">HCI</option>
+                                            <option value="Others">Others</option>
+                                        </select>
                         </div>
                         <div class="form-group">
                           <label for="type1">Item Type</label> 
@@ -205,7 +157,13 @@
                           </div>
                           <div class="form-group">
                           <label for="source1">Source</label> 
-                          <input type="text" class="form-control" name="source1" value="">
+                          <!-- <input type="text" class="form-control" name="source1" value=""> -->
+                          <select class="form-control form-control-alternative" name="source1">
+                                            <option value="WAH">WAH</option>
+                                            <option value="PGT">PGT</option>
+                                            <option value="RTI">RTI</option>
+                                            <option value="Others">Others</option>
+                                        </select>
                         </div>
                           <div class="form-group">
                         <label for="dateProc1">Date Procured</label> 
@@ -223,15 +181,15 @@
                            <div class="col">
                           <div class="form-group">
                         <label for="cost1">Cost</label> 
-                          <input type="number" class="form-control" name="cost1" id="cost1" value="" onkeyup="compute()">
+                          <input type="text" class="form-control" name="cost1" id="cost1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group">
                         <label for="salv_val1">Salvage Value</label> 
-                          <input type="number" class="form-control" name="salv_val1" id="salv1" value="" onkeyup="compute()">
+                          <input type="text" class="form-control" name="salv_val1" id="salv1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group">
                         <label for="life_span1">Life Span</label> 
-                          <input type="number" class="form-control" name="life_span1" id="life_span1" value="" onkeyup="compute()">
+                          <input type="text" class="form-control" name="life_span1" id="life_span1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group" style="height:200px;overflow:auto;">
                           <table class="table align-items-center table-flush">
@@ -318,6 +276,7 @@
                                         <label class="form-control-label" for="org">{{ __('Organization') }}</label>
                                         <select class="form-control form-control-alternative" name="org">
                                             <option value="WAH">WAH</option>
+                                            <option value="WAH-Techbag">WAH-Techbag</option>
                                             <option value="HCI">HCI</option>
                                             <option value="Others">Others</option>
                                         </select>
@@ -392,21 +351,21 @@
 
                             <div class="form-group">
                                         <label class="form-control-label" for="cost">{{ __('Cost') }}</label>
-                                        <input type="number" name="cost" id="cost" class="form-control form-control-alternative" required>
+                                        <input type="text" name="cost" id="cost" class="form-control form-control-alternative" required>
     
                                        
                                     </div>  
 
                             <div class="form-group">
                                         <label class="form-control-label" for="salvage_value">{{ __('Salvage Value') }}</label>
-                                        <input type="number" name="salvage_value" id="salvage_value" class="form-control form-control-alternative" required>
+                                        <input type="text" name="salvage_value" id="salvage_value" class="form-control form-control-alternative" required>
     
                                        
                                     </div>  
 
                             <div class="form-group">
                                         <label class="form-control-label" for="life_span">{{ __('Life Span') }}</label>
-                                        <input type="number" name="life_span" id="life_span" class="form-control form-control-alternative" required>
+                                        <input type="text" name="life_span" id="life_span" class="form-control form-control-alternative" required>
     
                                        
                                     </div>  
@@ -422,6 +381,7 @@
 
         </div>
     </div>
+</div>
 </div>
 </div>
   <!--end add item modal-->  

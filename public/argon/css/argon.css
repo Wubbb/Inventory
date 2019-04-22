@@ -16705,7 +16705,7 @@ textarea[resize='horizontal'] {
     width: 19px;
     height: 19px;
 
-    transform: translateY(50%);
+    transform: translateY(220%);
     text-align: center;
 
     opacity: 1;

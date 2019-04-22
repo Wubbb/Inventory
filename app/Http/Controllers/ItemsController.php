@@ -57,8 +57,15 @@ class ItemsController extends Controller
         return redirect('/items')->with('status','Successfully Deleted Item '. $item->prop_no). '!';
     }
     public function show($id) { 
+        $movement = DB::table('assigns')
+            ->join("items", "assigns.item_id", "=", "items.id")
+            ->join("users", "assigns.user_id", "=", "users.id")
+            ->where("item_id","=",$id)
+            ->select("assigns.id","assigns.date_assigned","users.name","items.prop_no","items.org","items.type","items.item_name","items.age","items.date_acquired","items.date_procured"
+                ,"assigns.remarks","items.location","assigns.date_returned")
+            ->get();
         $item = Item::find($id);
-        return view('items.show')->with('item',$item); 
+        return view('items.show')->with(['movement'=>$movement, 'item'=>$item]); 
     }
 
     public function edit(Request $request){

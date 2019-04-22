@@ -17,7 +17,7 @@
                                 <h3 class="mb-0">{{ __('Item Movement') }}</h3>
                             </div>
                             <div class="col-4 text-right" >
-                                <a href="/items"><button type="button" class="btn btn-sm btn-primary">{{ __('Go Back') }}</button></a>
+                                <a href="/disposed"><button type="button" class="btn btn-sm btn-primary">{{ __('Go Back') }}</button></a>
                             </div>
                         </div>
                     </div>

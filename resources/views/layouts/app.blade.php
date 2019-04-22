@@ -20,16 +20,7 @@
         <!-- Datatables CSS -->
         <link href="{{ asset('argon') }}/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <link href="{{ asset('argon') }}/vendor/datatables/buttons.dataTables.min.css" rel="stylesheet">
-        <style>
-        input[type='number'] {
-            -moz-appearance:textfield;
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-        }
-        </style>
+      
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -112,10 +103,10 @@
 
             $('input[name=id1]').val(id);
             $('input[name=wahProp1]').val(wah);
-            $('input[name=org1]').val(org);
+            $('select[name=org1]').val(org);
             $('input[name=type1]').val(type);
             $('input[name=name1]').val(name);
-            $('input[name=source1]').val(source);
+            $('select[name=source1]').val(source);
             $('input[name=dateProc1]').val(dateproc);
             $('input[name=dateAcq1]').val(dateacq);
             $('input[name=cost1]').val(cost);
