@@ -181,15 +181,15 @@
                            <div class="col">
                           <div class="form-group">
                         <label for="cost1">Cost</label> 
-                          <input type="number" class="form-control" name="cost1" id="cost1" value="" onkeyup="compute()">
+                          <input type="text" class="form-control" name="cost1" id="cost1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group">
                         <label for="salv_val1">Salvage Value</label> 
-                          <input type="number" class="form-control" name="salv_val1" id="salv1" value="" onkeyup="compute()">
+                          <input type="text" class="form-control" name="salv_val1" id="salv1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group">
                         <label for="life_span1">Life Span</label> 
-                          <input type="number" class="form-control" name="life_span1" id="life_span1" value="" onkeyup="compute()">
+                          <input type="text" class="form-control" name="life_span1" id="life_span1" value="" onkeyup="compute()">
                           </div>
                           <div class="form-group" style="height:200px;overflow:auto;">
                           <table class="table align-items-center table-flush">
@@ -351,21 +351,21 @@
 
                             <div class="form-group">
                                         <label class="form-control-label" for="cost">{{ __('Cost') }}</label>
-                                        <input type="number" name="cost" id="cost" class="form-control form-control-alternative" required>
+                                        <input type="text" name="cost" id="cost" class="form-control form-control-alternative" required>
     
                                        
                                     </div>  
 
                             <div class="form-group">
                                         <label class="form-control-label" for="salvage_value">{{ __('Salvage Value') }}</label>
-                                        <input type="number" name="salvage_value" id="salvage_value" class="form-control form-control-alternative" required>
+                                        <input type="text" name="salvage_value" id="salvage_value" class="form-control form-control-alternative" required>
     
                                        
                                     </div>  
 
                             <div class="form-group">
                                         <label class="form-control-label" for="life_span">{{ __('Life Span') }}</label>
-                                        <input type="number" name="life_span" id="life_span" class="form-control form-control-alternative" required>
+                                        <input type="text" name="life_span" id="life_span" class="form-control form-control-alternative" required>
     
                                        
                                     </div>  
