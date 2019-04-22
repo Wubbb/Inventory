@@ -6,13 +6,13 @@
 
 @section('content')
     @include('layouts.headers.cards')
-<style>
+<!-- <style>
 .dataTables_wrapper .dataTables_filter {
 float: right;
 text-align: right;
 visibility: hidden;
 }
-</style>
+</style> -->
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col">
@@ -68,10 +68,20 @@ visibility: hidden;
                                                          @endphp
                                             </td>
                                             <td>{{$item->life_span}}</td>
-                                            <td>{{$item->cost}}</td>
+                                            <td>₱ {{$item->cost}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
+                                    <tfoot>
+            <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+                <th style="text-align:right">Total:</th>
+                <th></th>
+            </tr>
+        </tfoot>
                                 </table>
                             </div>
                         </div>

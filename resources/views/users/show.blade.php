@@ -27,7 +27,7 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table align-items-center table-flush table-dark table-advance" id="dataTable1">
+                                <table class="table align-items-center table-flush table-dark table-advance" id="dataTableusershow">
                                     <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">{{__('Property #')}}</th>
@@ -38,7 +38,6 @@
                                         <th scope="col">{{__('Location')}}</th>
                                         <th scope="col">{{__('Date Returned')}}</th>
                                         <th scope="col">{{__('Remarks')}}</th>
-                                        <th scope="col">{{__('Action')}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -66,7 +65,6 @@
                                         {{$assign->remarks}}
                                         @endif
                                         </td>
-                                        <td>Button</td>
                                     </tr>
                                     @endforeach
                                     </tbody>
@@ -101,6 +99,10 @@
         function returnItem(e){
             var new_date_value = $("#r_" + e).val();
             var new_remark_value = $("#c_" + e).val();
+            if(new_date_value == ""){
+                $("#c_" + e).val("");
+                alert("Please Set Retured Date!");
+            }else{
             $.ajax({
                 url: '/assignto',
                 method: 'get',
@@ -111,9 +113,10 @@
                     "item_id": e
                 },
                 success: function(result){
-                    alert(result);
+                    if(!alert(result)){window.location.reload();}
                 }
             });
+        }
         }
     </script>
 @endsection

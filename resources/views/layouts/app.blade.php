@@ -112,10 +112,10 @@
 
             $('input[name=id1]').val(id);
             $('input[name=wahProp1]').val(wah);
-            $('input[name=org1]').val(org);
+            $('select[name=org1]').val(org);
             $('input[name=type1]').val(type);
             $('input[name=name1]').val(name);
-            $('input[name=source1]').val(source);
+            $('select[name=source1]').val(source);
             $('input[name=dateProc1]').val(dateproc);
             $('input[name=dateAcq1]').val(dateacq);
             $('input[name=cost1]').val(cost);
