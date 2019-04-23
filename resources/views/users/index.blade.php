@@ -17,7 +17,7 @@
                                 <h3 class="mb-0">{{ __('Employee ') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add Employee') }}</a>
+                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-addEmployee">{{ __('Add Employee') }}</a>
                             </div>
                         </div>
                     </div>
@@ -67,6 +67,93 @@
                 </div>
             </div>
         </div>
+
+        <!--add employee modal-->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="modal fade" id="modal-addEmployee" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="modal-title-default">Add Employee here:</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form method="post" action="{{ route('user.store') }}" autocomplete="off">
+                                    @csrf
+
+                                    <div class="form-group{{ $errors->has('employee_no') ? ' has-danger' : '' }}">
+                                        <div class="input-group input-group-alternative mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                                            </div>
+                                            <input class="form-control{{ $errors->has('employee_no') ? ' is-invalid' : '' }}" placeholder="{{ __('Employee No.') }}" type="text" name="employee_no" value="{{ old('employee_no') }}" required autofocus>
+                                        </div>
+                                        @if ($errors->has('employee_no'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('employee_no') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                        <div class="input-group input-group-alternative mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                                            </div>
+                                            <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Full Name') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                                        </div>
+                                        @if ($errors->has('name'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group{{ $errors->has('designation') ? ' has-danger' : '' }}">
+                                        <div class="input-group input-group-alternative mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-single-copy-04"></i></span>
+                                            </div>
+                                            <input class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" placeholder="{{ __('Designation') }}" type="text" name="designation" value="{{ old('designation') }}" required autofocus>
+                                        </div>
+                                        @if ($errors->has('designation'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('designation') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                    <div class="custom-control custom-control-alternative custom-checkbox">
+                                        <input name="active" value="No" type="hidden">
+                                        <input name="active" value="Yes" type="checkbox" checked>
+                                        &nbsp; &nbsp;<span class="text-muted">{{ __('Active') }}</span>
+                                    </div>
+                                <!-- <div class="form-group{{ $errors->has('active') ? ' has-danger' : '' }}">
+                                <div class="input-group input-group-alternative mb-3">
+                                    <input class="form-control{{ $errors->has('active') ? ' is-invalid' : '' }}" type="checkbox" name="active" value="Yes" checked autofocus>Active
+                                </div>
+                                @if ($errors->has('active'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('active') }}</strong>
+                                    </span>
+                                @endif
+                                    </div> -->
+
+                                    </div>
+                                    <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary mt-4">{{ __('Create account') }}</button>
+                                        <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--end add employee modal-->
             
         @include('layouts.footers.auth')
     </div>
