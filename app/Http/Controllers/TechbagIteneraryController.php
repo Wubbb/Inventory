@@ -16,10 +16,9 @@ class TechbagIteneraryController extends Controller
      */
     public function index()
     {
-        $location = DB::table('items')->get();
-        return $location;
-//    return view('techbag.index');
-        //
+         $location = DB::table('items')->get();
+        return view('techbag.index');
+
     }
 
     /**
