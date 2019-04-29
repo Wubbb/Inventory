@@ -38,20 +38,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-{{--                                    @foreach ($items as $item)--}}
-{{--                                        <tr>--}}
-{{--                                            <td>{{$item->prop_no}}</td>--}}
-{{--                                            <td>{{$item->type}}</td>--}}
-{{--                                            <td>{{$item->item_name}}</td>--}}
-{{--                                            <td>{{$item->date_procured}}</td>--}}
-{{--                                            <td>{{$item->life_span}}</td>--}}
-{{--                                            <td>{{$item->disposed_date}}</td>--}}
-{{--                                            <td>{{$item->disposed_method}}</td>--}}
-{{--                                            <td>{{$item->remarks}}</td>--}}
-{{--                                            <td>Button</td>--}}
 
-{{--                                        </tr>--}}
-{{--                                    @endforeach--}}
                                     </tbody>
                                 </table>
                             </div>
