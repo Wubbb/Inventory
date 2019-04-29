@@ -6,7 +6,11 @@
 
 @section('content')
     @include('layouts.headers.guest')
-    
+  <style>
+  success::after, .has-danger::after{
+    transform: translateY(50%);
+  }
+  </style>  
     <div class="container mt--8 pb-5">
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
