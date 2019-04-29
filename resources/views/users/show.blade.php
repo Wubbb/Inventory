@@ -46,8 +46,22 @@
                                         <td>{{$assign->prop_no}}</td>
                                         <td>{{$assign->type}}</td>
                                         <td>{{$assign->item_name}}</td>
-                                        <td>{{$assign->date_acquired}}</td>
-                                        <td>{{$assign->date_assigned}}</td>
+                                        <td>
+                                        @php
+                                        $dateacquired = $assign->date_acquired;
+                                        $dateacquired2 = \Carbon\Carbon::parse($dateacquired)->format('m/d/Y');
+
+                                        echo $dateacquired2;
+                                        @endphp
+                                        </td>
+                                        <td>
+                                        @php
+                                        $dateassign = $assign->date_assigned;
+                                        $dateassign2 = \Carbon\Carbon::parse($dateassign)->format('m/d/Y');
+
+                                        echo $dateassign2;
+                                        @endphp
+                                        </td>
                                         <td>{{$assign->location}}</td>
                                         <td>
                                         @if($assign->date_returned == "")
@@ -55,7 +69,11 @@
                                        
                                         
                                         @else
-                                            {{$assign->date_returned}}
+                                            @php
+                                            $datereturn = $assign->date_returned;
+                                            $datereturn2 = \Carbon\Carbon::parse($datereturn)->format('m/d/Y');
+                                            echo $datereturn2;
+                                            @endphp
                                          @endif
                                         </td>
                                         <td>

@@ -208,11 +208,11 @@
                           </div>
                           <div class="form-group">
                         <label for="disposed_date">Dispose Date</label> 
-                          <input type="date" class="form-control form-control-alternative" name="disposed_date" value="">
+                          <input type="date" class="form-control form-control-alternative" name="disposed_date" id="disposed_date" value="">
                           </div>
                           <div class="form-group">
                                         <label for="disposed_method">Dispose Method</label>
-                                        <select class="form-control form-control-alternative" name="disposed_method">
+                                        <select class="form-control form-control-alternative" name="disposed_method" id="dispose" disabled>
                                             <option value=""></option>
                                             <option value="Throw">Throw</option>
                                             <option value="Lost">Lost</option>
@@ -222,7 +222,7 @@
                                     </div>
                                     <div class="form-group">
                         <label for="remarks">Remarks</label> 
-                          <input type="text" class="form-control form-control-alternative" name="remarks" value="">
+                          <input type="text" class="form-control form-control-alternative" name="remarks" value="" id="dispose1" disabled>
                           </div>
                           </div> <!-- end column -->
                           </div> <!-- end row -->
@@ -444,5 +444,19 @@
                              document.getElementById("computation").innerHTML = text;
     }
     
+    </script>
+    <script>
+    $('#disposed_date').on('input', function() {
+    
+    if($(this).val().length){
+       $('#dispose').prop('disabled', false);
+       $('#dispose1').prop('disabled', false);
+      
+     }else{
+        $('#dispose').prop('disabled', true);
+        $('#dispose1').prop('disabled', true);
+     }
+        
+});
     </script>
 @endsection
