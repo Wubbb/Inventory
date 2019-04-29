@@ -44,3 +44,4 @@ Route::resource('disposed', 'DisposedItemsController');
 //});
 
 Route::resource('techbagReports','TechbagReportsController');
+Route::resource('techbagItenerary', 'TechbagIteneraryController');
