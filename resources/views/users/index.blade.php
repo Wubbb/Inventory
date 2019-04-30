@@ -21,7 +21,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-12">
                         @if (session('status'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -37,8 +37,9 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">{{ __('Employee #') }}</th>
-                                    <th scope="col">{{ __('Full Name #') }}</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">{{ __('Employee No') }}</th>
+                                    <th scope="col">{{ __('Full Name ') }}</th>
                                     <th scope="col">{{ __('Designation') }}</th>
                                     <th scope="col">{{__('Action') }}</th>
                                     <th scope="col"></th>
