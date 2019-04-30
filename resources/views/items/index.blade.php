@@ -49,10 +49,10 @@
                             <table cellspacing="5" cellpadding="5" border="0" align="center">
         <tbody><tr>
             <td>Minimum age:</td>
-            <td><input type="text" id="min1" name="min1"></td>
+            <td><input type="text" class="form-control" id="min1" name="min1" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
         
             <td>Maximum age:</td>
-            <td><input type="text" id="max1" name="max1"></td>
+            <td><input type="text" class="form-control" id="max1" name="max1" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
         </tr>
     </tbody></table>
     <br>
@@ -206,6 +206,8 @@
                           </tbody>
                           </table>
                           </div>
+                          <label for="disposed_date">Dispose Item</label>
+                          <div style="border:2px solid #e6e6e6;padding:10px;border-radius:10px;">
                           <div class="form-group">
                         <label for="disposed_date">Dispose Date</label> 
                           <input type="date" class="form-control form-control-alternative" name="disposed_date" id="disposed_date" value="">
@@ -223,6 +225,7 @@
                                     <div class="form-group">
                         <label for="remarks">Remarks</label> 
                           <input type="text" class="form-control form-control-alternative" name="remarks" value="" id="dispose1" disabled>
+                          </div>
                           </div>
                           </div> <!-- end column -->
                           </div> <!-- end row -->
