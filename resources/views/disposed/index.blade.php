@@ -57,7 +57,14 @@
                                                          @endphp
                                                          </td>
                                                          <td>{{$item->life_span}}</td>
-                                                         <td>{{$item->disposed_date}}</td>
+                                                         <td>
+                                                            @php
+                                                            $dispose = $item->disposed_date;
+                                                            $dispose2 = \Carbon\Carbon::parse($dispose)->format('m/d/Y');
+
+                                                               echo $dispose2;
+                                                            @endphp
+                                                        </td>
                                                          <td>{{$item->disposed_method}}</td>
                                                          <td>{{$item->remarks}}</td>
                                                          <td><a href="disposed/{{$item->id}}"><button type="button" class="btn btn-primary btn-sm">

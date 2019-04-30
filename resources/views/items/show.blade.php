@@ -35,7 +35,7 @@
                                         <th scope="col">{{__('Item Name')}}</th>
                                         <th scope="col">{{__('Age')}}</th>
                                         <th scope="col">{{__('Assigned To:')}}</th>
-                                        <th scope="col">{{__('Date Recieved')}}</th>
+                                        <th scope="col">{{__('Date Received')}}</th>
                                         <th scope="col">{{__('Date Returned')}}</th>
                                         <th scope="col">{{__('Remarks')}}</th>
                                     </tr>
@@ -59,8 +59,26 @@
                                                 @endphp
                                             </td>
                                             <td>{{$movements->name}}</td>
-                                            <td>{{$movements->date_assigned}}</td>
-                                            <td>{{$movements->date_returned}}</td>
+                                            <td>
+                                                @php
+                                                    $dateassign = $movements->date_assigned;
+                                                    $dateassign2 = \Carbon\Carbon::parse($dateassign)->format('m/d/Y');
+
+                                                    echo $dateassign2;
+                                                @endphp
+                                            </td>
+                                            <td>
+                                            @php
+                                                    $datereturn = $movements->date_returned;
+                                                    if($datereturn == ""){
+                                                    echo $datereturn;
+                                                    }else{
+                                                    $datereturn2 = \Carbon\Carbon::parse($datereturn)->format('m/d/Y');
+
+                                                    echo $datereturn2;
+                                                    }
+                                                @endphp
+                                            </td>
                                             <td>{{$movements->remarks}}</td>
 
                                         </tr>
