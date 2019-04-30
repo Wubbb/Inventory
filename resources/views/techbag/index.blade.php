@@ -14,11 +14,11 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Techbag') }}</h3>
+                                <h3 class="mb-0">{{ __('Techbag Itenerary') }}</h3>
                             </div>
                             <div class="col-4 text-right" >
                                 <button id="add" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                        data-target="#modal-addItenerary">{{ __('Add Techbag Itenerary') }}</button>
+                                        data-target="#modal-addItenerary">{{ __('Add Training') }}</button>
                             </div>
                         </div>
                     </div>
@@ -45,6 +45,11 @@
                                             <td>{{$techbag->purpose}}</td>
                                             <td>{{$techbag->date_out}}</td>
                                             <td>{{$techbag->date_in}}</td>
+                                            <td>
+                                                    <button type="button" class="btn btn-primary btn-sm">
+                                                            Return</button>
+                                            </td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -65,7 +70,7 @@
                         <div class="modal-content">
 
                             <div class="modal-header">
-                                <h2 class="modal-title" id="modal-title-default">Add Techbag here:</h2>
+                                <h2 class="modal-title" id="modal-title-default">Add Training here:</h2>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
