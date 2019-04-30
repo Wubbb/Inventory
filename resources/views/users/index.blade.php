@@ -21,7 +21,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-12">
                         @if (session('status'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -46,8 +46,9 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">{{ __('Employee #') }}</th>
-                                    <th scope="col">{{ __('Full Name #') }}</th>
+
+                                    <th scope="col">{{ __('Employee No') }}</th>
+                                    <th scope="col">{{ __('Full Name ') }}</th>
                                     <th scope="col">{{ __('Designation') }}</th>
                                     <th scope="col">{{ __('Active') }}</th>
                                     <th scope="col">{{__('Action') }}</th>
