@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-4 text-right" >
                                 <button id="add" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                        data-target="#modal-addItem">{{ __('Add Techbag Itenerary') }}</button>
+                                        data-target="#modal-addItenerary">{{ __('Add Techbag Itenerary') }}</button>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
+                                    @foreach ($techbags as $techbag)
+                                        <tr>
+                                            <td>{{$techbag->location}}</td>
+                                            <td>{{$techbag->training}}</td>
+                                            <td>{{$techbag->purpose}}</td>
+                                            <td>{{$techbag->date_out}}</td>
+                                            <td>{{$techbag->date_in}}</td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -52,130 +60,77 @@
         <!--add techbag itenerary modal-->
         <div class="row">
             <div class="col-md-4">
-                <div class="modal fade" id="modal-addItem" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                <div class="modal fade" id="modal-addItenerary" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
                     <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                         <div class="modal-content">
 
                             <div class="modal-header">
-                                <h2 class="modal-title" id="modal-title-default">Add Item here:</h2>
+                                <h2 class="modal-title" id="modal-title-default">Add Techbag here:</h2>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
 
                             <div class="modal-body">
-                                <form method="post" action="{{ route('items.store') }}" autocomplete="off">
+                                <form method="post" action="{{ route('techbagItenerary.store') }}" autocomplete="off">
                                     @csrf
 
                                     <div class="pl-lg-4">
-                                        <div class="form-group{{ $errors->has('prop_no') ? ' has-danger' : '' }}">
-                                            <label class="form-control-label" for="prop_no">{{ __('Property #') }}</label>
-                                            <input type="text" name="prop_no" id="prop_no" class="form-control form-control-alternative{{ $errors->has('prop_no') ? ' is-invalid' : '' }}"  required autofocus>
+                                        <div class="form-group{{ $errors->has('location') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="location">{{ __('Location') }}</label>
+                                            <input type="text" name="location" id="location" class="form-control form-control-alternative{{ $errors->has('location') ? ' is-invalid' : '' }}"  required autofocus>
 
-                                            @if ($errors->has('prop_no'))
+                                            @if ($errors->has('location'))
                                                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('prop_no') }}</strong>
+                                            <strong>{{ $errors->first('location') }}</strong>
+                                        </span>
+                                            @endif
+                                        </div>
+
+                                            <div class="form-group{{ $errors->has('training') ? ' has-danger' : '' }}">
+                                                <label class="form-control-label" for="training">{{ __('Training') }}</label>
+                                                <input type="text" name="training" id="training" class="form-control form-control-alternative{{ $errors->has('training') ? ' is-invalid' : '' }}"  required autofocus>
+
+                                                @if ($errors->has('training'))
+                                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('training') }}</strong>
+                                        </span>
+                                                @endif
+                                            </div>
+
+                                        <div class="form-group{{ $errors->has('purpose') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="purpose">{{ __('Purpose') }}</label>
+                                            <input type="text" name="purpose" id="purpose" class="form-control form-control-alternative{{ $errors->has('purpose') ? ' is-invalid' : '' }}"  required autofocus>
+
+                                            @if ($errors->has('purpose'))
+                                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('purpose') }}</strong>
                                         </span>
                                             @endif
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="form-control-label" for="org">{{ __('Organization') }}</label>
-                                            <select class="form-control form-control-alternative" name="org">
-                                                <option value="WAH">WAH</option>
-                                                <option value="WAH-Techbag">WAH-Techbag</option>
-                                                <option value="HCI">HCI</option>
-                                                <option value="Others">Others</option>
-                                            </select>
-
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="type">{{ __('Item Type') }}</label>
-                                            <input type="text" name="type" id="type" class="form-control form-control-alternative"  required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="item_name">{{ __('Item Name') }}</label>
-
-
-
-                                            <input type="text" name="item_name" id="item_name" class="form-control form-control-alternative"  required>
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="source">{{ __('Source') }}</label>
-                                            <select class="form-control form-control-alternative" name="source">
-                                                <option value="WAH">WAH</option>
-                                                <option value="PGT">PGT</option>
-                                                <option value="RTI">RTI</option>
-                                                <option value="Others">Others</option>
-                                            </select>
-
-
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="date_procured">{{ __('Date Procured ') }}</label>
+                                            <label class="form-control-label" for="date_out">{{ __('Date Out ') }}</label>
                                             <div class="input-group input-group-alternative">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                                 </div>
-                                                <input  type="date" name="date_procured" id="date_procured" class="form-control"  required autofocus>
+                                                <input  type="date" name="date_out" id="date_out" class="form-control"  required autofocus>
 
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="form-control-label" for="date_acquired">{{ __('Date Acquired ') }}</label>
+                                            <label class="form-control-label" for="date_in">{{ __('Date In ') }}</label>
                                             <div class="input-group input-group-alternative">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                                 </div>
-                                                <input  type="date" name="date_acquired" id="date_acquired" class="form-control" required autofocus>
+                                                <input  type="date" name="date_in" id="date_in" class="form-control"  autofocus>
 
                                             </div>
                                         </div>
 
-                                    <!-- <div class="form-group">
-                                        <label class="form-control-label" for="method">{{ __('Method') }}</label>
-                                        <select class="form-control form-control-alternative" name="method">
-                                            <option value="Purchased">Purchased</option>
-                                            <option value="Donation">Donation</option>
-                                        </select>
-
-
-                                    </div> -->
-
-                                    <!-- <div class="form-group">
-                                        <label class="form-control-label" for="method">{{ __('From') }}</label>
-                                        <input type="text" name="from" id="from" class="form-control form-control-alternative" required>
-
-
-                                    </div>  -->
-
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="cost">{{ __('Cost') }}</label>
-                                            <input type="text" name="cost" id="cost" class="form-control form-control-alternative" required>
-
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="salvage_value">{{ __('Salvage Value') }}</label>
-                                            <input type="text" name="salvage_value" id="salvage_value" class="form-control form-control-alternative" required>
-
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="life_span">{{ __('Life Span') }}</label>
-                                            <input type="text" name="life_span" id="life_span" class="form-control form-control-alternative" required>
-
-
-                                        </div>
 
 
                                         <div class="modal-footer">

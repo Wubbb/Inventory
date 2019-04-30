@@ -6,6 +6,7 @@ use DB;
 use App\TechbagItenerary;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class TechbagIteneraryController extends Controller
 {
@@ -16,8 +17,8 @@ class TechbagIteneraryController extends Controller
      */
     public function index()
     {
-         $techbags = DB::table('techbag_itenerary')->get();
-        return view('techbag.index')->with('techbag',$techbags);
+        $techbags = DB::table('techbag_itenerary')->get();
+        return view('techbag.index')->with('techbags',$techbags);
 
     }
 
@@ -28,7 +29,7 @@ class TechbagIteneraryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -39,7 +40,14 @@ class TechbagIteneraryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        TechbagItenerary::create([
+            "location" => $request->location,
+            "training" => $request->training,
+            "purpose" => $request->purpose,
+            "date_out" => $request->date_out,
+            "date_in" => $request->date_in
+        ]);
+        return redirect('/techbagItenerary')->with('status','Successfully Added!!');
     }
 
     /**
