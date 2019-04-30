@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use DB;
 use App\User;
 use App\Http\Requests\UserRequest;
+use Illuminate\Http\Request;
+use Validator;
 
 class UserController extends Controller
 {
@@ -44,6 +46,36 @@ class UserController extends Controller
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 
+    public function save(Request $request){
+        $validator = Validator::make($request->all(), [
+            'employee_no' => 'required|unique:users'
+        ]);
+         
+        if ($validator->fails()) {
+            return redirect('/user')
+                        ->with('failed','Failed Adding Employee!')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        User::create(["employee_no" => $request->employee_no,
+            "name" => $request->name,
+            "designation" => $request->designation,
+            "active" => $request->active
+        ]);
+        return redirect('/user')->with('status','Successfully Added!!');
+    }
+
+    public function change(Request $request){
+        $user = User::find($request->eid);
+        $user->employee_no = $request->employee_no;
+        $user->name = $request->ename;
+        $user->designation = $request->design;
+        $user->active = $request->active;
+
+        $user->save();
+
+        return redirect('/user')->with('status','Successfully updated!');
+    }
 
     public function show($id) {
         $assigns = DB::table('assigns')
@@ -55,7 +87,7 @@ class UserController extends Controller
             ->get();
         $users = User::find($id);
 
-            return view('users.show')->with(['assigns'=>$assigns, 'users'=>$users]);
+            return view('users.show')->with(['assigns'=>$assigns, 'users'=>$users]); 
 
     }
 

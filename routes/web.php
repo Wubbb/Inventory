@@ -31,6 +31,9 @@ Route::resource('items','ItemsController');
 Route::resource('assignto','NewAssignToController');
 
 Route::resource('disposed', 'DisposedItemsController');
+
+Route::post('/user', 'UserController@save')->name('user.save');
+Route::match(['put','patch'], '/user/{user}', 'UserController@change')->name('user.change');
 //Route::resource('employee', 'EmployeeController');
 
 //
