@@ -25,7 +25,7 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table align-items-center table-flush table-dark table-advance" id="dataTable">
+                                <table class="table align-items-center table-flush table-dark table-advance" id="dataTable1">
                                     <thead class="thead-dark">
                                     <tr>
 

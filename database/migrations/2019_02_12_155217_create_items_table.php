@@ -22,9 +22,9 @@ class CreateItemsTable extends Migration
             $table->string('source');
             $table->date('date_procured');
             $table->date('date_acquired');
-            $table->string('cost');
-            $table->integer('salvage_value');
-            $table->integer('life_span');
+            $table->string('cost')->nullable();
+            $table->integer('salvage_value')->nullable();
+            $table->integer('life_span')->nullable();
             $table->integer('age')->nullable();
             $table->date('disposed_date')->nullable();
             $table->string('disposed_method')->nullable();

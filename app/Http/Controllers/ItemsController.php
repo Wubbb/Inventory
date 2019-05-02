@@ -41,7 +41,8 @@ class ItemsController extends Controller
         "date_acquired" => $request->date_acquired,
         "cost" => $request->cost,
         "salvage_value" => $request->salvage_value,
-        "life_span" => $request->life_span        
+        "life_span" => $request->life_span,     
+        "location" =>  $request->location
         ]);
         
         return redirect('/items')->with('status','Successfully Added!!');
