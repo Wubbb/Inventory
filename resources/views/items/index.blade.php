@@ -1,8 +1,9 @@
 @extends('layouts.app', ['title' => __('Items')])
 
 @section('title')
-<title>WAH Inventory</title>
+<title id="scroll">WAH Inventory</title>
 @endsection
+
 
 @section('content')
     @include('layouts.headers.cards')
@@ -423,6 +424,9 @@
         $('#add').attr("data-mysalvage","{{$item->salvage_value}}");
         $('#add').attr("data-myspan","{{$item->life_span}}");
         $('#add').attr("data-myloc","{{$item->location}}");
+        $('html, body').animate({
+            scrollTop: $("#scroll").offset().top
+        }, 200);
         
     });
     </script>
