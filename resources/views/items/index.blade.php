@@ -354,21 +354,28 @@
 
                             <div class="form-group">
                                         <label class="form-control-label" for="cost">{{ __('Cost') }}</label>
-                                        <input type="text" name="cost" id="cost" class="form-control form-control-alternative" required>
+                                        <input type="text" name="cost" id="cost" class="form-control form-control-alternative" >
     
                                        
                                     </div>  
 
                             <div class="form-group">
                                         <label class="form-control-label" for="salvage_value">{{ __('Salvage Value') }}</label>
-                                        <input type="text" name="salvage_value" id="salvage_value" class="form-control form-control-alternative" required>
+                                        <input type="text" name="salvage_value" id="salvage_value" class="form-control form-control-alternative" >
     
                                        
                                     </div>  
 
                             <div class="form-group">
                                         <label class="form-control-label" for="life_span">{{ __('Life Span') }}</label>
-                                        <input type="text" name="life_span" id="life_span" class="form-control form-control-alternative" required>
+                                        <input type="text" name="life_span" id="life_span" class="form-control form-control-alternative" >
+    
+                                       
+                                    </div>
+
+                            <div class="form-group">
+                                        <label class="form-control-label" for="location">{{ __('Location') }}</label>
+                                        <input type="text" name="location" id="location" class="form-control form-control-alternative" >
     
                                        
                                     </div>  
