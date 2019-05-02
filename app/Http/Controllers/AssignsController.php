@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 use App\Assign;
 class AssignsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index($id){
         $items = DB::table('items')
         ->whereNotIn("id",Assign::select("item_id")->whereNull("date_returned"))

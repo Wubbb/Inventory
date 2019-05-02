@@ -30,3 +30,5 @@ Route::post('/user', 'UserController@save')->name('user.save');
 Route::match(['put','patch'], '/user/{user}', 'UserController@change')->name('user.change');
 Route::resource('techbagReports','TechbagReportsController');
 Route::resource('techbagItenerary', 'TechbagIteneraryController');
+Route::get('/itenerary', 'TechbagIteneraryController@change')->name('itenerary.change');
+Route::resource('rhucomputers','RHUComputerController');

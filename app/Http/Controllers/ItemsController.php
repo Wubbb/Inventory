@@ -22,16 +22,16 @@ class ItemsController extends Controller
 
     public function store(Request $request) {
 
-        $validator = Validator::make($request->all(), [
-            'prop_no' => 'required|unique:items'
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'prop_no' => 'required|unique:items'
+        // ]);
          
-        if ($validator->fails()) {
-            return redirect('/items')
-                        ->with('failed','Failed Adding Item!')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
+        // if ($validator->fails()) {
+        //     return redirect('/items')
+        //                 ->with('failed','Failed Adding Item!')
+        //                 ->withErrors($validator)
+        //                 ->withInput();
+        // }
         Item::create(["prop_no" => $request->prop_no,
         "org"=>$request->org,
         "type"=>$request->type,
