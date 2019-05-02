@@ -34,7 +34,7 @@
                                         <th scope="col">{{__('Purpose')}}</th>
                                         <th scope="col">{{__('Date Out')}}</th>
                                         <th scope="col">{{__('Date In')}}</th>
-                                        <th scope="col">{{__('Action')}}</th>
+                                        <!-- <th scope="col">{{__('Action')}}</th> -->
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -44,11 +44,17 @@
                                             <td>{{$techbag->training}}</td>
                                             <td>{{$techbag->purpose}}</td>
                                             <td>{{$techbag->date_out}}</td>
-                                            <td>{{$techbag->date_in}}</td>
                                             <td>
+                                        @if($techbag->date_in == "")
+                                        <input id="d_{{$techbag->id}}" type="date" onchange="returnTechbag({{$techbag->id}})">
+                                        @else
+                                        {{$techbag->date_in}}
+                                        @endif
+                                        </td>
+                                            <!-- <td>
                                                     <button type="button" class="btn btn-primary btn-sm">
                                                             Return</button>
-                                            </td>
+                                            </td> -->
 
                                         </tr>
                                     @endforeach
@@ -125,7 +131,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label class="form-control-label" for="date_in">{{ __('Date In ') }}</label>
                                             <div class="input-group input-group-alternative">
                                                 <div class="input-group-prepend">
@@ -134,12 +140,12 @@
                                                 <input  type="date" name="date_in" id="date_in" class="form-control"  autofocus>
 
                                             </div>
-                                        </div>
+                                        </div> -->
 
 
 
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-success mt-4">{{ __('Add Item') }}</button>
+                                            <button type="submit" class="btn btn-success mt-4">{{ __('Add Training') }}</button>
                                             <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
                                         </div>
                                 </form>
@@ -150,7 +156,7 @@
                 </div>
             </div>
         </div>
-
+</div>
         @include('layouts.footers.auth')
     </div>
     <script>
@@ -159,5 +165,21 @@
                 $(this).remove();
             });
         }, 4000);
+
+        function returnTechbag(e){
+            var date_value = $("#d_" + e).val();
+            $.ajax({
+                url: '/itenerary',
+                method: 'get',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "date_in": date_value,
+                    "techbag_id": e
+                },
+                success: function(result){
+                    if(!alert(result)){window.location.reload();}
+                }
+            });
+        }
     </script>
 @endsection

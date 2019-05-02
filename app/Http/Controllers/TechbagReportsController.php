@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 
 class TechbagReportsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function index() {
         $items = DB::table('items')->where('org', 'WAH-Techbag')->whereNotNull('location')->whereNull('disposed_date')

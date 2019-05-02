@@ -126,12 +126,12 @@
                         <i class="ni ni-briefcase-24 text-yellow"></i> {{ __('Tech Bag') }}
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-building text-pink"></i> {{ __('Rural Health Unit') }}
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('rhucomputers.index')}}">
+                        <i class="ni ni-building text-pink"></i> {{ __('RHU Computers') }}
                     </a>
                 </li>
-                <li class="nav-item">
+               <!-- <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-settings text-black"></i> {{ __('Utilities') }}
                     </a>

@@ -15,11 +15,26 @@ class TechbagIteneraryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $techbags = DB::table('techbag_itenerary')->get();
         return view('techbag.index')->with('techbags',$techbags);
 
+    }
+
+    public function change(Request $request){
+        try{
+            DB::table('techbag_itenerary')
+                ->where('id', $request->techbag_id)
+                ->update(['date_in' => $request->date_in]);
+            return "Techbag Returned Successfully";
+            }catch( Exception $e){
+                return json_encode($e);
+            }
     }
 
     /**
@@ -45,7 +60,7 @@ class TechbagIteneraryController extends Controller
             "training" => $request->training,
             "purpose" => $request->purpose,
             "date_out" => $request->date_out,
-            "date_in" => $request->date_in
+            //"date_in" => $request->date_in
         ]);
         return redirect('/techbagItenerary')->with('status','Successfully Added!!');
     }
