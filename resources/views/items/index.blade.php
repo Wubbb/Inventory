@@ -1,8 +1,9 @@
 @extends('layouts.app', ['title' => __('Items')])
 
 @section('title')
-<title>WAH Inventory</title>
+<title id="scroll">WAH Inventory</title>
 @endsection
+
 
 @section('content')
     @include('layouts.headers.cards')
@@ -81,12 +82,23 @@
                                                          <td>{{$item->type}}</td>
                                                          <td>{{$item->item_name}}</td>
                                                          <td>{{$item->location}}</td>
-                                                         <td>
+                                                         <td style="text-align:center;background-color:
+                                                          @php
+                                                         $date = $item->date_procured;
+                                                         $years = \Carbon\Carbon::parse($date)->age;
+                                                         
+                                                         if(($item->life_span != '')&&($item->life_span == $years)){
+                                                         echo 'red';
+                                                         }
+                                                         @endphp">
                                                          @php
                                                          $date = $item->date_procured;
                                                          $years = \Carbon\Carbon::parse($date)->age;
 
                                                             echo $years;
+                                                         if(($item->life_span != '')&&($item->life_span == $years)){
+                                                         echo '<div style="font-size:10px;">(For Disposal)</div>';
+                                                         }
 
                                                          @endphp
                                                          </td>
@@ -423,6 +435,9 @@
         $('#add').attr("data-mysalvage","{{$item->salvage_value}}");
         $('#add').attr("data-myspan","{{$item->life_span}}");
         $('#add').attr("data-myloc","{{$item->location}}");
+        $('html, body').animate({
+            scrollTop: $("#scroll").offset().top
+        }, 200);
         
     });
     </script>
