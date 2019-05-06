@@ -76,12 +76,13 @@ $.fn.dataTable.ext.search.push(
 );
 
 $(document).ready(function() {
-  var table = $('#techbag').DataTable( {"oLanguage": {
-    "oPaginate": {
-    "sPrevious": '<i class="fa fa-angle-left"></i>', // This is the link to the previous page
-    "sNext": '<i class="fa fa-angle-right"></i>',
-    }
-  },
+  var table = $('#techbag').DataTable( {
+    "bPaginate": false,
+    // {
+    // "sPrevious": '<i class="fa fa-angle-left"></i>', // This is the link to the previous page
+    // "sNext": '<i class="fa fa-angle-right"></i>',
+    // }
+  
   //total
   "footerCallback": function ( row, data, start, end, display ) {
     var api = this.api(), data;
@@ -151,6 +152,7 @@ $(document).ready(function() {
       { extend: 'excelHtml5', footer: true },
 ]
 });
+
    
   // Event listener to the two range filtering inputs to redraw on input
   $('#min, #max').keyup( function() {

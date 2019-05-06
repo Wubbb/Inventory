@@ -69,7 +69,13 @@ visibility: hidden;
                                                          @endphp
                                             </td>
                                             <td>{{$item->life_span}}</td>
-                                            <td>₱ {{$item->cost}}</td>
+                                            <td>
+                                            @if($item->cost=="")
+                                            
+                                            @else
+                                            ₱ {{$item->cost}}
+                                            @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -14,7 +14,8 @@ class ItemsController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        $items = DB::table('items')->whereNull('disposed_date')->get();
+
+        $items = DB::table('items')->whereNull('disposed_date')->orderBy('id','desc')->get();
         return view('items.index')->with('items', $items);
 
         // whereNull / whereNotNull

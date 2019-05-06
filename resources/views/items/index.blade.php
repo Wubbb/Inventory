@@ -82,12 +82,23 @@
                                                          <td>{{$item->type}}</td>
                                                          <td>{{$item->item_name}}</td>
                                                          <td>{{$item->location}}</td>
-                                                         <td>
+                                                         <td style="text-align:center;background-color:
+                                                          @php
+                                                         $date = $item->date_procured;
+                                                         $years = \Carbon\Carbon::parse($date)->age;
+                                                         
+                                                         if(($item->life_span != '')&&($item->life_span == $years)){
+                                                         echo 'red';
+                                                         }
+                                                         @endphp">
                                                          @php
                                                          $date = $item->date_procured;
                                                          $years = \Carbon\Carbon::parse($date)->age;
 
                                                             echo $years;
+                                                         if(($item->life_span != '')&&($item->life_span == $years)){
+                                                         echo '<div style="font-size:10px;">(For Disposal)</div>';
+                                                         }
 
                                                          @endphp
                                                          </td>
