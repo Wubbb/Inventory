@@ -139,10 +139,40 @@
                                     </div>
                                     <div class="custom-control custom-control-alternative custom-checkbox">
                                         <input name="active" value="No" type="hidden">
-                                        <input name="active" value="Yes" type="checkbox" checked>
+                                        <input id="activeadd" name="active" value="Yes" type="checkbox">
                                         &nbsp; &nbsp;<span class="text-muted">{{ __('Active') }}</span>
                                     </div>
-                               
+                                    <br>
+                                    <div class="form-group" id="register1" style="display:none;">
+                                    <div class="form-group{{ $errors->has('username') ? ' has-danger' : '' }}">
+                                        <i class="ni ni-single-copy-04" style="font-size: 0.70em;"></i>
+                                        <label class="form-control-label" for="prop_no">{{ __('Username') }}</label>
+                                            <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" type="text" name="username" value="{{ old('username') }}" autofocus>
+                                        
+                                        @if ($errors->has('username'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                                        <i class="ni ni-lock-circle-open" style="font-size: 0.70em;"></i>
+                                        <label class="form-control-label" for="prop_no">{{ __('Password') }}</label>
+                                            <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" autofocus>
+                                        
+                                        @if ($errors->has('password'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <i class="ni ni-lock-circle-open" style="font-size: 0.70em;"></i>
+                                        <label class="form-control-label" for="prop_no">{{ __('Confirm Password') }}</label>
+                                            <input class="form-control" type="password" name="password_confirmation" autofocus>
+                                        
+                                    </div>
+                                    </div>
                                     </div>
                                     <div class="modal-footer">
                                             <button type="submit" class="btn btn-primary mt-4">{{ __('Add Employee') }}</button>
@@ -176,14 +206,21 @@
                     {{method_field('patch')}}
                     @csrf
 
-                                    <div class="form-group">
+                                    
                                     <input type="text" class="form-control" name="eid" value="" hidden>
-                                    <i class="ni ni-badge" style="font-size: 0.70em;"></i>
+                                    <div class="form-group{{ $errors->has('employee_no') ? ' has-danger' : '' }}">
+                                    
+                                           
+                                               <i class="ni ni-badge" style="font-size: 0.70em;"></i>
                                          
-                                         <label class="form-control-label" for="prop_no" >{{ __('Employee No.') }}</label>
-                                            <input class="form-control" type="text" name="employee_no" value="" required autofocus>
+                                            <label class="form-control-label" for="prop_no" >{{ __('Employee No.') }}</label>
+                                            <input class="form-control{{ $errors->has('employee_no') ? ' is-invalid' : '' }}"  type="text" name="employee_no" value="{{ old('employee_no') }}" required autofocus>
                                         
-                                        
+                                        @if ($errors->has('employee_no'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('employee_no') }}</strong>
+                                    </span>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                     <i class="ni ni-circle-08" style="font-size: 0.70em;"></i>
@@ -203,7 +240,38 @@
                                         <input id="activecheck" name="active" value="Yes" type="checkbox">
                                         &nbsp; &nbsp;<span class="text-muted">{{ __('Active') }}</span>
                                     </div>
-                               
+                               <br>
+                                    <div class="form-group" id="register" style="display:none;">
+                                    <div class="form-group{{ $errors->has('username') ? ' has-danger' : '' }}">
+                                        <i class="ni ni-single-copy-04" style="font-size: 0.70em;"></i>
+                                        <label class="form-control-label" for="prop_no">{{ __('Username') }}</label>
+                                            <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" type="text" id="usedit" name="username" value="{{ old('username') }}" autofocus>
+                                        
+                                        @if ($errors->has('username'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                                        <i class="ni ni-lock-circle-open" style="font-size: 0.70em;"></i>
+                                        <label class="form-control-label" for="prop_no">{{ __('Password') }}</label>
+                                            <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" autofocus>
+                                        
+                                        @if ($errors->has('password'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <i class="ni ni-lock-circle-open" style="font-size: 0.70em;"></i>
+                                        <label class="form-control-label" for="prop_no">{{ __('Confirm Password') }}</label>
+                                            <input class="form-control" type="password" name="password_confirmation" autofocus>
+                                        
+                                    </div>
+                                    </div>
+
                                     </div>
                                     <div class="modal-footer">
                                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -237,6 +305,7 @@
         $('#addemp').attr("data-myename","{{$user->name}}");
         $('#addemp').attr("data-mydesign","{{$user->designation}}");
         $('#addemp').attr("data-myactive","{{$user->active}}");
+        $('#addemp').attr("data-myuser","{{$user->username}}");
         
     });
     </script>
@@ -248,6 +317,7 @@
             var ename = button.attr('data-myename');
             var design = button.attr('data-mydesign');
             var active = button.attr('data-myactive');
+            var user = button.attr('data-myuser');
             var modal=$(this);
 
             $('input[name=eid]').val(eid);
@@ -256,9 +326,12 @@
             $('input[name=design]').val(design);
            if(active == "Yes"){
             $('#activecheck').prop('checked', true);
+            $('input[name=username]').val(user);
            }else{
             $('#activecheck').prop('checked', false);
+            $('input[name=username]').val("");
            }
+           
         });
 
         $("#editEmp").on("hidden.bs.modal", function () {
@@ -266,6 +339,24 @@
             $('#addemp').attr("class","btn btn-sm btn-primary");
             $('#addemp').attr("data-target","#modal-addEmployee");
         });
+        </script>
+        <script>
+        $('input[type="checkbox"][id="activeadd"]').change(function() {
+     if(this.checked) {
+         $('#register1').attr("style","display:block");
+     }else{
+        $('#register1').attr("style","display:none");
+     }
+ });
+
+ $('input[type="checkbox"][id="activecheck"]').change(function() {
+     if(this.checked) {
+         $('#register').attr("style","display:block");
+     }else{
+        $('#register').attr("style","display:none");
+        $('input[id=usedit]').val("");
+     }
+ });
         </script>
 
     @endforeach

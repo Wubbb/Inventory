@@ -7,6 +7,7 @@ use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -51,8 +52,9 @@ class UserController extends Controller
     }
 
     public function save(Request $request){
+        if($request->username == ""){ 
         $validator = Validator::make($request->all(), [
-            'employee_no' => 'required|unique:users'
+            'employee_no' => 'required|unique:users',
         ]);
          
         if ($validator->fails()) {
@@ -64,21 +66,73 @@ class UserController extends Controller
         User::create(["employee_no" => $request->employee_no,
             "name" => $request->name,
             "designation" => $request->designation,
-            "active" => $request->active
+            "active" => $request->active,
+            "username" => null,
+            "password" => null
+        
+        ]);
+        return redirect('/user')->with('status','Successfully Added!!');
+    }else{
+        $validator2 = Validator::make($request->all(), [
+        'username' => 'unique:users',
+        'password' => 'min:5|confirmed'
+        ]);
+         
+        if ($validator2->fails()) {
+            return redirect('/user')
+                        ->with('failed','Failed Adding Employee!')
+                        ->withErrors($validator2)
+                        ->withInput();
+        }
+        User::create(["employee_no" => $request->employee_no,
+            "name" => $request->name,
+            "designation" => $request->designation,
+            "active" => $request->active,
+            "username" => $request->username,
+            "password" => Hash::make($request->password)
+            
         ]);
         return redirect('/user')->with('status','Successfully Added!!');
     }
+    }
 
     public function change(Request $request){
+        if($request->username == ""){ 
+       
         $user = User::find($request->eid);
         $user->employee_no = $request->employee_no;
         $user->name = $request->ename;
         $user->designation = $request->design;
         $user->active = $request->active;
+        $user->username = null;
+        $user->password = null;
 
         $user->save();
 
         return redirect('/user')->with('status','Successfully updated!');
+        }else{
+            $validator2 = Validator::make($request->all(), [
+            'password' => 'min:5|confirmed'
+            ]);
+             
+            if ($validator2->fails()) {
+                return redirect('/user')
+                            ->with('failed','Failed Updating Employee!')
+                            ->withErrors($validator2)
+                            ->withInput();
+            }
+            $user = User::find($request->eid);
+        $user->employee_no = $request->employee_no;
+        $user->name = $request->ename;
+        $user->designation = $request->design;
+        $user->active = $request->active;
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        return redirect('/user')->with('status','Successfully updated!');
+        }
     }
 
     public function show($id) {

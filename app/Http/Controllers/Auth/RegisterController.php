@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'employee_no' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password' => ['required', 'string', 'min:5', 'confirmed'],
             'designation' => ['required', 'string', 'max:255'],
             'active' => ['required', 'string', 'max:255'],
         ]);
