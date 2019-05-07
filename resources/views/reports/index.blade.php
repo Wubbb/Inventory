@@ -65,13 +65,18 @@ table tfoot {
                                             <td>
                                             @php
                                                          $date = $item->date_procured;
-                                                         $years = \Carbon\Carbon::parse($date)->age;
+                                                         $years = \Carbon\Carbon::parse($date)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');
+                                                         $age = \Carbon\Carbon::parse($date)->age;
 
                                                             echo $years;
 
                                                          @endphp
                                             </td>
-                                            <td>{{$item->life_span}}</td>
+                                            <td>@if($item->life_span=="")
+                                            {{$item->life_span}}
+                                            @else
+                                            {{$item->life_span}} years
+                                            @endif</td>
                                             <td>
                                             @if($item->cost=="")
                                             

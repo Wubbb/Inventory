@@ -48,7 +48,8 @@
                                                          <td>
                                                          @php
                                                          $date = $item->date_procured;
-                                                         $years = \Carbon\Carbon::parse($date)->age;
+                                                         $years = \Carbon\Carbon::parse($date)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');
+                                                         $age = \Carbon\Carbon::parse($date)->age;
 
                                                             echo $years;
 

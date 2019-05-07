@@ -50,13 +50,17 @@
                                                          @php
                                                          $date = $item->date_procured;
                                                          $date2 = \Carbon\Carbon::parse($item->disposed_date);
-                                                         $years = \Carbon\Carbon::parse($date)->diff($date2)->format('%y yrs, %m mos');
+                                                         $years = \Carbon\Carbon::parse($date)->diff($date2)->format('%y years, %m months and %d days');
 
                                                             echo $years;
                                                         
                                                          @endphp
                                                          </td>
-                                                         <td>{{$item->life_span}}</td>
+                                                         <td>@if($item->life_span=="")
+                                            {{$item->life_span}}
+                                            @else
+                                            {{$item->life_span}} years
+                                            @endif</td>
                                                          <td>
                                                             @php
                                                             $dispose = $item->disposed_date;
