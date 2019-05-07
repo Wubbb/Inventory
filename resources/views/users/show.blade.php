@@ -16,6 +16,7 @@
                             <div class="col-8">
                                 <h3 class="mb-0">Assigned Items To: {{$users->name}}</h3>
                                 <h3 class="mb-0">Designation: {{$users->designation}}</h3>
+                                <h3 class="mb-0">Active: {{$users->active}}</h3>
                             </div>
                             <div class="col-4 text-right" >
                                 <a href="/user"><button type="button" class="btn btn-sm btn-primary">{{ __('Go Back') }}</button></a>
@@ -92,7 +93,10 @@
                         </div>
 
                         <div class="col-11 text-right" >
-                                <a href="/assign/{{$users->id}}"><button type="button" class="btn btn-sm btn-success">{{ __('Add Item') }}</button></a>
+                                <a href="/assign/{{$users->id}}"><button type="button" class="btn btn-sm btn-success"
+                                @if($users->active == "No")
+                                disabled
+                                @endif>{{ __('Assign an Item') }}</button></a>
                             </div>
                             <div>
                             <br>

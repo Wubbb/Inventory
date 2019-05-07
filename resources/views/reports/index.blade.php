@@ -6,13 +6,16 @@
 
 @section('content')
     @include('layouts.headers.cards')
-<!-- <style>
-.dataTables_wrapper .dataTables_filter {
+<style>
+/* .dataTables_wrapper .dataTables_filter {
 float: right;
 text-align: right;
 visibility: hidden;
+} */
+table tfoot {
+    display: table-row-group;
 }
-</style> -->
+</style>
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col">
