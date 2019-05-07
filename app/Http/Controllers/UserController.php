@@ -52,7 +52,7 @@ class UserController extends Controller
     }
 
     public function save(Request $request){
-        if($request->username == ""){ 
+        if($request->username == ""  || $request->password == ""){ 
         $validator = Validator::make($request->all(), [
             'employee_no' => 'required|unique:users',
         ]);
@@ -74,8 +74,9 @@ class UserController extends Controller
         return redirect('/user')->with('status','Successfully Added!!');
     }else{
         $validator2 = Validator::make($request->all(), [
-        'username' => 'unique:users',
-        'password' => 'min:5|confirmed'
+            'employee_no' => 'required|unique:users',
+            'username' => 'unique:users',
+            'password' => 'min:5|confirmed'
         ]);
          
         if ($validator2->fails()) {
@@ -97,7 +98,7 @@ class UserController extends Controller
     }
 
     public function change(Request $request){
-        if($request->username == ""){ 
+        if($request->username == "" || $request->password == ""){ 
        
         $user = User::find($request->eid);
         $user->employee_no = $request->employee_no;
@@ -109,7 +110,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('/user')->with('status','Successfully updated!');
+        return redirect('/user')->with('status','Successfully Updated!');
         }else{
             $validator2 = Validator::make($request->all(), [
             'password' => 'min:5|confirmed'
@@ -131,7 +132,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('/user')->with('status','Successfully updated!');
+        return redirect('/user')->with('status','Successfully Updated!');
         }
     }
 

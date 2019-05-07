@@ -329,7 +329,6 @@
             $('input[name=username]').val(user);
            }else{
             $('#activecheck').prop('checked', false);
-            $('input[name=username]').val("");
            }
            
         });
@@ -354,7 +353,7 @@
          $('#register').attr("style","display:block");
      }else{
         $('#register').attr("style","display:none");
-        $('input[id=usedit]').val("");
+        // $('input[id=usedit]').val("");
      }
  });
         </script>
