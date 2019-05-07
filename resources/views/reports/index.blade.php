@@ -35,10 +35,10 @@ table tfoot {
                             <table cellspacing="5" cellpadding="5" border="0" align="center">
         <tbody><tr>
         <td>Minimum age:</td>
-            <td><input type="text" class="form-control" id="min1" name="min1" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
+            <td><input type="text" class="form-control" id="min" name="min" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
         
             <td>Maximum age:</td>
-            <td><input type="text" class="form-control" id="max1" name="max1" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
+            <td><input type="text" class="form-control" id="max" name="max" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
 
         </tr>
     </tbody></table>

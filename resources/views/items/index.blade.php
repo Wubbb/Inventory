@@ -87,7 +87,7 @@
                                                          $date = $item->date_procured;
                                                          $years = \Carbon\Carbon::parse($date)->age;
                                                          
-                                                         if(($item->life_span != '')&&($item->life_span == $years)){
+                                                         if(($item->life_span != '')&&($item->life_span <= $years)){
                                                          echo 'red';
                                                          }
                                                          @endphp">
@@ -96,8 +96,8 @@
                                                          $years = \Carbon\Carbon::parse($date)->age;
 
                                                             echo $years;
-                                                         if(($item->life_span != '')&&($item->life_span == $years)){
-                                                         echo '<div style="font-size:10px;">(For Disposal)</div>';
+                                                         if(($item->life_span != '')&&($item->life_span <= $years)){
+                                                         echo '<div style="font-size:10px;">(For Replacement)</div>';
                                                          }
 
                                                          @endphp

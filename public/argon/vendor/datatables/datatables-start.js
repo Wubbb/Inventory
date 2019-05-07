@@ -320,3 +320,88 @@ dom: 'Bfrtip',
 //     }
 //   }
 // });
+
+//rhucomputer
+$.fn.dataTable.ext.search.push(
+  function( settings, data, dataIndex ) {
+      var min2 = parseInt( $('#min2').val(), 10 );
+      var max2 = parseInt( $('#max2').val(), 10 );
+      var age2 = parseFloat( data[13] ) || 0; // use data for the age column
+
+      if ( ( isNaN( min2 ) && isNaN( max2 ) ) ||
+           ( isNaN( min2 ) && age2 <= max2 ) ||
+           ( min2 <= age2   && isNaN( max2 ) ) ||
+           ( min2 <= age2   && age2 <= max2 ) )
+      {
+          return true;
+      }
+      return false;
+  }
+);
+
+$(document).ready(function() {
+  var table = $('#rhucomputer').DataTable({
+    //"pagingType": "full_numbers", //This is to show First and Last Button
+	  "oLanguage": {
+"oPaginate": {
+"sPrevious": '<i class="fa fa-angle-left"></i>', // This is the link to the previous page
+"sNext": '<i class="fa fa-angle-right"></i>', // This is the link to the next page
+//"sFirst": "<<", // This is the link to the First page.
+//"sLast": ">>", //This is the link to the Last page.
+}
+}
+  });
+  $('#min2, #max2').keyup( function() {
+    table.draw();
+} );
+});
+//endrhucomputer
+
+//assignitem
+$(document).ready(function() {
+  $('#assign').DataTable({
+    //"pagingType": "full_numbers", //This is to show First and Last Button
+	  "oLanguage": {
+"oPaginate": {
+"sPrevious": '<i class="fa fa-angle-left"></i>', // This is the link to the previous page
+"sNext": '<i class="fa fa-angle-right"></i>', // This is the link to the next page
+//"sFirst": "<<", // This is the link to the First page.
+//"sLast": ">>", //This is the link to the Last page.
+}
+},
+"ordering": false,
+dom: 'Bfrtip',
+        buttons: [
+        {
+            extend: "print",
+            customize: function(win)
+            {
+ 
+                var last = null;
+                var current = null;
+                var bod = [];
+ 
+                var css = '@page { size: landscape; }',
+                    head = win.document.head || win.document.getElementsByTagName('head')[0],
+                    style = win.document.createElement('style');
+ 
+                style.type = 'text/css';
+                style.media = 'print';
+ 
+                if (style.styleSheet)
+                {
+                  style.styleSheet.cssText = css;
+                }
+                else
+                {
+                  style.appendChild(win.document.createTextNode(css));
+                }
+ 
+                head.appendChild(style);
+         }
+      },
+      'excel'
+]
+  });
+});
+//endassignitem

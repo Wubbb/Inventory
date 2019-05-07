@@ -43,23 +43,23 @@
                             </div>
                         @endif
                     </div>
-                    <!-- <div class="card mb-3">
+                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="table-responsive">
                             <table cellspacing="5" cellpadding="5" border="0" align="center">
         <tbody><tr>
             <td>Minimum age:</td>
-            <td><input type="text" class="form-control" id="min1" name="min1" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
+            <td><input type="text" class="form-control" id="min2" name="min2" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
         
             <td>Maximum age:</td>
-            <td><input type="text" class="form-control" id="max1" name="max1" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
+            <td><input type="text" class="form-control" id="max2" name="max2" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
         </tr>
     </tbody></table>
-    <br> -->
+    <br>
                     <div class="card mb-3">
                             <div class="card-body">
                               <div class="table-responsive">
-                                    <table class="table align-items-center table-flush table-dark table-advance" id="dataTable1">
+                                    <table class="table align-items-center table-flush table-dark table-advance" id="rhucomputer">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th scope="col">{{__('Municipality')}}</th>
@@ -99,7 +99,8 @@
                                                          @php
                                                          $date = $computer->date_acquired;
                                                          $years = \Carbon\Carbon::parse($date)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');
-
+                                                         $age = \Carbon\Carbon::parse($date)->age;
+                                                            
                                                             echo $years;
 
                                                          @endphp
