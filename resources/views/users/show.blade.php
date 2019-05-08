@@ -33,6 +33,7 @@
                                         <th scope="col">{{__('Property #')}}</th>
                                         <th scope="col">{{ __('Item Type') }}</th>
                                         <th scope="col">{{__('Item Name')}}</th>
+                                        <th scope="col">{{__('Serial #')}}</th>
                                         <th scope="col">{{__('Date Acquired')}}</th>
                                         <th scope="col">{{__('Date Assigned')}}</th>
                                         <th scope="col">{{__('Location')}}</th>
@@ -46,6 +47,7 @@
                                         <td>{{$assign->prop_no}}</td>
                                         <td>{{$assign->type}}</td>
                                         <td>{{$assign->item_name}}</td>
+                                        <td>{{$assign->serial_no}}</td>
                                         <td>
                                         @php
                                         $dateacquired = $assign->date_acquired;

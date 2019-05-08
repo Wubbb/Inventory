@@ -37,6 +37,7 @@ class ItemsController extends Controller
         "org"=>$request->org,
         "type"=>$request->type,
         "item_name" => $request->item_name,
+        "serial_no" => $request->serial_no,
         "source" => $request->source,
         "date_procured" => $request->date_procured,
         "date_acquired" => $request->date_acquired,
@@ -80,6 +81,7 @@ class ItemsController extends Controller
         $item->org = $request->org1;
         $item->type = $request->type1;
         $item->item_name = $request->name1;
+        $item->serial_no = $request->serial1;
         $item->source = $request->source1;
         $item->date_procured = $request->dateProc1;
         $item->date_acquired = $request->dateAcq1;

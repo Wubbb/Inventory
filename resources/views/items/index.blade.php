@@ -169,6 +169,10 @@
                           <input type="text" class="form-control" name="name1" value="">
                           </div>
                           <div class="form-group">
+                        <label for="serial1">Serial Number</label> 
+                          <input type="text" class="form-control" name="serial1" value="">
+                          </div>
+                          <div class="form-group">
                           <label for="source1">Source</label> 
                           <!-- <input type="text" class="form-control" name="source1" value=""> -->
                           <select class="form-control form-control-alternative" name="source1">
@@ -313,6 +317,15 @@
                                         <input type="text" name="item_name" id="item_name" class="form-control form-control-alternative"  required>
     
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="serial_no">{{ __('Serial Number') }}</label>
+                                       
+                                         
+                                                                  
+                                        <input type="text" name="serial_no" id="serial_no" class="form-control form-control-alternative">
+    
+                                    </div>
                              <div class="form-group">
                                         <label class="form-control-label" for="source">{{ __('Source') }}</label>
                                         <select class="form-control form-control-alternative" name="source">
@@ -429,6 +442,7 @@
         $('#add').attr("data-myorg","{{$item->org}}");
         $('#add').attr("data-mytype","{{$item->type}}");
         $('#add').attr("data-myname","{{$item->item_name}}");
+        $('#add').attr("data-myserial","{{$item->serial_no}}");
         $('#add').attr("data-mysource","{{$item->source}}");
         $('#add').attr("data-mydateproc","{{$item->date_procured}}");
         $('#add').attr("data-mydateacq","{{$item->date_acquired}}");

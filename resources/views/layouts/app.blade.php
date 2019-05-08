@@ -92,6 +92,7 @@
             var org = button.attr('data-myorg');
             var type = button.attr('data-mytype');
             var name = button.attr('data-myname');
+            var serial = button.attr('data-myserial');
             var source = button.attr('data-mysource');
             var dateproc = button.attr('data-mydateproc');
             var dateacq = button.attr('data-mydateacq');
@@ -106,6 +107,7 @@
             $('select[name=org1]').val(org);
             $('input[name=type1]').val(type);
             $('input[name=name1]').val(name);
+            $('input[name=serial1]').val(serial);
             $('select[name=source1]').val(source);
             $('input[name=dateProc1]').val(dateproc);
             $('input[name=dateAcq1]').val(dateacq);

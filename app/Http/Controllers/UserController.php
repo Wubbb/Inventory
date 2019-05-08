@@ -141,7 +141,7 @@ class UserController extends Controller
             ->join("items", "assigns.item_id", "=", "items.id")
             ->join("users", "assigns.user_id", "=", "users.id")
             ->where("user_id","=",$id)
-            ->select("assigns.id","assigns.date_assigned","items.prop_no","items.type","items.item_name","items.age","items.date_acquired","items.date_procured"
+            ->select("assigns.id","assigns.date_assigned","items.prop_no","items.type","items.item_name","items.serial_no","items.age","items.date_acquired","items.date_procured"
                 ,"assigns.remarks","items.location","assigns.date_returned")
             ->get();
         $users = User::find($id);
