@@ -14,7 +14,7 @@ class TechbagReportsController extends Controller
     }
     //
     public function index() {
-        $items = DB::table('items')->where('org', 'WAH-Techbag')->whereNotNull('location')->whereNull('disposed_date')
+        $items = DB::table('items')->where('location','like', 'Tech Bag'.'%')->whereNotNull('location')->whereNull('disposed_date')
             ->get();
 
         return view('reports.index')->with('items',$items);

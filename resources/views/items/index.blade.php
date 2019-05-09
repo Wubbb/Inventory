@@ -74,7 +74,7 @@
                                                     <th scope="col">{{__('Location')}}</th>
                                                     <th scope="col">{{__('Source')}}</th>
                                                     <th scope="col">{{__('Life Span')}}</th>
-                                                    <th scope="col">{{__('Age')}}</th>
+                                                    <th scope="col" style="text-align:center;">{{__('Age')}}</th>
                                                     <th scope="col">{{__('Salvage Value')}}</th>
                                                     <th scope="col">{{__('Action')}}</th>
                                                 </tr>
