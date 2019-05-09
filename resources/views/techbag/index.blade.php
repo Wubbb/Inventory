@@ -25,7 +25,16 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table align-items-center table-flush table-dark table-advance" id="dataTable1">
+                            <table cellspacing="5" cellpadding="5" border="0" align="center">
+        <tbody><tr>
+            <td><input type="text" class="form-control" id="loca" name="loca" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Location"></td>
+            </tr>
+    </tbody></table>
+    <br>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table align-items-center table-flush table-dark table-advance" id="dataitenera">
                                     <thead class="thead-dark">
                                     <tr>
 
@@ -89,8 +98,12 @@
                                     <div class="pl-lg-4">
                                         <div class="form-group{{ $errors->has('location') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="location">{{ __('Location') }}</label>
-                                            <input type="text" name="location" id="location" class="form-control form-control-alternative{{ $errors->has('location') ? ' is-invalid' : '' }}"  required autofocus>
-
+                                            <!-- <input type="text" name="location" id="location" class="form-control form-control-alternative{{ $errors->has('location') ? ' is-invalid' : '' }}"  required autofocus> -->
+                                            <select name="location" id="location" class="form-control form-control-alternative">
+                                            @foreach($location as $locations)
+                                            <option value="{{$locations->location}}">{{$locations->location}}</option>
+                                            @endforeach
+                                            </select>
                                             @if ($errors->has('location'))
                                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('location') }}</strong>

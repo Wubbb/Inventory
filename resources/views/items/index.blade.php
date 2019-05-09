@@ -49,11 +49,14 @@
                             <div class="table-responsive">
                             <table cellspacing="5" cellpadding="5" border="0" align="center">
         <tbody><tr>
-            <td>Minimum age:</td>
-            <td><input type="text" class="form-control" id="min1" name="min1" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
+            <td><input type="text" class="form-control" id="organ" name="organ" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Organization"></td>
         
-            <td>Maximum age:</td>
-            <td><input type="text" class="form-control" id="max1" name="max1" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
+            <td><input type="text" class="form-control" id="locat" name="locat" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Location"></td>
+            <td><input type="text" class="form-control" id="sorc" name="sorc" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Source"></td>
+            <td>
+            <input id="disp" name="disp" value="For Disposal" type="checkbox">
+            &nbsp;<span class="text-muted" style="font-size:14px;">{{ __('Filter Disposal') }}</span>
+            </td>
         </tr>
     </tbody></table>
     <br>
@@ -69,7 +72,10 @@
                                                     <th scope="col">{{ __('Item Type') }}</th>
                                                     <th scope="col">{{__('Item Name')}}</th>
                                                     <th scope="col">{{__('Location')}}</th>
+                                                    <th scope="col">{{__('Source')}}</th>
+                                                    <th scope="col">{{__('Life Span')}}</th>
                                                     <th scope="col">{{__('Age')}}</th>
+                                                    <th scope="col">{{__('Salvage Value')}}</th>
                                                     <th scope="col">{{__('Action')}}</th>
                                                 </tr>
                                             </thead>
@@ -82,6 +88,12 @@
                                                          <td>{{$item->type}}</td>
                                                          <td>{{$item->item_name}}</td>
                                                          <td>{{$item->location}}</td>
+                                                         <td>{{$item->source}}</td>
+                                                         <td>@if($item->life_span=="")
+                                            {{$item->life_span}}
+                                            @else
+                                            {{$item->life_span}} years
+                                            @endif</td>
                                                          <td style="text-align:center;background-color:
                                                           @php
                                                          $date = $item->date_procured;
@@ -98,11 +110,12 @@
 
                                                             echo $years;
                                                          if(($item->life_span != '')&&($item->life_span <= $age)){
-                                                         echo '<div style="font-size:10px;">(For Replacement)</div>';
+                                                         echo '<div style="font-size:10px;">(For Disposal)</div>';
                                                          }
 
                                                          @endphp
                                                          </td>
+                                                         <td>{{$item->salvage_value}}</td>
                                                          
 
                                                          <td> <form action="items/{{$item->id}}" method="post">
@@ -155,7 +168,6 @@
                           <!-- <input type="text" class="form-control" name="org1" value=""> -->
                           <select class="form-control form-control-alternative" name="org1">
                                             <option value="WAH">WAH</option>
-                                            <option value="WAH-Techbag">WAH-Techbag</option>
                                             <option value="HCI">HCI</option>
                                             <option value="Others">Others</option>
                                         </select>
@@ -296,7 +308,6 @@
                                         <label class="form-control-label" for="org">{{ __('Organization') }}</label>
                                         <select class="form-control form-control-alternative" name="org">
                                             <option value="WAH">WAH</option>
-                                            <option value="WAH-Techbag">WAH-Techbag</option>
                                             <option value="HCI">HCI</option>
                                             <option value="Others">Others</option>
                                         </select>

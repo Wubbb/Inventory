@@ -127,8 +127,8 @@
                     </a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('rhucomputers.index')}}">
-                        <i class="ni ni-building text-pink"></i> {{ __('RHU Computers') }}
+                    <a class="nav-link" href="{{route('hcicomputers.index')}}">
+                        <i class="ni ni-building text-pink"></i> {{ __('HCI Computers') }}
                     </a>
                 </li>
                <!-- <li class="nav-item">
