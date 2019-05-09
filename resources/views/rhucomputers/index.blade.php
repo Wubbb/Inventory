@@ -143,7 +143,7 @@
  <div class="row">
   <div class="col-md-4">
   <div class="modal fade" id="editModalComp" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-    <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal- modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="modal-title-default">Edit Computer Details:</h2>

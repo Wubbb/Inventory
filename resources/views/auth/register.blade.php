@@ -107,8 +107,7 @@
                             </div>
                             <div class="custom-control custom-control-alternative custom-checkbox">
                                 <input name="active" value="No" type="hidden">
-                                <input name="active" value="Yes" type="checkbox" checked>
-                               &nbsp; &nbsp;<span class="text-muted">{{ __('Active') }}</span>
+                                <input name="active" value="Yes" type="checkbox" checked hidden>
                             </div>
                             <!-- <div class="form-group{{ $errors->has('active') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">

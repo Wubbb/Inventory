@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
 @section('title')
-<title>WAH Inventory</title>
+<title id="scroll">WAH Inventory</title>
 @endsection
 
 @section('content')
@@ -306,6 +306,9 @@
         $('#addemp').attr("data-mydesign","{{$user->designation}}");
         $('#addemp').attr("data-myactive","{{$user->active}}");
         $('#addemp').attr("data-myuser","{{$user->username}}");
+        $('html, body').animate({
+            scrollTop: $("#scroll").offset().top
+        }, 200);
         
     });
     </script>

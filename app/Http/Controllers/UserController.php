@@ -98,9 +98,20 @@ class UserController extends Controller
     }
 
     public function change(Request $request){
-        if($request->username == "" || $request->password == ""){ 
+        if($request->active == "Yes" && $request->password == ""){ 
        
         $user = User::find($request->eid);
+        $user->employee_no = $request->employee_no;
+        $user->name = $request->ename;
+        $user->designation = $request->design;
+        $user->active = $request->active;
+        
+
+        $user->save();
+
+        return redirect('/user')->with('status','Successfully Updated!');
+        }else if($request->username == "" || $request->password == ""){
+            $user = User::find($request->eid);
         $user->employee_no = $request->employee_no;
         $user->name = $request->ename;
         $user->designation = $request->design;
@@ -111,7 +122,9 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/user')->with('status','Successfully Updated!');
-        }else{
+
+        }else
+        {
             $validator2 = Validator::make($request->all(), [
             'password' => 'min:5|confirmed'
             ]);
