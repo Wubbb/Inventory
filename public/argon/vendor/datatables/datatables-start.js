@@ -215,24 +215,25 @@ exportOptions: {
 },
 ]
   });
-  $('#organ').on( 'keyup', function () {
+  $('#organ').on( 'change', function () {
     table
         .columns( 2 )
         .search( this.value )
         .draw();
 } );
-$('#locat').on( 'keyup', function () {
+$('#locat').on( 'change', function () {
   table
       .columns( 5 )
       .search( this.value )
       .draw();
 } );
-$('#sorc').on( 'keyup', function () {
+$('#sorc').on( 'change', function () {
   table
       .columns( 6 )
       .search( this.value )
       .draw();
 } );
+//keyup
 $('#disp').change(function() {
   if(this.checked) {
   table
@@ -503,7 +504,7 @@ buttons: [
 'excel'
 ]
   });
-  $('#loca').on( 'keyup', function () {
+  $('#loca').on( 'change', function () {
     table
         .columns( 0 )
         .search( this.value )
