@@ -22,7 +22,9 @@ class TechbagIteneraryController extends Controller
     public function index()
     {
         $techbags = DB::table('techbag_itenerary')->get();
-        return view('techbag.index')->with('techbags',$techbags);
+        $location = DB::table('items')->select('location')->groupBy('location')->where('location','like','Tech Bag'.'%')
+        ->whereNotIn("location",TechbagItenerary::select("location")->whereNull("date_in"))->get();
+        return view('techbag.index')->with(['techbags'=>$techbags, 'location'=>$location]);
 
     }
 

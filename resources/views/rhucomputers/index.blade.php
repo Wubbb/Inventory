@@ -14,7 +14,7 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('RHU Computers') }}</h3>
+                                <h3 class="mb-0">{{ __('HCI Computers') }}</h3>
                             </div>
                             <div class="col-4 text-right" >
                                 <button id="add" type="button" class="btn btn-sm btn-primary" data-toggle="modal"
@@ -152,7 +152,7 @@
                 </button>
             </div>
                   <div class="modal-body">
-                    <form role="form" action="{{route('rhucomputers.update','comp')}}" method="post">
+                    <form role="form" action="{{route('hcicomputers.update','comp')}}" method="post">
                     {{method_field('patch')}}
                     @csrf
                     <div class="pl-lg-4">
@@ -269,7 +269,7 @@
             </div>
 
             <div class="modal-body">
-                        <form method="post" action="{{ route('rhucomputers.store') }}" autocomplete="off">
+                        <form method="post" action="{{ route('hcicomputers.store') }}" autocomplete="off">
                             @csrf
                             
                             <div class="pl-lg-4">
@@ -398,7 +398,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="{{route('rhucomputers.destroy','del')}}" method="post">
+            <form action="{{route('hcicomputers.destroy','del')}}" method="post">
             @csrf
             @method("DELETE")
             <input type="text" name="id2" hidden>
