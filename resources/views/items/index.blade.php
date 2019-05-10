@@ -49,10 +49,33 @@
                             <div class="table-responsive">
                             <table cellspacing="5" cellpadding="5" border="0" align="center">
         <tbody><tr>
-            <td><input type="text" class="form-control" id="organ" name="organ" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Organization"></td>
-        
-            <td><input type="text" class="form-control" id="locat" name="locat" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Location"></td>
-            <td><input type="text" class="form-control" id="sorc" name="sorc" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Source"></td>
+        <td>Filter Organization:</td>
+           <td><select name="organ" id="organ" class="form-control">
+                                            <option value="" selected>------</option>
+                                            @foreach($org as $orgs)
+                                            <option value="{{$orgs->org}}">{{$orgs->org}}</option>
+                                            @endforeach
+                                            </select></td>
+            
+            <!-- <td><input type="text" class="form-control" id="organ" name="organ" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Organization"></td> -->
+            <td>Filter Location:</td>
+           <td><select name="locat" id="locat" class="form-control">
+                                            <option value="" selected>------</option>
+                                            @foreach($location as $locations)
+                                            <option value="{{$locations->location}}">{{$locations->location}}</option>
+                                            @endforeach
+                                            </select></td>
+            
+            <!-- <td><input type="text" class="form-control" id="locat" name="locat" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Location"></td> -->
+            <td>Filter Source:</td>
+           <td><select name="sorc" id="sorc" class="form-control">
+                                            <option value="" selected>------</option>
+                                            @foreach($source as $sources)
+                                            <option value="{{$sources->source}}">{{$sources->source}}</option>
+                                            @endforeach
+                                            </select></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <!-- <td><input type="text" class="form-control" id="sorc" name="sorc" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Source"></td> -->
             <td>
             <input id="disp" name="disp" value="For Disposal" type="checkbox">
             &nbsp;<span class="text-muted" style="font-size:14px;">{{ __('Filter Disposal') }}</span>

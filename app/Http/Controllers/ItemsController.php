@@ -16,7 +16,10 @@ class ItemsController extends Controller
     public function index() {
 
         $items = DB::table('items')->whereNull('disposed_date')->orderBy('id','desc')->get();
-        return view('items.index')->with('items', $items);
+        $location = DB::table('items')->select('location')->groupBy('location')->whereNotNull('location')->get();
+        $org = DB::table('items')->select('org')->groupBy('org')->get();
+        $source = DB::table('items')->select('source')->groupBy('source')->get();
+        return view('items.index')->with(['items'=> $items, 'location'=>$location, 'org'=>$org, 'source'=>$source]);
 
         // whereNull / whereNotNull
     }
