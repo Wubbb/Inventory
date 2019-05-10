@@ -30,8 +30,8 @@
             <td>Filter Location:</td>
            <td><select name="loca" id="loca" class="form-control">
                                             <option value="" selected>------</option>
-                                            @foreach($location as $locations)
-                                            <option value="{{$locations->location}}">{{$locations->location}}</option>
+                                            @foreach($local as $locals)
+                                            <option value="{{$locals->location}}">{{$locals->location}}</option>
                                             @endforeach
                                             </select></td>
             </tr>
