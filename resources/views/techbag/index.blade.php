@@ -27,7 +27,13 @@
                             <div class="table-responsive">
                             <table cellspacing="5" cellpadding="5" border="0" align="center">
         <tbody><tr>
-            <td><input type="text" class="form-control" id="loca" name="loca" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Location"></td>
+            <td>Filter Location:</td>
+           <td><select name="loca" id="loca" class="form-control">
+                                            <option value="" selected>------</option>
+                                            @foreach($location as $locations)
+                                            <option value="{{$locations->location}}">{{$locations->location}}</option>
+                                            @endforeach
+                                            </select></td>
             </tr>
     </tbody></table>
     <br>

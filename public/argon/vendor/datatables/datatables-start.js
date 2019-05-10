@@ -503,7 +503,7 @@ buttons: [
 'excel'
 ]
   });
-  $('#loca').on( 'keyup', function () {
+  $('#loca').on( 'change', function () {
     table
         .columns( 0 )
         .search( this.value )
