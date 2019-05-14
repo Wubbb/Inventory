@@ -106,7 +106,7 @@ class RHUComputerController extends Controller
         $computer->date_acquired = $request->date_acquired1;
         $computer->save();
 
-        return redirect('/rhucomputers')->with('status','Successfully Updated!!');
+        return redirect('/hcicomputers')->with('status','Successfully Updated!!');
     }
 
     /**
@@ -119,6 +119,6 @@ class RHUComputerController extends Controller
     {
         $computer = RHUComputer::find($request->id2);
         $computer->delete();
-        return redirect('/rhucomputers')->with('status','Successfully Deleted Item!');
+        return redirect('/hcicomputers')->with('status','Successfully Deleted Item!');
     }
 }
