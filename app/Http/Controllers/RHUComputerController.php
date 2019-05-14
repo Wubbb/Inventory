@@ -56,7 +56,7 @@ class RHUComputerController extends Controller
         "wah_adoption" => $request->wah_adoption,
         "date_acquired" => $request->date_acquired
         ]);
-        return redirect('/rhucomputers')->with('status','Successfully Added!!');
+        return redirect('/hcicomputers')->with('status','Successfully Added!!');
     }
 
     /**
