@@ -22,10 +22,12 @@ class TechbagIteneraryController extends Controller
     public function index()
     {
         $techbags = DB::table('techbag_itenerary')->get();
-        $location = DB::table('items')->select('location')->groupBy('location')->where('location','like','Tech Bag'.'%')
+        $location = DB::table('items')->select('location')->groupBy('location')->where('location','like','Tech Bag%')
         ->whereNotIn("location",TechbagItenerary::select("location")->whereNull("date_in"))->get();
         $local = DB::table('techbag_itenerary')->select('location')->groupBy('location')->get();
-        return view('techbag.index')->with(['techbags'=>$techbags, 'location'=>$location, 'local'=>$local]);
+        $employ = DB::table('users')->select('name')->where('designation', 'Network and Service Partner')
+        ->orWhere('designation', 'Software Development')->get();
+        return view('techbag.index')->with(['techbags'=>$techbags, 'location'=>$location, 'local'=>$local, 'employ'=>$employ]);
 
     }
 
@@ -62,6 +64,7 @@ class TechbagIteneraryController extends Controller
             "location" => $request->location,
             "training" => $request->training,
             "purpose" => $request->purpose,
+            "employee_name" => $request->employee_name,
             "date_out" => $request->date_out,
             //"date_in" => $request->date_in
         ]);

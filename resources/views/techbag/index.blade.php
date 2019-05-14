@@ -28,7 +28,7 @@
                             <table cellspacing="5" cellpadding="5" border="0" align="center">
         <tbody><tr>
             <td>Filter Location:</td>
-           <td><select name="loca" id="loca" class="form-control">
+           <td><select name="loca" id="loca" class="form-control" autocomplete="off">
                                             <option value="" selected>------</option>
                                             @foreach($local as $locals)
                                             <option value="{{$locals->location}}">{{$locals->location}}</option>
@@ -44,7 +44,8 @@
                                     <thead class="thead-dark">
                                     <tr>
 
-                                        <th scope="col">{{__('Location ')}}</th>
+                                        <th scope="col">{{__('Location')}}</th>
+                                        <th scope="col">{{__('Employee')}}</th>
                                         <th scope="col">{{ __('Training') }}</th>
                                         <th scope="col">{{__('Purpose')}}</th>
                                         <th scope="col">{{__('Date Out')}}</th>
@@ -56,6 +57,7 @@
                                     @foreach ($techbags as $techbag)
                                         <tr>
                                             <td>{{$techbag->location}}</td>
+                                            <td>{{$techbag->employee_name}}</td>
                                             <td>{{$techbag->training}}</td>
                                             <td>{{$techbag->purpose}}</td>
                                             <td>{{$techbag->date_out}}</td>
@@ -113,6 +115,21 @@
                                             @if ($errors->has('location'))
                                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('location') }}</strong>
+                                        </span>
+                                            @endif
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('employee') ? ' has-danger' : '' }}">
+                                            <label class="form-control-label" for="employee">{{ __('Employee') }}</label>
+                                            <!-- <input type="text" name="employee" id="employee" class="form-control form-control-alternative{{ $errors->has('employee') ? ' is-invalid' : '' }}"  required autofocus> -->
+                                            <select name="employee_name" id="employee_name" class="form-control form-control-alternative">
+                                            @foreach($employ as $employee)
+                                            <option value="{{$employee->name}}">{{$employee->name}}</option>
+                                            @endforeach
+                                            </select>
+                                            @if ($errors->has('employee'))
+                                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('employee') }}</strong>
                                         </span>
                                             @endif
                                         </div>
