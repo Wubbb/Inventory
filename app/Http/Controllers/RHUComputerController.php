@@ -21,7 +21,7 @@ class RHUComputerController extends Controller
     public function index()
     {
         $computers = DB::table('rhu_computers')->get();
-        return view('rhucomputers.index')->with('computers',$computers);
+        return view('hcicomputers.index')->with('computers',$computers);
     }
 
     /**
