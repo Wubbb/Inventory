@@ -12,6 +12,7 @@ class TechbagItenerary extends Model
     protected $fillable = [
         "training",
         "purpose",
+        "employee_name",
         "date_out",
         "date_in",
         "location"

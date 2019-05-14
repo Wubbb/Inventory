@@ -129,7 +129,15 @@
                                     <div class="form-group{{ $errors->has('designation') ? ' has-danger' : '' }}">
                                         <i class="ni ni-single-copy-04" style="font-size: 0.70em;"></i>
                                         <label class="form-control-label" for="prop_no">{{ __('Designation') }}</label>
-                                            <input class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" type="text" name="designation" value="{{ old('designation') }}" required autofocus>
+                                        <select class="form-control" name="designation" required>
+                                            <option value="" selected>Select Designation</option>
+                                            <option value="Executive Director">Executive Director</option>
+                                            <option value="Supervisor">Supervisor</option>
+                                            <option value="Network and Service Partner">Network and Service Partner</option>
+                                            <option value="Health Program Partner">Health Program Partner</option>
+                                            <option value="Operations">Operations</option>
+                                            <option value="Software Development">Software Development</option>
+                                            </select>
                                         
                                         @if ($errors->has('designation'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -232,7 +240,14 @@
                                     <div class="form-group">
                                     <i class="ni ni-single-copy-04" style="font-size: 0.70em;"></i>
                                         <label class="form-control-label" for="prop_no">{{ __('Designation') }}</label>
-                                            <input class="form-control" type="text" name="design" value="" required autofocus>
+                                            <select class="form-control" name="design" required>
+                                            <option value="Executive Director">Executive Director</option>
+                                            <option value="Supervisor">Supervisor</option>
+                                            <option value="Network and Service Partner">Network and Service Partner</option>
+                                            <option value="Health Program Partner">Health Program Partner</option>
+                                            <option value="Operations">Operations</option>
+                                            <option value="Software Development">Software Development</option>
+                                            </select>
                                         
                                     </div>
                                     <div class="custom-control custom-control-alternative custom-checkbox">
@@ -326,7 +341,7 @@
             $('input[name=eid]').val(eid);
             $('input[name=employee_no]').val(emp);
             $('input[name=ename]').val(ename);
-            $('input[name=design]').val(design);
+            $('select[name=design]').val(design);
            if(active == "Yes"){
             $('#activecheck').prop('checked', true);
             $('input[name=username]').val(user);

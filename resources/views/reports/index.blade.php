@@ -34,11 +34,20 @@ table tfoot {
                             <div class="table-responsive">
                             <table cellspacing="5" cellpadding="5" border="0" align="center">
         <tbody><tr>
-        <td>Minimum age:</td>
-            <td><input type="text" class="form-control" id="min" name="min" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
+        <td>Filter Location:</td>
+           <td><select name="locatio" id="locatio" class="form-control" autocomplete="off">
+                                            <option value="" selected>------</option>
+                                            @foreach($location as $locations)
+                                            <option value="{{$locations->location}}">{{$locations->location}}</option>
+                                            @endforeach
+                                            </select></td>
         
-            <td>Maximum age:</td>
-            <td><input type="text" class="form-control" id="max" name="max" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%"></td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+           
+            <td>
+            <input id="displa" name="displa" value="For Disposal" type="checkbox" autocomplete="off">
+            &nbsp;<span class="text-muted" style="font-size:14px;">{{ __('Filter Disposal') }}</span>
+            </td>
 
         </tr>
     </tbody></table>
@@ -62,16 +71,27 @@ table tfoot {
                                             <td>{{$item->location}}</td>
                                             <td>{{$item->type}}</td>
                                             <td>{{$item->item_name}}</td>
-                                            <td>
-                                            @php
+                                            <td style="text-align:center;background-color:
+                                                          @php
+                                                         $date = $item->date_procured;
+                                                         $age = \Carbon\Carbon::parse($date)->age;
+                                                         
+                                                         if(($item->life_span != '')&&($item->life_span <= $age)){
+                                                         echo 'red';
+                                                         }
+                                                         @endphp">
+                                                         @php
                                                          $date = $item->date_procured;
                                                          $years = \Carbon\Carbon::parse($date)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');
                                                          $age = \Carbon\Carbon::parse($date)->age;
 
                                                             echo $years;
+                                                         if(($item->life_span != '')&&($item->life_span <= $age)){
+                                                         echo '<div style="font-size:10px;display:none;">(For Disposal)</div>';
+                                                         }
 
                                                          @endphp
-                                            </td>
+                                                         </td>
                                             <td>@if($item->life_span=="")
                                             {{$item->life_span}}
                                             @else
