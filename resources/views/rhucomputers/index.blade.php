@@ -275,52 +275,52 @@
                             <div class="pl-lg-4">
                                 <div class="form-group">
                                     <label class="form-control-label" for="municipality">{{ __('Municipality') }}</label>
-                                    <input type="text" name="municipality" id="municipality" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="municipality" id="municipality" class="form-control form-control-alternative" >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="rhu">{{ __('RHU') }}</label>
-                                    <input type="text" name="rhu" id="rhu" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="rhu" id="rhu" class="form-control form-control-alternative" >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="owned_by">{{ __('Owned By') }}</label>
-                                    <input type="text" name="owned_by" id="owned_by" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="owned_by" id="owned_by" class="form-control form-control-alternative" >
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="form-control-label" for="property_no">{{ __('Property Number') }}</label>
-                                    <input type="text" name="property_no" id="property_no" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="property_no" id="property_no" class="form-control form-control-alternative" >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="type">{{ __('Type') }}</label>
-                                    <input type="text" name="type" id="type" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="type" id="type" class="form-control form-control-alternative" >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="spec">{{ __('Specification') }}</label>
-                                    <input type="text" name="spec" id="spec" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="spec" id="spec" class="form-control form-control-alternative" >
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="form-control-label" for="ram">{{ __('RAM') }}</label>
-                                    <input type="text" name="ram" id="ram" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="ram" id="ram" class="form-control form-control-alternative" >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="hdd">{{ __('HDD Memory') }}</label>
-                                    <input type="text" name="hdd" id="hdd" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="hdd" id="hdd" class="form-control form-control-alternative" >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="os">{{ __('Operating System') }}</label>
-                                    <input type="text" name="os" id="os" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="os" id="os" class="form-control form-control-alternative" >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="location">{{ __('Location') }}</label>
-                                    <input type="text" name="location" id="location" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="location" id="location" class="form-control form-control-alternative" >
                                 </div>
 
                                 <div class="form-group">
@@ -339,7 +339,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input  type="date" name="wah_adoption" id="wah_adoption" class="form-control"  required autofocus>
+                                    <input  type="date" name="wah_adoption" id="wah_adoption" class="form-control"  autofocus>
                                    
                                 </div>
                             </div>
@@ -350,7 +350,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input  type="date" name="date_acquired" id="date_acquired" class="form-control" required autofocus>
+                                    <input  type="date" name="date_acquired" id="date_acquired" class="form-control" autofocus>
                                    
                                 </div>
                             </div>

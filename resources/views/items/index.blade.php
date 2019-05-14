@@ -141,13 +141,14 @@
                                                          <td>{{$item->salvage_value}}</td>
                                                          
 
-                                                         <td> <form action="items/{{$item->id}}" method="post">
+                                                         <td>
+                                                           <!--  <form action="items/{{$item->id}}" method="post"> -->
                                                                  <a href="items/{{$item->id}}"><button type="button" class="btn btn-primary btn-sm">
                                                                          View Item Movement</button></a>
 
-                                                            @csrf
-                                                            @method("DELETE")
-                                                            <button type="submit" class="btn btn-danger btn-sm" name="submit" value="Delete">Del</button>
+                                                            <!-- @csrf
+                                                            @method("DELETE") -->
+                                                            <!-- <button type="submit" class="btn btn-danger btn-sm" name="submit" value="Delete">Del</button> -->
                                                             <!-- <input type="submit" name="submit" value="Delete"> -->
                                                             </form>
                                                          </td>
