@@ -79,7 +79,7 @@
                                                          
 
                                                          <td>
-                                                                 <button type="button" class="btn btn-primary btn-sm" data-myitemid="{{$item->id}}" data-toggle="modal" data-target="#assigndate">
+                                                                 <button type="button" class="btn btn-primary btn-sm" data-myitemid="{{$item->id}}" data-mypropno="{{$item->prop_no}}" data-toggle="modal" data-target="#assigndate">
                                                                          Assign Item</button>
 
                                                          </td>
@@ -117,6 +117,8 @@
                             <div class="pl-lg-4">
                             <input type="text" value="{{$users->id}}" name="emp_id" hidden>
                             <input type="text" value="" name="item_id" hidden>
+                            <h4>Item Property #</h4>
+                            <h5 name="propno"></h5><br>
                             <div class="form-group">
                                 <label class="form-control-label" for="date_assigned">{{ __('Date Assigned ') }}</label>
                                 <div class="input-group input-group-alternative">
@@ -153,9 +155,11 @@
     $('#assigndate').on('show.bs.modal', function (event){
             var button = $(event.relatedTarget);
             var itemid = button.attr('data-myitemid');
+            var propno = button.attr('data-mypropno');
             var modal=$(this);
 
             $('input[name=item_id]').val(itemid);
+            $('h5[name=propno]').text(propno);
             
         });
 
