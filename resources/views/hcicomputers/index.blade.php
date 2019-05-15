@@ -159,52 +159,52 @@
                                 <div class="form-group">
                                 <input type="text" name="id1" id="id1" class="form-control form-control-alternative"  hidden>
                                     <label class="form-control-label" for="municipality1">{{ __('Municipality') }}</label>
-                                    <input type="text" name="municipality1" id="municipality1" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="municipality1" id="municipality1" class="form-control form-control-alternative" >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="rhu1">{{ __('RHU') }}</label>
-                                    <input type="text" name="rhu1" id="rhu1" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="rhu1" id="rhu1" class="form-control form-control-alternative"  >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="owned_by1">{{ __('Owned By') }}</label>
-                                    <input type="text" name="owned_by1" id="owned_by1" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="owned_by1" id="owned_by1" class="form-control form-control-alternative"  >
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="form-control-label" for="property_no1">{{ __('Property Number') }}</label>
-                                    <input type="text" name="property_no1" id="property_no1" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="property_no1" id="property_no1" class="form-control form-control-alternative"  >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="type1">{{ __('Type') }}</label>
-                                    <input type="text" name="type1" id="type1" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="type1" id="type1" class="form-control form-control-alternative"  >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="spec1">{{ __('Specification') }}</label>
-                                    <input type="text" name="spec1" id="spec1" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="spec1" id="spec1" class="form-control form-control-alternative"  >
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="form-control-label" for="ram1">{{ __('RAM') }}</label>
-                                    <input type="text" name="ram1" id="ram1" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="ram1" id="ram1" class="form-control form-control-alternative"  >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="hdd1">{{ __('HDD Memory') }}</label>
-                                    <input type="text" name="hdd1" id="hdd1" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="hdd1" id="hdd1" class="form-control form-control-alternative"  >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="os1">{{ __('Operating System') }}</label>
-                                    <input type="text" name="os1" id="os1" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="os1" id="os1" class="form-control form-control-alternative"  >
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label" for="location1">{{ __('Location') }}</label>
-                                    <input type="text" name="location1" id="location1" class="form-control form-control-alternative"  required>
+                                    <input type="text" name="location1" id="location1" class="form-control form-control-alternative"  >
                                 </div>
 
                                 <div class="form-group">
@@ -223,7 +223,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input  type="date" name="wah_adoption1" id="wah_adoption1" class="form-control"  required autofocus>
+                                    <input  type="date" name="wah_adoption1" id="wah_adoption1" class="form-control"  autofocus>
                                    
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input  type="date" name="date_acquired1" id="date_acquired1" class="form-control" required autofocus>
+                                    <input  type="date" name="date_acquired1" id="date_acquired1" class="form-control" autofocus>
                                    
                                 </div>
                             </div>

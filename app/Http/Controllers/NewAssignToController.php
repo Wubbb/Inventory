@@ -56,21 +56,22 @@ class NewAssignToController extends Controller
          */
         $user_id = $request->emp_id;
         $item_id = $request->item_id;
-        $date_assigned = Carbon::now();
+        $date_assigned = $request->date_assigned;
         $if_exists = Assign::select()
         ->where("item_id","=",$item_id)
         ->whereNull("date_returned")
         ->count();
 // echo $if_exists;
         if($if_exists > 0){
-            return 2;
+            return redirect()->back()->with('failed','Failed Assigning Item!');
         }
         $data = new Assign;
         $data->user_id = $user_id;
         $data->item_id = $item_id;
         $data->date_assigned = $date_assigned;
         $data->save();
-        return 1;
+        //return 1;
+        return redirect()->back()->with('status','Item Assigned Successfully!');
     }
 
     /**
