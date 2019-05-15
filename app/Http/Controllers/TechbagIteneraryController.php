@@ -25,7 +25,7 @@ class TechbagIteneraryController extends Controller
         $location = DB::table('items')->select('location')->groupBy('location')->where('location','like','Tech Bag%')
         ->whereNotIn("location",TechbagItenerary::select("location")->whereNull("date_in"))->get();
         $local = DB::table('techbag_itenerary')->select('location')->groupBy('location')->get();
-        $employ = DB::table('users')->select('name')->where('designation', 'like', 'Network Service Partner')
+        $employ = DB::table('users')->select('name')->where('designation', 'like', 'Network and Service Partner')
         ->orWhere('designation', 'like', 'Software Development')->get();
         return view('techbag.index')->with(['techbags'=>$techbags, 'location'=>$location, 'local'=>$local, 'employ'=>$employ]);
 
