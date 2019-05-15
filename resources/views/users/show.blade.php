@@ -23,6 +23,17 @@
                         </div>
                     </div>
 
+                    <div class="col-12">
+                        @if (session('status'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>&nbsp;
+                                {{ session('status') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                        </div>
 
                     <div class="card mb-3">
                         <div class="card-body">
@@ -30,6 +41,8 @@
                                 <table class="table align-items-center table-flush table-dark table-advance" id="dataTableusershow">
                                     <thead class="thead-dark">
                                     <tr>
+                                        
+                                        <th scope="col"></th>
                                         <th scope="col">{{__('Property #')}}</th>
                                         <th scope="col">{{ __('Item Type') }}</th>
                                         <th scope="col">{{__('Item Name')}}</th>
@@ -44,6 +57,9 @@
                                     <tbody>
                                     @foreach($assigns as $assign)
                                         <tr>
+                                        <td><button style="background-color: Transparent;border: none;background-repeat:no-repeat;overflow: hidden;outline:none;"type="button" data-toggle="modal" data-target="#editdate"
+                                                                  data-myid="{{$assign->id}}" data-mydate="{{$assign->date_assigned}}"><i id="" class="far fa-edit" style="color:white;"></i>
+                                                                     </button></td>
                                         <td>{{$assign->prop_no}}</td>
                                         <td>{{$assign->type}}</td>
                                         <td>{{$assign->item_name}}</td>
@@ -107,6 +123,47 @@
 
 
         </div>
+        <div class="row">
+  <div class="col-md-4">
+      <div class="modal fade" id="editdate" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title-default">Edit Assign Date:</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                        <form method="post" action="{{route('assignto.update','test')}}" autocomplete="off">
+                        {{method_field('patch')}}
+                    @csrf
+                            
+                            <div class="pl-lg-4">
+                            <input type="text" value="" name="assign_id" hidden>
+                            <div class="form-group">
+                                <label class="form-control-label" for="date_assigned">{{ __('Date Assigned ') }}</label>
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input  type="date" name="date_assigned" id="date_assigned" class="form-control" required autofocus>
+                                   
+                                </div>
+                            </div>
+
+</div>
+<div class="modal-footer">
+                <button type="submit" class="btn btn-success mt-4">{{ __('Confirm') }}</button>
+                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+            </div>
+</form>
+</div>
+</div>
+</div>
+</div>
 
         @include('layouts.footers.auth')
     </div>
@@ -138,5 +195,16 @@
             });
         }
         }
+
+        $('#editdate').on('show.bs.modal', function (event){
+            var button = $(event.relatedTarget);
+            var assignid = button.attr('data-myid');
+            var date = button.attr('data-mydate');
+            var modal=$(this);
+
+            $('input[name=assign_id]').val(assignid);
+            $('input[name=date_assigned]').val(date);
+            
+        });
     </script>
 @endsection

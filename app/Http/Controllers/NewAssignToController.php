@@ -103,9 +103,12 @@ class NewAssignToController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $assign = Assign::find($request->assign_id);
+        $assign->date_assigned = $request->date_assigned;
+        $assign->save();
+        return redirect()->back()->with('status','Date Edited Successfully!');
     }
 
     /**
