@@ -105,7 +105,7 @@
                                                <i class="ni ni-badge" style="font-size: 0.70em;"></i>
                                          
                                             <label class="form-control-label" for="prop_no" >{{ __('Employee No.') }}</label>
-                                            <input class="form-control{{ $errors->has('employee_no') ? ' is-invalid' : '' }}"  type="text" name="employee_no" value="{{ old('employee_no') }}" required autofocus>
+                                            <input class="form-control{{ $errors->has('employee_no') ? ' is-invalid' : '' }}"  type="text" name="employee_no"  value="{{ old('employee_no') }}" required autofocus>
                                         
                                         @if ($errors->has('employee_no'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -118,7 +118,7 @@
                                             
                                             <i class="ni ni-circle-08" style="font-size: 0.70em;"></i>
                                             <label class="form-control-label" for="prop_no">{{ __('Full Name') }}</label>
-                                            <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                                            <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" placeholder="First Name Last Name" value="{{ old('name') }}" required autofocus>
                                         
                                         @if ($errors->has('name'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
