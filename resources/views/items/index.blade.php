@@ -78,7 +78,7 @@
             <!-- <td><input type="text" class="form-control" id="sorc" name="sorc" style="border-radius:3px;border:1px solid #cad1d7;height:30px; width:90%" placeholder="Filter Source"></td> -->
             <td>
             <input id="disp" name="disp" value="For Disposal" type="checkbox" autocomplete="off">
-            &nbsp;<span class="text-muted" style="font-size:14px;">{{ __('Filter Disposal') }}</span>
+            &nbsp;<span class="text-muted" style="font-size:14px;">{{ __('Filter Items for Review') }}</span>
             </td>
         </tr>
     </tbody></table>

@@ -46,7 +46,7 @@ table tfoot {
            
             <td>
             <input id="displa" name="displa" value="For Disposal" type="checkbox" autocomplete="off">
-            &nbsp;<span class="text-muted" style="font-size:14px;">{{ __('Filter Disposal') }}</span>
+            &nbsp;<span class="text-muted" style="font-size:14px;">{{ __('Filter Items for Review') }}</span>
             </td>
 
         </tr>
