@@ -47,7 +47,7 @@
                                         <th scope="col">{{ __('Item Type') }}</th>
                                         <th scope="col">{{__('Item Name')}}</th>
                                         <th scope="col">{{__('Serial #')}}</th>
-                                        <th scope="col">{{__('Date Acquired')}}</th>
+                                        <th scope="col">{{__('Date Acquired/Procured')}}</th>
                                         <th scope="col">{{__('Date Assigned')}}</th>
                                         <th scope="col">{{__('Location')}}</th>
                                         <th scope="col">{{__('Date Returned')}}</th>
@@ -66,10 +66,10 @@
                                         <td>{{$assign->serial_no}}</td>
                                         <td>
                                         @php
-                                        $dateacquired = $assign->date_acquired;
-                                        $dateacquired2 = \Carbon\Carbon::parse($dateacquired)->format('m/d/Y');
+                                        $dateprocured = $assign->date_procured;
+                                        $dateprocured2 = \Carbon\Carbon::parse($dateprocured)->format('m/d/Y');
 
-                                        echo $dateacquired2;
+                                        echo $dateprocured2;
                                         @endphp
                                         </td>
                                         <td>
